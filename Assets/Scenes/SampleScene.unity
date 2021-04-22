@@ -674,7 +674,7 @@ MonoBehaviour:
   d: {fileID: 113617772}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &113668354
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +830,7 @@ MonoBehaviour:
   d: {fileID: 129381221}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &139657400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   d: {fileID: 145291212}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &148485910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,7 +1278,7 @@ MonoBehaviour:
   d: {fileID: 190026533}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &197267627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   d: {fileID: 218231015}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &218648160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   d: {fileID: 243285029}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &247290015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1948,7 +1948,7 @@ MonoBehaviour:
   d: {fileID: 268696158}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &276052255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2340,7 @@ MonoBehaviour:
   d: {fileID: 321004936}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &337019937
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2496,7 @@ MonoBehaviour:
   d: {fileID: 349892854}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &364130931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2965,7 @@ MonoBehaviour:
   d: {fileID: 432209647}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &436764219
 GameObject:
   m_ObjectHideFlags: 0
@@ -3265,7 +3265,7 @@ MonoBehaviour:
   d: {fileID: 471876792}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &472152253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,8 +3284,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &472152254
-CircleCollider2D:
+--- !u!61 &472152254
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3297,9 +3297,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -4.5489974, y: -4.4759426}
+  m_Offset: {x: 4.428196, y: 5.281334}
+  m_SpriteTilingProperty:
+    border: {x: 0.74, y: 0.64, z: 0.41, w: 0.88}
+    pivot: {x: 0.2785902, y: 0.2359333}
+    oldSize: {x: 20, y: 20}
+    newSize: {x: 20, y: 20}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 4.3849516
+  m_Size: {x: 20, y: 20}
+  m_EdgeRadius: 0
 --- !u!212 &472152255
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3365,63 +3375,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 180, y: -0.000015258789, z: 9.3059845}
---- !u!1 &475302366
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 475302368}
-  - component: {fileID: 475302367}
-  m_Layer: 0
-  m_Name: OreHitbox
-  m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!61 &475302367
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475302366}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0194397, y: 0.002664328}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9994354, y: 0.999908}
-  m_EdgeRadius: 0
---- !u!4 &475302368
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 475302366}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -93.96, y: 6.79, z: -11.456737}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &477213804
 GameObject:
   m_ObjectHideFlags: 0
@@ -3640,7 +3593,7 @@ MonoBehaviour:
   d: {fileID: 494381033}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &497626721
 GameObject:
   m_ObjectHideFlags: 0
@@ -3718,7 +3671,7 @@ MonoBehaviour:
   d: {fileID: 497626721}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3879,7 +3832,7 @@ MonoBehaviour:
   d: {fileID: 529604085}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &535207106
 GameObject:
   m_ObjectHideFlags: 0
@@ -3957,7 +3910,7 @@ MonoBehaviour:
   d: {fileID: 535207106}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &552385127
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,7 +3988,7 @@ MonoBehaviour:
   d: {fileID: 552385127}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &552920693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,7 +4381,7 @@ MonoBehaviour:
   d: {fileID: 604723229}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &630400952
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,7 +4537,7 @@ MonoBehaviour:
   d: {fileID: 635178411}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &640820135
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,7 +5065,7 @@ MonoBehaviour:
   d: {fileID: 728289177}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &729097854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5190,7 +5143,7 @@ MonoBehaviour:
   d: {fileID: 729097854}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &736980388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5268,7 +5221,108 @@ MonoBehaviour:
   d: {fileID: 736980388}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
+--- !u!1 &751488910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751488912}
+  - component: {fileID: 751488911}
+  - component: {fileID: 751488913}
+  - component: {fileID: 751488914}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &751488911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751488910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5027c0a0178fa84eb731d997812a0f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1376101444}
+  speed: 5
+  move: 0
+  jump: 0
+  adjustMovement: 0
+  StoneCount: {fileID: 836865271}
+  EisenCount: {fileID: 719407819}
+  lookAtMouse: {fileID: 0}
+--- !u!4 &751488912
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751488910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -98.705, y: 5.536, z: -42.81487}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1376101431}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &751488913
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751488910}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &751488914
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751488910}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.2683792, y: -0.1179235}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8132782, y: 1.235847}
+  m_EdgeRadius: 0
 --- !u!1 &760929315
 GameObject:
   m_ObjectHideFlags: 0
@@ -5476,7 +5530,7 @@ MonoBehaviour:
   d: {fileID: 797107425}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &818719949
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,7 +5608,7 @@ MonoBehaviour:
   d: {fileID: 818719949}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &836865269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5829,7 +5883,7 @@ MonoBehaviour:
   d: {fileID: 879829520}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &887738660
 GameObject:
   m_ObjectHideFlags: 0
@@ -5907,7 +5961,7 @@ MonoBehaviour:
   d: {fileID: 887738660}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &894875259
 GameObject:
   m_ObjectHideFlags: 0
@@ -6063,7 +6117,7 @@ MonoBehaviour:
   d: {fileID: 900682232}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &906435088
 GameObject:
   m_ObjectHideFlags: 0
@@ -6141,7 +6195,7 @@ MonoBehaviour:
   d: {fileID: 906435088}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &910616888
 GameObject:
   m_ObjectHideFlags: 0
@@ -6219,7 +6273,7 @@ MonoBehaviour:
   d: {fileID: 910616888}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &916993275
 GameObject:
   m_ObjectHideFlags: 0
@@ -6297,7 +6351,7 @@ MonoBehaviour:
   d: {fileID: 916993275}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &919587354
 GameObject:
   m_ObjectHideFlags: 0
@@ -6375,7 +6429,7 @@ MonoBehaviour:
   d: {fileID: 919587354}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &931730800
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,7 +6507,7 @@ MonoBehaviour:
   d: {fileID: 931730800}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &938361833
 GameObject:
   m_ObjectHideFlags: 0
@@ -6687,7 +6741,7 @@ MonoBehaviour:
   d: {fileID: 994125790}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1016901422
 GameObject:
   m_ObjectHideFlags: 0
@@ -6946,7 +7000,7 @@ MonoBehaviour:
   d: {fileID: 1037615463}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1064827077
 GameObject:
   m_ObjectHideFlags: 0
@@ -7100,7 +7154,7 @@ MonoBehaviour:
   d: {fileID: 1076178286}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1088189819
 GameObject:
   m_ObjectHideFlags: 0
@@ -7178,7 +7232,7 @@ MonoBehaviour:
   d: {fileID: 1088189819}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1092941271
 GameObject:
   m_ObjectHideFlags: 0
@@ -7334,7 +7388,7 @@ MonoBehaviour:
   d: {fileID: 1098359607}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1126737451
 GameObject:
   m_ObjectHideFlags: 0
@@ -7412,7 +7466,7 @@ MonoBehaviour:
   d: {fileID: 1126737451}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1151584267
 GameObject:
   m_ObjectHideFlags: 0
@@ -7646,7 +7700,7 @@ MonoBehaviour:
   d: {fileID: 1199102735}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1203093718
 GameObject:
   m_ObjectHideFlags: 0
@@ -8010,7 +8064,7 @@ MonoBehaviour:
   d: {fileID: 1243994349}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1258117658
 GameObject:
   m_ObjectHideFlags: 0
@@ -8269,7 +8323,7 @@ MonoBehaviour:
   d: {fileID: 1289609337}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1295736614
 GameObject:
   m_ObjectHideFlags: 0
@@ -8347,7 +8401,7 @@ MonoBehaviour:
   d: {fileID: 1295736614}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1299949308
 GameObject:
   m_ObjectHideFlags: 0
@@ -8519,7 +8573,7 @@ MonoBehaviour:
   d: {fileID: 1325501592}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1325762832
 GameObject:
   m_ObjectHideFlags: 0
@@ -8675,7 +8729,7 @@ MonoBehaviour:
   d: {fileID: 1326941491}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1330157443
 GameObject:
   m_ObjectHideFlags: 0
@@ -8753,7 +8807,7 @@ MonoBehaviour:
   d: {fileID: 1330157443}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1341864965
 GameObject:
   m_ObjectHideFlags: 0
@@ -8862,7 +8916,7 @@ MonoBehaviour:
   d: {fileID: 1365770454}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1376101427
 GameObject:
   m_ObjectHideFlags: 0
@@ -8873,9 +8927,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1376101431}
   - component: {fileID: 1376101430}
-  - component: {fileID: 1376101428}
-  - component: {fileID: 1376101429}
-  - component: {fileID: 1376101445}
   - component: {fileID: 1376101432}
   - component: {fileID: 1376101433}
   - component: {fileID: 1376101434}
@@ -8889,7 +8940,6 @@ GameObject:
   - component: {fileID: 1376101442}
   - component: {fileID: 1376101443}
   - component: {fileID: 1376101444}
-  - component: {fileID: 1376101446}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -8897,48 +8947,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1376101428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376101427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5027c0a0178fa84eb731d997812a0f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1376101427}
-  animator: {fileID: 1376101444}
-  speed: 5
-  move: 0
-  jump: 0
-  adjustMovement: 0
-  StoneCount: {fileID: 836865271}
-  EisenCount: {fileID: 719407819}
-  lookAtMouse: {fileID: 0}
---- !u!50 &1376101429
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376101427}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!212 &1376101430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8996,15 +9004,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376101427}
-  m_LocalRotation: {x: 0.99687725, y: -0.0784691, z: -0.008817397, w: -0.0008114755}
-  m_LocalPosition: {x: -103.09, y: 3.7, z: -0.4169922}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0.203, y: -0.81, z: 42.397877}
   m_LocalScale: {x: 0.1, y: 0.10000004, z: 1}
   m_Children:
   - {fileID: 1341864966}
   - {fileID: 406660424}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 180.172, y: 1, z: 9}
+  m_Father: {fileID: 751488912}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!114 &1376101432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9247,8 +9255,8 @@ MonoBehaviour:
   - {fileID: 1341864966}
   - {fileID: 381523395}
   m_Bounds:
-    m_Center: {x: -4.9562883, y: -4.1211777, z: -0.0000000016274935}
-    m_Extent: {x: 8.51401, y: 7.479623, z: 0.000000002283983}
+    m_Center: {x: -4.9562664, y: -4.12118, z: 0}
+    m_Extent: {x: 8.513979, y: 7.4796205, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &1376101444
@@ -9270,40 +9278,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1376101445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376101427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b78590b2b9a7cd746bf809a6e4702d41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gotHit: 0
-  bone1: {fileID: 1341864965}
-  speed: 5
-  move: 0
-  jump: 0
-  adjustMovement: 0
---- !u!58 &1376101446
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1376101427}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -1.7045085, y: -6.012934}
-  serializedVersion: 2
-  m_Radius: 3.606913
 --- !u!1 &1377439481
 GameObject:
   m_ObjectHideFlags: 0
@@ -10040,7 +10014,7 @@ MonoBehaviour:
   d: {fileID: 1503510392}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1508401125
 GameObject:
   m_ObjectHideFlags: 0
@@ -10324,7 +10298,7 @@ MonoBehaviour:
   d: {fileID: 1599657744}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1601586331
 GameObject:
   m_ObjectHideFlags: 0
@@ -10491,7 +10465,7 @@ MonoBehaviour:
   d: {fileID: 1626323081}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1639538925
 GameObject:
   m_ObjectHideFlags: 0
@@ -10569,7 +10543,7 @@ MonoBehaviour:
   d: {fileID: 1639538925}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1639802514
 GameObject:
   m_ObjectHideFlags: 0
@@ -10647,7 +10621,7 @@ MonoBehaviour:
   d: {fileID: 1639802514}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1652078005
 GameObject:
   m_ObjectHideFlags: 0
@@ -10803,7 +10777,7 @@ MonoBehaviour:
   d: {fileID: 1678718904}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1686642090
 GameObject:
   m_ObjectHideFlags: 0
@@ -10881,7 +10855,7 @@ MonoBehaviour:
   d: {fileID: 1686642090}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1691844799
 GameObject:
   m_ObjectHideFlags: 0
@@ -10959,7 +10933,7 @@ MonoBehaviour:
   d: {fileID: 1691844799}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1700876843
 GameObject:
   m_ObjectHideFlags: 0
@@ -11037,7 +11011,7 @@ MonoBehaviour:
   d: {fileID: 1700876843}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1713398731
 GameObject:
   m_ObjectHideFlags: 0
@@ -11584,7 +11558,7 @@ MonoBehaviour:
   d: {fileID: 1895686396}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1901130388
 GameObject:
   m_ObjectHideFlags: 0
@@ -11876,7 +11850,7 @@ MonoBehaviour:
   d: {fileID: 1920482646}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1946735120
 GameObject:
   m_ObjectHideFlags: 0
@@ -11954,7 +11928,7 @@ MonoBehaviour:
   d: {fileID: 1946735120}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1955368929
 GameObject:
   m_ObjectHideFlags: 0
@@ -12032,7 +12006,7 @@ MonoBehaviour:
   d: {fileID: 1955368929}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &1986523782
 GameObject:
   m_ObjectHideFlags: 0
@@ -12318,7 +12292,7 @@ MonoBehaviour:
   d: {fileID: 2012887134}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &2028423415
 GameObject:
   m_ObjectHideFlags: 0
@@ -12628,7 +12602,7 @@ MonoBehaviour:
   d: {fileID: 2048716418}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &2049675300
 GameObject:
   m_ObjectHideFlags: 0
@@ -12706,7 +12680,7 @@ MonoBehaviour:
   d: {fileID: 2049675300}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &2050259949
 GameObject:
   m_ObjectHideFlags: 0
@@ -12914,7 +12888,7 @@ MonoBehaviour:
   d: {fileID: 2094212714}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &2097074293
 GameObject:
   m_ObjectHideFlags: 0
@@ -12992,7 +12966,7 @@ MonoBehaviour:
   d: {fileID: 2097074293}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}
 --- !u!1 &2107819197
 GameObject:
   m_ObjectHideFlags: 0
@@ -13356,4 +13330,4 @@ MonoBehaviour:
   d: {fileID: 2139331256}
   map: {fileID: 436764222}
   tileDatas: []
-  Hitbox: {fileID: 475302366}
+  Hitbox: {fileID: 0}

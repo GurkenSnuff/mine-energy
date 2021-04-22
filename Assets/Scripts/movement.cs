@@ -9,7 +9,7 @@ public class movement : MonoBehaviour
     private MapManager mapManager;
 
     private Rigidbody2D rigidbody;
-    public GameObject player;
+    
     public Animator animator;
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
@@ -18,13 +18,13 @@ public class movement : MonoBehaviour
     bool Wait = true,eisen=false,gold=false,dia=false;
     float Distance_;
     public Text StoneCount,EisenCount;
-    public LookAtMouse lookAtMouse;
+    public GameObject lookAtMouse;
     private EisenMiner eisenMiner;
 
     private void Awake()
     {
         eisenMiner = FindObjectOfType<EisenMiner>();
-        lookAtMouse = FindObjectOfType<LookAtMouse>();
+        
         miner = FindObjectOfType<Miner>();
         mapManager = FindObjectOfType<MapManager>();
         rigidbody = GetComponent<Rigidbody2D>();
@@ -36,8 +36,8 @@ public class movement : MonoBehaviour
         move = Input.GetAxisRaw("Horizontal");
         
             movementApplied();
-        
-       
+
+        LookAtMouse();
         Hit();
         
         
@@ -105,6 +105,14 @@ public class movement : MonoBehaviour
        
     }
 
+    private void LookAtMouse()
+    {
+        Vector3 position = new Vector3(transform.position.x , transform.position.y, 0F);
+
+        Vector3 targetMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - position;
+        float angle = (Mathf.Atan2(targetMouse.y, targetMouse.x) * Mathf.Rad2Deg)+90F;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
 
 }
   
