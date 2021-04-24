@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Schlag : MonoBehaviour
 {
-   
+    public GameObject enemyHitbox;
+    public Leben leben;
+
+    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        print("t");
+        if(collision.gameObject== enemyHitbox)
+        {
+            leben.Life -= 10;
+        }
     }
 }

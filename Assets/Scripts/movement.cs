@@ -34,7 +34,7 @@ public class movement : MonoBehaviour
         
             movementApplied();
 
-        LookAtMouse();
+        
         
         
         
@@ -48,14 +48,7 @@ public class movement : MonoBehaviour
     }
    
 
-    private void LookAtMouse()
-    {
-        Vector3 position = new Vector3(transform.position.x , transform.position.y, 0F);
-
-        Vector3 targetMouse = Camera.main.ScreenToWorldPoint(Input.mousePosition) - position;
-        float angle = (Mathf.Atan2(targetMouse.y, targetMouse.x) * Mathf.Rad2Deg)+90F;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    }
+    
 
 }
   
