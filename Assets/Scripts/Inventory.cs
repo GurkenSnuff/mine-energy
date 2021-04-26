@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public GameObject GeneratorInventory;
     public GameObject MinenInventory;
     public GameObject SellerInventory;
+    public GameObject PickageInventory;
     private bool IsActive= false;
     
     void Update()
@@ -32,17 +33,27 @@ public class Inventory : MonoBehaviour
         MinenInventory.SetActive(false);
         SellerInventory.SetActive(false);
         GeneratorInventory.SetActive(true);
+        PickageInventory.SetActive(false);
     }
     public void Miner()
     {
         SellerInventory.SetActive(false);
         GeneratorInventory.SetActive(false);
         MinenInventory.SetActive(true);
+        PickageInventory.SetActive(false);
     }
     public void Seller()
     {
         GeneratorInventory.SetActive(false);
         MinenInventory.SetActive(false);
         SellerInventory.SetActive(true);
+        PickageInventory.SetActive(false);
+    }
+    public void Pickage()
+    {
+        GeneratorInventory.SetActive(false);
+        MinenInventory.SetActive(false);
+        SellerInventory.SetActive(false);
+        PickageInventory.SetActive(true);
     }
 }

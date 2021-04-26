@@ -57,8 +57,8 @@ public class SolarZellen : MonoBehaviour
                 {
                 if (t == 1)
                 {
-                   // if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
-                   // {
+                    if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
+                    {
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                         EnergyCount++;
                         miner.Stein -= 100;
@@ -66,7 +66,7 @@ public class SolarZellen : MonoBehaviour
                         goldMiner.Gold -= 40;
                          
 
-                   // }
+                   }
                 }
                 }
             }

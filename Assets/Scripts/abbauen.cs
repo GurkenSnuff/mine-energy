@@ -17,15 +17,15 @@ public class abbauen : MonoBehaviour
     
     bool Wait = true, eisen = false, gold = false, dia = false;
     float Distance_;
-    public Text StoneCount, EisenCount;
-    
+    public Text StoneCount, EisenCount,GoldCount;
+    private GoldMiner goldMiner;
     private EisenMiner eisenMiner;
-
+    
     
     private void Awake()
     {
         eisenMiner = FindObjectOfType<EisenMiner>();
-
+        goldMiner = FindObjectOfType<GoldMiner>();
         miner = FindObjectOfType<Miner>();
         mapManager = FindObjectOfType<MapManager>();
         
@@ -63,6 +63,11 @@ public class abbauen : MonoBehaviour
                         Wait = false;
                         StartCoroutine(EisenMining());
                     }
+                    if (gold == true&&t==4)
+                    {
+                        Wait = false;
+                        StartCoroutine(GoldMiner());
+                    }
 
                 }
             }
@@ -89,5 +94,17 @@ public class abbauen : MonoBehaviour
         eisenMiner.Eisen += 1;
         Wait = true;
         EisenCount.text = "Eisen: " + eisenMiner.Eisen;
+    }
+    IEnumerator GoldMiner()
+    {
+        yield return new WaitForSeconds(1);
+
+        goldMiner.Gold += 1;
+        Wait = true;
+        GoldCount.text = "Gold: " + goldMiner.Gold;
+    }
+    public void EisenPickage()
+    {
+        gold = true;
     }
 }
