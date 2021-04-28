@@ -5,15 +5,54 @@ using UnityEngine;
 public class Leben : MonoBehaviour
 {
     public int Life = 101,LifeVergleich=100;
-    public GameObject LifeBar;
+    public GameObject Player;
+    public bool wait=true;
     
     void Update()
     {
+        
+        if (Life == 101)
+        {
+            gameObject.SetActive(false);
+            
+        }
         if (Life <= LifeVergleich)
         {
-            LifeVergleich = Life-1;
+            LifeVergleich -= 10;
             transform.localScale = new Vector3(transform.localScale.x-0.6F, 0.6000006F, 1);
-            LifeBar.SetActive(true);
+
+            StopAllCoroutines();
+            StartCoroutine(LifeRegTimer());
+            
+
         }
+        
+        if (Life==1)
+        {
+            Destroy(Player.gameObject);
+        }
+        if ( wait == false)
+        {
+            StartCoroutine(LifeReg());
+            wait = true;
+        }
+    }
+    IEnumerator LifeRegTimer()
+    {
+        yield return new WaitForSeconds(3);
+        wait = false;
+
+    }
+    IEnumerator LifeReg()
+    {
+        yield return new WaitForSeconds(1);
+        
+        Life += 10;
+
+        LifeVergleich += 10;
+        transform.localScale = new Vector3(transform.localScale.x + 0.6F, 0.6000006F, 1);
+        StartCoroutine(LifeReg());
+
+
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Schlag : MonoBehaviour
 {
-    public GameObject enemyHitbox;
+    public GameObject enemyHitbox,LifeBar;
     public Leben leben;
 
     
@@ -14,6 +14,11 @@ public class Schlag : MonoBehaviour
         if(collision.gameObject== enemyHitbox)
         {
             leben.Life -= 10;
+            LifeBar.SetActive(true);
+            
+            
         }
+        
     }
+    
 }
