@@ -14,9 +14,17 @@ public class Schlag : MonoBehaviour
     {
         if(collision.gameObject== enemyHitbox)
         {
-            if (abbauen.gold == true)
+            if (abbauen.eisen == true)
             {
               DamageMult=1.5F;
+            }
+            if (abbauen.gold == true)
+            {
+                DamageMult = 2F;
+            }
+            if (abbauen.dia == true)
+            {
+                DamageMult = 2.5F;
             }
             LifeDamage = 10 * DamageMult;
             leben.Life -= LifeDamage;
