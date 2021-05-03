@@ -62,19 +62,17 @@ public class KohleGenerator : MonoBehaviour
         {
             Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             t = mapManager.GetTileResistance(Placement);
-            if (t <= 1000)
-            {
-                if (t == 1)
+            
+                if (t == 0)
                 {
                     if (ressourcen.Geld>=500)
                     {
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                         EnergyCount++;
-
-
+                        ressourcen.Geld -= 500;
                     }
                 }
-            }
+            
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

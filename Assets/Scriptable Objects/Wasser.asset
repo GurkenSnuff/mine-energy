@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 11400000, guid: 15be033ffb94149449b727a0323b31bf, type: 2}
-  Resistance: 3
+  Resistance: 31
   number: 0

@@ -8,6 +8,7 @@ public class Leben : MonoBehaviour
     public float SchadensMult=1F,LifeBarDamage, Life = 101, LifeVergleich = 100;
     public GameObject Player;
     public abbauen abbauen;
+    
     public bool wait=true;
     
     void Update()
@@ -22,6 +23,12 @@ public class Leben : MonoBehaviour
             gameObject.SetActive(false);
             
         }
+        
+            
+        
+        
+            
+        
         if (Life <= LifeVergleich)
         {
             LifeBarDamage = 0.6F * SchadensMult;

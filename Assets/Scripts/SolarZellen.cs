@@ -14,7 +14,7 @@ public class SolarZellen : MonoBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     private float t;
     private Vector3 Placement;
-    public int EnergyStand;
+    public int EnergyStand=0;
     public int EnergyCount=0,EnergySafe;
     
    private Miner miner;
@@ -49,14 +49,17 @@ public class SolarZellen : MonoBehaviour
 
     void Update()
     {
-            if (Input.GetMouseButtonDown(0)&&EnoughForSZ == true)
+        
+        if (Input.GetMouseButtonDown(0)&&EnoughForSZ == true)
             {
-                Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
+            Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(Placement);
-                if (t <= 1000)
+            
+                
+                if (t == 0)
                 {
-                if (t == 1)
-                {
+                    
                     if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
                     {
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
@@ -68,7 +71,7 @@ public class SolarZellen : MonoBehaviour
 
                    }
                 }
-                }
+                
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {

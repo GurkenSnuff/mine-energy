@@ -61,19 +61,19 @@ public class WindGenerator : MonoBehaviour
         {
             Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             t = mapManager.GetTileResistance(Placement);
-            if (t <= 1000)
-            {
-                if (t == 1)
+            
+                if (t == 0)
                 {
                     if (eisenMiner.Eisen >= 100&& diamondMiner.Diamond>=20)
                     {
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                         EnergyCount++;
-
+                        eisenMiner.Eisen -= 100;
+                        diamondMiner.Diamond -= 20;
 
                     }
                 }
-            }
+            
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

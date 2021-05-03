@@ -61,7 +61,7 @@ public class GoldSeller : MonoBehaviour
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
 
-                if (t == 1)
+                if (t == 0)
                 {
                     goldMiner.Gold -= 200;
                    ressourcen.Money -= 10000;

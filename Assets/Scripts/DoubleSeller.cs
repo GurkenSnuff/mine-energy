@@ -60,7 +60,7 @@ public class DoubleSeller : MonoBehaviour
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
 
-                if (t == 1)
+                if (t == 0)
                 {
 
                     map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);

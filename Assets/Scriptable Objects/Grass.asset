@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tiledata
   tiles:
   - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  Resistance: 1
+  Resistance: 0
   number: 1

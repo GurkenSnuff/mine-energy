@@ -37,6 +37,7 @@ public class abbauen : MonoBehaviour
 
     void Update()
     {
+        
         Hit();
         SkinUpdate();
     }

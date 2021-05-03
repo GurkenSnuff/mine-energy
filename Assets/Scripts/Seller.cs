@@ -58,7 +58,7 @@ public class Seller : MonoBehaviour
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
 
-                if (t == 1)
+                if (t == 0)
                 {
                     miner.Stein -= 50;
                     eisenMiner.Eisen -= 100;

@@ -52,26 +52,28 @@ public class SteinSeller : MonoBehaviour
 
     void Update()
     {
-        if(miner.Stein>=100&& ressourcen.Money>=3000)
-        if (Input.GetMouseButtonDown(0) && EnoughForSS == true)
+        if (miner.Stein >= 100 && ressourcen.Money >= 3000)
         {
-
-            minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            t = mapManager.GetTileResistance(minerÜber);
-
-            if (t == 1)
+            if (Input.GetMouseButtonDown(0) && EnoughForSS == true)
             {
+
+                minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                t = mapManager.GetTileResistance(minerÜber);
+
+                if (t == 0)
+                {
                     miner.Stein -= 100;
                     ressourcen.Money -= 3000;
 
                     map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
-                HowManySeller += 1;
+                    HowManySeller += 1;
+
+
+                }
+
 
 
             }
-
-
-
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

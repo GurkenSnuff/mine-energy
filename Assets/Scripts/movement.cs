@@ -10,15 +10,15 @@ public class movement : MonoBehaviour
 
     private Rigidbody2D rigidbody;
     
-    public Animator animator;
+    
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
     
     public float speed=5F,move,jump;
+   
     
     
     
-    public GameObject lookAtMouse;
     
 
     private void Awake()
