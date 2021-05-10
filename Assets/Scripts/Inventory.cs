@@ -9,12 +9,13 @@ public class Inventory : MonoBehaviour
     public GameObject MinenInventory;
     public GameObject SellerInventory;
     public GameObject PickageInventory;
-    private bool IsActive= false;
+    public bool IsActive= false;
     
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            
             if (IsActive == true)
             {
                 IsActive = false;

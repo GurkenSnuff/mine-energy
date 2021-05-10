@@ -33,6 +33,7 @@ public class KohleGenerator : MonoBehaviour
 
     void Awake()
     {
+        map = FindObjectOfType<Tilemap>();
         goldSeller = FindObjectOfType<GoldSeller>();
         StartCoroutine(EnergyCounting());
         steinSeller = FindObjectOfType<SteinSeller>();

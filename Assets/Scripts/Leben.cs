@@ -11,6 +11,11 @@ public class Leben : MonoBehaviour
     
     public bool wait=true;
     
+    void Awake()
+    {
+        abbauen = FindObjectOfType<abbauen>();
+    }
+
     void Update()
     {
         if (abbauen.gold == true)

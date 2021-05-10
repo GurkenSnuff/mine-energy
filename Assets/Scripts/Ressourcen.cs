@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
-public class Ressourcen : MonoBehaviour
+public class Ressourcen : NetworkBehaviour
 {
     public int Money = 0;
-    private SolarZellen solarZellen;
+    public SolarZellen solarZellen;
     private WindGenerator windGenerator;
     public int Energy;
     public Text Energie,money;
@@ -22,17 +23,22 @@ public class Ressourcen : MonoBehaviour
 
     void Awake()
     {
-        goldMiner = FindObjectOfType <GoldMiner> ();
-        goldSeller = FindObjectOfType<GoldSeller>();
-        miner = FindObjectOfType<Miner>();
-        steinSeller = FindObjectOfType<SteinSeller>();
-        doubleSeller = FindObjectOfType<DoubleSeller>();
-        seller = FindObjectOfType<Seller>();
-        solarZellen = FindObjectOfType<SolarZellen>();
-        windGenerator = FindObjectOfType<WindGenerator>();
-        kohleGenerator = FindObjectOfType<KohleGenerator>();
-        StartCoroutine(EnergyCounting());
-        StartCoroutine(MoneyCounter());
+        
+            goldMiner = FindObjectOfType<GoldMiner>();
+            goldSeller = FindObjectOfType<GoldSeller>();
+            miner = FindObjectOfType<Miner>();
+            steinSeller = FindObjectOfType<SteinSeller>();
+            doubleSeller = FindObjectOfType<DoubleSeller>();
+            seller = FindObjectOfType<Seller>();
+            solarZellen = FindObjectOfType<SolarZellen>();
+            windGenerator = FindObjectOfType<WindGenerator>();
+            kohleGenerator = FindObjectOfType<KohleGenerator>();
+            money = GameObject.Find("Canvas/Money").GetComponent<Text>();
+            Energie = GameObject.Find("Canvas/Energy").GetComponent<Text>();
+        
+            StartCoroutine(EnergyCounting());
+            StartCoroutine(MoneyCounter());
+        
         
     }
     IEnumerator EnergyCounting()
@@ -48,6 +54,7 @@ public class Ressourcen : MonoBehaviour
     }
     IEnumerator MoneyCounter()
     {
+        
         yield return new WaitForSeconds(1);
         SellerAnzahl = seller.HowManySeller;
         while (Energy >= 0 && SellerAnzahl >= 1)
@@ -89,8 +96,19 @@ public class Ressourcen : MonoBehaviour
             Money += 30;
             SellerAnzahlGS--;
         }
-        money.text = "Money: " + Money;
-        Energie.text = "Energy: " + Energy;
+        if (isLocalPlayer&&!isServer)
+        {
+            money.text = "Money: " + Money;
+            Energie.text = "Energy: " + Energy;
+        }
+        if (!isLocalPlayer&&isServer)
+        {
+            money.text = "Money: " + Money;
+            Energie.text = "Energy: " + Energy;
+        }
+        print(Energie.text);
+        
+        
         StartCoroutine(MoneyCounter());
     }
     

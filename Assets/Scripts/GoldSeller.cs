@@ -33,7 +33,7 @@ public class GoldSeller : MonoBehaviour
 
     void Awake()
     {
-        
+        map = FindObjectOfType<Tilemap>();
         ressourcen = FindObjectOfType<Ressourcen>();
         seller = FindObjectOfType<Seller>();
         steinSeller = FindObjectOfType<SteinSeller>();

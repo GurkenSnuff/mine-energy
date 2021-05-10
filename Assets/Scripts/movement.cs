@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-public class movement : MonoBehaviour
+public class movement : NetworkBehaviour
 {
     
 
@@ -15,7 +16,7 @@ public class movement : MonoBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     
     public float speed=5F,move,jump;
-   
+    private Tilemap tilemap;
     
     
     
@@ -23,26 +24,23 @@ public class movement : MonoBehaviour
 
     private void Awake()
     {
-        
+        tilemap = FindObjectOfType<Tilemap>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
-        
-        jump = Input.GetAxisRaw("Vertical");
-        move = Input.GetAxisRaw("Horizontal");
-        
+        if (isLocalPlayer)
+        {
             movementApplied();
-
-        
-        
-        
-        
+        }
+            
     }
     private void movementApplied()
     {
-        
-          rigidbody.velocity = new Vector2((move * speed), rigidbody.velocity.y);
+
+        jump = Input.GetAxisRaw("Vertical");
+        move = Input.GetAxisRaw("Horizontal");
+        rigidbody.velocity = new Vector2((move * speed), rigidbody.velocity.y);
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, (jump * speed));
 
     }

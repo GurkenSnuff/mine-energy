@@ -29,8 +29,10 @@ public class WindGenerator : MonoBehaviour
     private SteinSeller steinSeller;
     private GoldSeller goldSeller;
 
+
     void Awake()
     {
+        map = FindObjectOfType<Tilemap>();
         StartCoroutine(EnergyCounting());
         goldSeller = FindObjectOfType<GoldSeller>();
         steinSeller = FindObjectOfType<SteinSeller>();
