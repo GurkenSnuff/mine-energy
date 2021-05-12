@@ -1,32 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Inventory : MonoBehaviour
+public class Inventory : NetworkBehaviour
 {
     public GameObject InventoryCheck;
     public GameObject GeneratorInventory;
     public GameObject MinenInventory;
     public GameObject SellerInventory;
     public GameObject PickageInventory;
-    public bool IsActive= false;
+    public bool IsActive= true;
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (isLocalPlayer)
         {
-            
-            if (IsActive == true)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                IsActive = false;
-                InventoryCheck.SetActive(false);
+
+                if (IsActive == true)
+                {
+                    IsActive = false;
+                    InventoryCheck.SetActive(false);
+                    
+                }
+                else
+                {
+                    IsActive = true;
+                    InventoryCheck.SetActive(true);
+                }
+
             }
-            else
-            {
-                IsActive = true;
-                InventoryCheck.SetActive(true);
-            }
-            
         }
     }
     public void Generator()

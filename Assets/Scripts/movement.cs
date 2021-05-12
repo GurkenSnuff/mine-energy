@@ -17,10 +17,10 @@ public class movement : NetworkBehaviour
     
     public float speed=5F,move,jump;
     private Tilemap tilemap;
+    private Vector2 vector2;
     
-    
-    
-    
+
+
 
     private void Awake()
     {
@@ -40,8 +40,19 @@ public class movement : NetworkBehaviour
 
         jump = Input.GetAxisRaw("Vertical");
         move = Input.GetAxisRaw("Horizontal");
+        vector2 = new Vector2(move, jump);
         rigidbody.velocity = new Vector2((move * speed), rigidbody.velocity.y);
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, (jump * speed));
+        if (vector2 ==new Vector2 (0F,0F))
+        {
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            rigidbody.constraints = RigidbodyConstraints2D.None;
+        }
+        
+
 
     }
    
