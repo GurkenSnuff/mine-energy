@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Tilemaps;
+using Mirror;
 
-public class abbauen : MonoBehaviour
+public class abbauen : NetworkBehaviour
 {
     private MapManager mapManager;
 
     
 
-    public Animator animator,eisenAnimator,goldAnimator,diaAnimator;
+    public Animator animator;
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
     private Miner miner;
@@ -40,32 +41,23 @@ public class abbauen : MonoBehaviour
         
         Hit();
         SkinUpdate();
+        
     }
 
     private void Hit()
     {
+        
         if (Input.GetMouseButton(0))
         {
             Vector3 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float t = mapManager.GetTileResistance(minerÜber);
             Distance_ = Vector3.Distance(transform.position, minerÜber);
             
-            if (eisen == false)
+            if (hasAuthority)
             {
                 animator.SetBool("Schlag", true);
             }
-            if (eisen == true&&gold==false)
-            {
-                eisenAnimator.SetBool("EisenSchlag", true);
-            }
-            if (gold == true && dia == false)
-            {
-                goldAnimator.SetBool("GoldSchlag", true);
-            }
-            if (dia == true)
-            {
-                diaAnimator.SetBool("DiaSchlag", true);
-            }
+
             if (Distance_ <= 17.2)
             {
                 
@@ -100,22 +92,12 @@ public class abbauen : MonoBehaviour
         }
         else
         {
-            if (eisen == false)
+
+            if (hasAuthority)
             {
                 animator.SetBool("Schlag", false);
             }
-            if (gold == false)
-            {
-                eisenAnimator.SetBool("EisenSchlag", false);
-            }
-            if (dia == false)
-            {
-                goldAnimator.SetBool("GoldSchlag", false);
-            }
-            if (dia == true)
-            {
-                diaAnimator.SetBool("DiaSchlag", false);
-            }
+
         }
 
         
@@ -214,4 +196,5 @@ public class abbauen : MonoBehaviour
             dia = true;
         }
     }
+   
 }

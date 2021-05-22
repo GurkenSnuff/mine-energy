@@ -177,13 +177,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08a8ba29f2ce984f9e4450c02b9891b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tiles: []
   map: {fileID: 0}
   tileDatas: []
+  Placement: {x: 0, y: 0, z: 0}
   EnergyStand: 0
   EnergyCount: 0
   EnergySafe: 0
+  miner: {fileID: 0}
   EnoughForSZ: 0
+  seller: {fileID: 0}
+  TileUpdateCheck: 0
+  diamondMiner: {fileID: 0}
+  goldMiner: {fileID: 0}
+  eisenMiner: {fileID: 0}
+  windGenerator: {fileID: 0}
+  kohleGenerator: {fileID: 0}
+  doubleSeller: {fileID: 0}
+  steinSeller: {fileID: 0}
+  goldSeller: {fileID: 0}
 --- !u!114 &6591691979555561013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,10 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df4d042ba6522b4b9f6a21439c67a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   animator: {fileID: 4089954370015482316}
-  eisenAnimator: {fileID: 3942841041260472349}
-  goldAnimator: {fileID: 3464997065574030827}
-  diaAnimator: {fileID: 7830551971467891548}
   Wait: 1
   eisen: 0
   gold: 0
@@ -353,12 +366,6 @@ GameObject:
 --- !u!4 &8700828144252384459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8602859301305716596, guid: 591a2acba5d3775448b03fb81878ee64,
-    type: 3}
-  m_PrefabInstance: {fileID: 1143056605871111103}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &3464997065574030827 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4596723401654265428, guid: 591a2acba5d3775448b03fb81878ee64,
     type: 3}
   m_PrefabInstance: {fileID: 1143056605871111103}
   m_PrefabAsset: {fileID: 0}
@@ -585,12 +592,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3855742008228005626}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &3942841041260472349 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 231251368609984231, guid: 7695a1f6805771348be340df2f38e16b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3855742008228005626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4536017062871841041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,12 +700,6 @@ GameObject:
 --- !u!4 &5164803053344087497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8745491844055131352, guid: 3bb4e3c81ac85fd409b68ebb54cee718,
-    type: 3}
-  m_PrefabInstance: {fileID: 4536017062871841041}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7830551971467891548 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5933667313978059341, guid: 3bb4e3c81ac85fd409b68ebb54cee718,
     type: 3}
   m_PrefabInstance: {fileID: 4536017062871841041}
   m_PrefabAsset: {fileID: 0}

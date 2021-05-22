@@ -1,22 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Schlag : MonoBehaviour
+public class Schlag : NetworkBehaviour
 {
-    public GameObject enemyHitbox,LifeBar;
-    public Leben leben;
+    private bool übergang = false,s=true;
+    public GameObject LifeBar;
+    public Life life;
     public abbauen abbauen;
-    private float LifeDamage, DamageMult=1;
-    
+    private float LifeDamage, DamageMult = 1;
+    private void Update()
+    {
+        
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject== enemyHitbox)
+
+        if (collision.CompareTag("Pickage"))
         {
+
             if (abbauen.eisen == true)
             {
-              DamageMult=1.5F;
+                DamageMult = 1.5F;
             }
             if (abbauen.gold == true)
             {
@@ -27,7 +34,7 @@ public class Schlag : MonoBehaviour
                 DamageMult = 2.5F;
             }
             LifeDamage = 10 * DamageMult;
-            leben.Life -= LifeDamage;
+            life.Leben -= LifeDamage;
             LifeBar.SetActive(true);
             
             
@@ -36,3 +43,7 @@ public class Schlag : MonoBehaviour
     }
     
 }
+
+    
+
+

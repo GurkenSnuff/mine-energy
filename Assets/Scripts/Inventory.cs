@@ -10,7 +10,7 @@ public class Inventory : NetworkBehaviour
     public GameObject MinenInventory;
     public GameObject SellerInventory;
     public GameObject PickageInventory;
-    public bool IsActive= true;
+    public bool IsActive= false;
     
     void Update()
     {

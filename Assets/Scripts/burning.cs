@@ -13,7 +13,7 @@ public class burning : MonoBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     private MapManager mapManager;
     
-    public Leben leben;
+    public Life life;
 
     void Awake()
     {
@@ -41,10 +41,10 @@ public class burning : MonoBehaviour
         
         yield return new WaitForSeconds(0.5F);
         
-        leben.Life -= 20;
-        leben.SchadensMult = 2;
+        life.Leben -= 20;
+        life.SchadensMult = 2;
         
-        leben.gameObject.SetActive(true);
+        life.gameObject.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(burnDamage());
 

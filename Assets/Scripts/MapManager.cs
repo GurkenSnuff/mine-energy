@@ -35,6 +35,6 @@ public class MapManager : MonoBehaviour
         float Resistance = dataFromTiles[tile].Resistance;
         return Resistance;
     }
-
+    
 }
 
