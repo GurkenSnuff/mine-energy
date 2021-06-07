@@ -23,7 +23,7 @@ public class abbauen : NetworkBehaviour
     private EisenMiner eisenMiner;
     private DiamondMiner diamondMiner;
     public GameObject skin1,skin2,skin3,skin4;
-    
+   
     
     
     private void Awake()
@@ -106,17 +106,31 @@ public class abbauen : NetworkBehaviour
     {
         if (eisen ==true&&gold==false )
         {
+            if (isLocalPlayer)
+            {
+                SkinÜber(1);
+            }
+            
+                
             
             Destroy(skin1.gameObject);
             skin2.SetActive(true);
         }
         if (gold == true&&dia==false)
         {
+            if (isLocalPlayer)
+            {
+                SkinÜber(2);
+            }
             Destroy(skin2.gameObject);
             skin3.SetActive(true);
         }
         if (dia == true)
         {
+            if (isLocalPlayer)
+            {
+                SkinÜber(3);
+            }
             Destroy(skin3.gameObject);
             skin4.SetActive(true);
         }
@@ -196,5 +210,39 @@ public class abbauen : NetworkBehaviour
             dia = true;
         }
     }
-   
+   [Command]
+   public void SkinÜber(int i)
+   {
+        if (i == 1)
+        {
+            eisen = true;
+            SkinÜberServer(i);
+        }
+        if (i == 2)
+        {
+            SkinÜberServer(i);
+            gold = true;
+        }
+        if (i == 3)
+        {
+            SkinÜberServer(i);
+            dia = true;
+        }
+    }
+    [ClientRpc]
+    public void SkinÜberServer(int i)
+    {
+        if (i == 1)
+        {
+            eisen = true;
+        }
+        if (i == 2)
+        {
+            gold = true;
+        }
+        if (i == 3)
+        {
+            dia = true;
+        }
+    }
 }

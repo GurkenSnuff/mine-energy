@@ -8528,12 +8528,12 @@ GameObject:
   - component: {fileID: 7806827579325971090}
   - component: {fileID: 2912734040720576029}
   - component: {fileID: 5842013701086820783}
-  - component: {fileID: 1308066065103254115}
   - component: {fileID: 8217401795562135588}
   - component: {fileID: 1382753306027343432}
   - component: {fileID: 5814039057410121664}
   - component: {fileID: 6173694652482665865}
   - component: {fileID: -4356686202355194205}
+  - component: {fileID: 9157656748574193301}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8671,6 +8671,7 @@ MonoBehaviour:
   map: {fileID: 0}
   SellerAnzahl: 0
   EnoughForGS: 0
+  TileUpdateCheck: 0
 --- !u!114 &5289618287046857186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8692,6 +8693,7 @@ MonoBehaviour:
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
   EnoughForG: 0
+  TileUpdateCheck: 0
 --- !u!114 &2236231449278957284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8713,6 +8715,7 @@ MonoBehaviour:
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
   EnoughForE: 0
+  TileUpdateCheck: 0
 --- !u!114 &7240694505020103799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8734,6 +8737,7 @@ MonoBehaviour:
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
   EnoughForD: 0
+  TileUpdateCheck: 0
 --- !u!114 &522726405780159562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8746,14 +8750,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff643bc4635de204eaf9415d04820b2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tiles:
   - {fileID: 11400000, guid: 2626facf6eb82aa47861439569fbaa05, type: 2}
   map: {fileID: 0}
   tileDatas: []
+  Placement: {x: 0, y: 0, z: 0}
   EnergyCount: 0
   EnergySafe: 0
   EnergyStand: 0
   EnoughForKG: 0
+  TileUpdateCheck: 0
 --- !u!114 &3556356893732528745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8775,6 +8783,7 @@ MonoBehaviour:
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
   EnoughForM: 0
+  TileUpdateCheck: 0
 --- !u!114 &9035391437015259437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8825,6 +8834,7 @@ MonoBehaviour:
   HowManySeller: 0
   tiles: []
   map: {fileID: 0}
+  TileUpdateCheck: 0
   SellerAnzahl: 0
   EnoughForSS: 0
 --- !u!114 &2664669881654865234
@@ -8892,6 +8902,7 @@ MonoBehaviour:
   HowManySeller: 0
   tiles: []
   map: {fileID: 0}
+  TileUpdateCheck: 0
   SellerAnzahl: 0
   EnoughForDS: 0
 --- !u!114 &7806827579325971090
@@ -8910,6 +8921,7 @@ MonoBehaviour:
   HowManySeller: 0
   tiles: []
   map: {fileID: 0}
+  TileUpdateCheck: 0
   SellerAnzahl: 0
   EnoughForS: 0
 --- !u!114 &2912734040720576029
@@ -8946,27 +8958,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  deleteTiles: []
   tileUpdatertiles: []
+  tileUpdatertilesK: []
+  tileUpdatertilesSS: []
+  tileUpdatertilesS: []
+  tileUpdatertilesM: []
+  tileUpdatertilesGS: []
+  tileUpdatertilesGM: []
+  tileUpdatertilesEM: []
+  tileUpdatertilesDS: []
+  tileUpdatertilesDM: []
   updateTiles:
   - {fileID: 11400000, guid: d648943234656b647b056fb33ef978a8, type: 2}
+  - {fileID: 11400000, guid: 2626facf6eb82aa47861439569fbaa05, type: 2}
   x: -1
---- !u!114 &1308066065103254115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649125894539279010}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658c74cc2d5f19f4cb0570291dd0574a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  LifeBar: {fileID: 4128200926873871423}
-  life: {fileID: 1382753306027343432}
-  abbauen: {fileID: 3268495677304881415}
+  T: -1
+  j: -1
+  propertys: 
 --- !u!114 &8217401795562135588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9066,6 +9075,21 @@ MonoBehaviour:
   compressRotation: 0
   interpolateScale: 1
   syncScale: 1
+--- !u!114 &9157656748574193301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649125894539279010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa4a29c27008bc478465f58a3bfc45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 0}
+  tileDatas: []
+  life: {fileID: 1382753306027343432}
 --- !u!1 &4426570464351283902
 GameObject:
   m_ObjectHideFlags: 0
@@ -9113,8 +9137,8 @@ MonoBehaviour:
   - {fileID: 4218494605110047981}
   - {fileID: 494926153170981788}
   m_Bounds:
-    m_Center: {x: -3.798153, y: 2.456812, z: 0}
-    m_Extent: {x: 8.251356, y: 6.7053366, z: 0}
+    m_Center: {x: -4.4267483, y: 2.0150328, z: 0}
+    m_Extent: {x: 8.8799515, y: 6.2635574, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1001 &2102072017904035475
@@ -9128,6 +9152,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LifeBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2622888844952076972, guid: 7aaed8d50bd9d914ea69234e55e44d38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963862064210759926, guid: 7aaed8d50bd9d914ea69234e55e44d38,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6680621867104687323, guid: 7aaed8d50bd9d914ea69234e55e44d38,
         type: 3}
@@ -9419,7 +9453,7 @@ PrefabInstance:
     - target: {fileID: 3942841039641534353, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3942841039641534353, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}
@@ -9469,12 +9503,12 @@ PrefabInstance:
     - target: {fileID: 3942841041260472350, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 13.891156
+      value: 13.367717
       objectReference: {fileID: 0}
     - target: {fileID: 3942841041260472350, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -4.8414683
+      value: -5.3133607
       objectReference: {fileID: 0}
     - target: {fileID: 3942841041260472350, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}
@@ -9484,12 +9518,12 @@ PrefabInstance:
     - target: {fileID: 3942841041260472350, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 8.2423
+      value: 8.76574
       objectReference: {fileID: 0}
     - target: {fileID: 3942841041260472350, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 7.777683
+      value: 7.3057904
       objectReference: {fileID: 0}
     - target: {fileID: 4089954368492671308, guid: 5fc639d631925c6479ad1f0888dda6a2,
         type: 3}

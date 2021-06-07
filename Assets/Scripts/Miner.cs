@@ -23,7 +23,7 @@ public class Miner : MonoBehaviour
     private SolarZellen solarZellen;
     public int MinenAnzahl;
     public bool EnoughForM = false;
-    
+    public bool TileUpdateCheck = false;
     private Seller seller;
     private DiamondMiner diamondMiner;
     private GoldMiner goldMiner;
@@ -71,6 +71,7 @@ public class Miner : MonoBehaviour
 
                     if (t == 2)
                     {
+                        TileUpdateCheck = true;
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                         HowManyMiner += 1;
                         Stein -= 100;
@@ -90,6 +91,7 @@ public class Miner : MonoBehaviour
                     {
                         if (t == 2)
                         {
+                            TileUpdateCheck = true;
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             Stein -= 100;
@@ -108,6 +110,7 @@ public class Miner : MonoBehaviour
                     {
                         if (t == 2)
                         {
+                            TileUpdateCheck = true;
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             Stein -= 100;
@@ -126,6 +129,7 @@ public class Miner : MonoBehaviour
                     {
                         if (t == 2)
                         {
+                            TileUpdateCheck = true;
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             Stein -= 100;

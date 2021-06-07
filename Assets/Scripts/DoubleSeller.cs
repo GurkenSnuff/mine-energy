@@ -16,7 +16,7 @@ public class DoubleSeller : MonoBehaviour
     [SerializeField]
     private Tilemap map;
     private Vector3 minerÜber;
-
+    public bool TileUpdateCheck = false;
     private SolarZellen solarZellen;
     public int SellerAnzahl;
     public bool EnoughForDS = false;
@@ -62,7 +62,7 @@ public class DoubleSeller : MonoBehaviour
 
                 if (t == 0)
                 {
-
+                    TileUpdateCheck = true;
                     map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                     HowManySeller += 1;
                     ressourcen.Money -= 1500;

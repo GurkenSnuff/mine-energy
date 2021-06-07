@@ -46,11 +46,7 @@ public class Life : NetworkBehaviour
 
         if (Leben <= LifeVergleich)
         {
-            if (isLocalPlayer)
-            {
-                Cmdtest2(Leben);
-                
-            }
+           
             LifeBarDamage = 0.6F * SchadensMult;
             LifeVergleich -= 10F * SchadensMult;
             lebensbar.transform.localScale = new Vector3(lebensbar.transform.localScale.x - LifeBarDamage, 0.6000006F, 1);
@@ -89,14 +85,9 @@ public class Life : NetworkBehaviour
     }
     public void test(float s,float t)
     {
-        //Leben = t;
+       
     }
-    [Command]
-    public void Cmdtest2(float t)
-    {
-        Leben = t;
-        
-    }
+    
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -118,20 +109,12 @@ public class Life : NetworkBehaviour
             }
             LifeDamage = 10 * DamageMult;
             Leben -= LifeDamage;
-            parentGO = collision.gameObject.transform.parent.gameObject;
-            parentGO = parentGO.transform.parent.gameObject;
-            parentGO = parentGO.transform.parent.gameObject;
-            print(parentGO.name);
-            Cmdtest3(parentGO);
+            
+            
             
 
         }
 
     }
-    [Command]
-    void Cmdtest3(GameObject s)
-    {
-        s.GetComponent<NetworkIdentity>().AssignClientAuthority(gameObject.GetComponent<NetworkIdentity>().connectionToClient);
-        print("d");
-    }
+    
 }

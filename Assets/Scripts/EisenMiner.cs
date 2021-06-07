@@ -31,6 +31,7 @@ public class EisenMiner : MonoBehaviour
     private Ressourcen ressourcen;
     private SteinSeller steinSeller;
     private GoldSeller goldSeller;
+    public bool TileUpdateCheck = false;
 
     void Awake()
     {
@@ -72,6 +73,7 @@ public class EisenMiner : MonoBehaviour
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                         HowManyMiner += 1;
                         ressourcen.Money -= 400;
+                        TileUpdateCheck = true;
 
                     }
                     else
@@ -91,6 +93,7 @@ public class EisenMiner : MonoBehaviour
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             ressourcen.Money -= 400;
+                            TileUpdateCheck = true;
                         }
                         else
                         {
@@ -108,6 +111,7 @@ public class EisenMiner : MonoBehaviour
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             ressourcen.Money -= 400;
+                            TileUpdateCheck = true;
                         }
                         else
                         {
@@ -125,6 +129,7 @@ public class EisenMiner : MonoBehaviour
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             ressourcen.Money -= 400;
+                            TileUpdateCheck = true;
                         }
                     }
 

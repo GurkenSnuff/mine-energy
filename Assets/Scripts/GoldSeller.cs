@@ -30,6 +30,7 @@ public class GoldSeller : MonoBehaviour
     private SteinSeller steinSeller;
     private Seller seller;
     private Ressourcen ressourcen;
+    public bool TileUpdateCheck = false;
 
     void Awake()
     {
@@ -67,7 +68,7 @@ public class GoldSeller : MonoBehaviour
                    ressourcen.Money -= 10000;
                     map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                     HowManySeller += 1;
-
+                    TileUpdateCheck = true;
 
                 }
             }

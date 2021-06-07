@@ -65,16 +65,13 @@ public class SolarZellen : NetworkBehaviour
                         eisenMiner.Eisen -= 50;
                         goldMiner.Gold -= 40;
                         TileUpdateCheck = true;
-                     if (isServer)
-                     {
-                        SentTileUpdateToClients(Placement);
-                     }
+                     
                      if (isLocalPlayer)
                      {
                         SentTileUpdateToServer(Placement);
-                      }
+                     }
 
-                     //}
+                    // }
                 }
             
                 
@@ -113,14 +110,17 @@ public class SolarZellen : NetworkBehaviour
     [ClientRpc]
     void SentTileUpdateToClients(Vector3 position)
     {   
-        Placement = position;
-        map.SetTile(map.WorldToCell(Placement), tiles[0]);
+        
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+        
     }
     [Command]
     void SentTileUpdateToServer(Vector3 position)
     {
-        Placement = position;
-        map.SetTile(map.WorldToCell(Placement), tiles[0]);
+        
+        SentTileUpdateToClients(position);
+       
+        map.SetTile(map.WorldToCell(position), tiles[0]);
     }
 
 }

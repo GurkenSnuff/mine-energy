@@ -9,6 +9,7 @@ public class TestLevel1 : NetworkBehaviour
     public Tile[] tiles;
     public GameObject d;
     public SolarZellen solarZellen;
+    [SyncVar(hook=nameof(spawn))]
     public int rand;
     [SerializeField]
     private Tilemap map;
@@ -17,7 +18,7 @@ public class TestLevel1 : NetworkBehaviour
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
     public GameObject Hitbox,LavaHitbox;
-    
+    private float resistanceCheck;
     private int UpdateTile;
 
 
@@ -32,14 +33,14 @@ public class TestLevel1 : NetworkBehaviour
         mapManager = FindObjectOfType<MapManager>();
         map = FindObjectOfType<Tilemap>();
     }
-    private void Start()
+    public void Start()
     {
         if (isServer)
         {
             rand = Random.Range(0, tiles.Length);
         }
         map.SetTile(map.WorldToCell(d.transform.position), tiles[rand]);
-        
+        resistanceCheck = mapManager.GetTileResistance(transform.position);
 
         if (mapManager.GetTileResistance(transform.position)>=1&& mapManager.GetTileResistance(transform.position) <= 5)
         {
@@ -54,22 +55,21 @@ public class TestLevel1 : NetworkBehaviour
         }
 
     }
-    void Update()
-    {
-        
-        
-        if (isServer)
-        {
-            GetTile(rand);
-        }
-        
-    }
+    
     [ClientRpc]
     void GetTile(int t)
     {
         rand = t;
     
     }
-    
+    void spawn(int old,int neww)
+    {
+        
+        map.SetTile(map.WorldToCell(d.transform.position), tiles[neww]);
+    }
+        
+        
+        
+
 
 }

@@ -16,7 +16,7 @@ public class SteinSeller : MonoBehaviour
     [SerializeField]
     private Tilemap map;
     private Vector3 minerÜber;
-
+    public bool TileUpdateCheck = false;
     private SolarZellen solarZellen;
     public int SellerAnzahl;
     public bool EnoughForSS = false;
@@ -64,7 +64,7 @@ public class SteinSeller : MonoBehaviour
                 {
                     miner.Stein -= 100;
                     ressourcen.Money -= 3000;
-
+                    TileUpdateCheck = true;
                     map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                     HowManySeller += 1;
 

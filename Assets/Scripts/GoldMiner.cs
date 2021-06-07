@@ -31,6 +31,7 @@ public class GoldMiner : MonoBehaviour
     private Ressourcen ressourcen;
     private SteinSeller steinSeller;
     private GoldSeller goldSeller;
+    public bool TileUpdateCheck = false;
 
     void Awake()
     {
@@ -71,7 +72,7 @@ public class GoldMiner : MonoBehaviour
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                         HowManyMiner += 1;
                         ressourcen.Money -= 1000;
-
+                        TileUpdateCheck = true;
                     }
                     else
                     {
@@ -87,6 +88,7 @@ public class GoldMiner : MonoBehaviour
                     {
                         if (t == 4)
                         {
+                            TileUpdateCheck = true;
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             ressourcen.Money -= 1000;
@@ -107,6 +109,7 @@ public class GoldMiner : MonoBehaviour
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             ressourcen.Money -= 1000;
+                            TileUpdateCheck = true;
                         }
                         else
                         {
@@ -124,6 +127,7 @@ public class GoldMiner : MonoBehaviour
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             ressourcen.Money -= 1000;
+                            TileUpdateCheck = true;
                         }
                     }
 

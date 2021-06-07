@@ -27,10 +27,12 @@ public class movement : NetworkBehaviour
         tilemap = FindObjectOfType<Tilemap>();
         rigidbody = GetComponent<Rigidbody2D>();
     }
-    void Update()
+    void FixedUpdate()
     {
+        
         if (isLocalPlayer)
         {
+            rigidbody.velocity = Vector3.zero;
             movementApplied();
         }
             
@@ -38,12 +40,13 @@ public class movement : NetworkBehaviour
     private void movementApplied()
     {
 
+        rigidbody.velocity = Vector3.zero;
         jump = Input.GetAxisRaw("Vertical");
         move = Input.GetAxisRaw("Horizontal");
         vector2 = new Vector2(move, jump);
         rigidbody.velocity = new Vector2((move * speed), rigidbody.velocity.y);
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, (jump * speed));
-        if (vector2 ==new Vector2 (0F,0F))
+        if (vector2 == new Vector2(0F, 0F))
         {
             rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
         }
@@ -51,13 +54,13 @@ public class movement : NetworkBehaviour
         {
             rigidbody.constraints = RigidbodyConstraints2D.None;
         }
-        
+
 
 
     }
-   
-
     
+
+
 
 }
   
