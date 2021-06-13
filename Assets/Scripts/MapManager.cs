@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class MapManager : MonoBehaviour
 {
-    public int deleteCount;
+    
     [SerializeField]
     private Tilemap map;
     [SerializeField]

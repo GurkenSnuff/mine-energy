@@ -41,7 +41,7 @@ public class TileUpdater : NetworkBehaviour
     public List<TileBase> updateTiles = new List<TileBase>();
     bool t = false,s=false,K=false;
     private Tilemap map;
-    public int x = -1,T= -1,j=-1;
+    public int deleteCount=-1,x = -1,x2 = -1,T= -1,j=0;
     private Vector3 z,k;
     private NetworkConnection networkConnection;
     private MapManager mapManager;
@@ -65,38 +65,7 @@ public class TileUpdater : NetworkBehaviour
     }
     void Update()
     {
-        if (clintConnects.disconnect == true&&isServer)
-        {
-            networkConnection = clintConnects.connectionDisconnect;
-            
-        }
-        if (clintConnects.disconnect == true)
-        {
-            foreach (var variable in propertys)
-            {
-                j++;
-                tileUpdatertiles.RemoveAt(propertys[j]);
-            }
-
-            foreach (var variable in tileUpdatertiles)
-            {
-                x++;
-                z = tileUpdatertiles[x];
-                updateTileServer(z, -1);
-                updateTile(z, -1);
-            }
-            foreach (var variable in tileUpdatertilesK)
-            {
-
-                T++;
-                k = tileUpdatertilesK[T];
-                updateTileServer(k, -1);
-                updateTile(k, -1);
-
-
-            }
-            Destroy(this.gameObject);
-        }
+        
         SolarZellen();
             KohleGenerator();
         
@@ -106,8 +75,10 @@ public class TileUpdater : NetworkBehaviour
         
     
     [ClientRpc]
-    void updateTile(Vector3 number,int tile)
+    private void updateTile(Vector3 number,int tile)
     {
+        
+
         if (tile == -1)
         {
             map.SetTile(map.WorldToCell(number), deleteTiles[0]);
@@ -117,12 +88,16 @@ public class TileUpdater : NetworkBehaviour
 
             map.SetTile(map.WorldToCell(number), updateTiles[tile]);
         }
+        
     }
     [Command]
     private void updateTileServer(Vector3 number,int tile)
     {
+        
         if (tile == -1)
         {
+            
+            
             map.SetTile(map.WorldToCell(number), deleteTiles[0]);
         }
         else
@@ -141,19 +116,22 @@ public class TileUpdater : NetworkBehaviour
                 }
                 map.SetTile(map.WorldToCell(number), updateTiles[tile]);
         }
+        updateTile(number, tile);
         
     }
     private void SolarZellen()
     {
         if (solarZellen.TileUpdateCheck == true )
         {
-            tileUpdatertiles.Add(solarZellen.Placement);
+            
 
             solarZellen.TileUpdateCheck = false;
             if (isLocalPlayer)
             {
-                mapManager.deleteCount++;
-                propertys.Add(mapManager.deleteCount);
+                tileUpdatertiles.Add(solarZellen.Placement);
+                deleteCount++;
+                propertys.Add(deleteCount);
+                
                 foreach (var variable in tileUpdatertiles)
                 {
 
@@ -171,7 +149,7 @@ public class TileUpdater : NetworkBehaviour
         {
             
             
-           // t = false;
+           
             if (isServer)
             {
                 
@@ -232,5 +210,52 @@ public class TileUpdater : NetworkBehaviour
             T = -1;
         }
     }
-    
+    public void deleteTilesButton()
+    {
+
+        foreach (var variable in tileUpdatertiles)
+        {
+            x2++;
+            
+            Vector3 z2 = tileUpdatertiles[x2];
+            
+            if (isLocalPlayer)
+            {
+                updateTileServer(z2, -1);
+                map.SetTile(map.WorldToCell(z2), deleteTiles[0]);
+            }
+           
+            
+            
+        }
+        foreach(var variable in propertys)
+        {
+            deleteTileList(deleteCount);
+        }
+        foreach (var variable in tileUpdatertilesK)
+        {
+
+            T++;
+            k = tileUpdatertilesK[T];
+            updateTileServer(k, -1);
+            updateTile(k, -1);
+
+        }
+        if(isLocalPlayer) Destroy(gameObject);
+        
+
+        
+    }
+    [Command]
+    private void deleteTileList(int ToDelete)
+    {
+        tileUpdatertiles.RemoveAt(ToDelete);
+        Destroy(gameObject);
+        deletePlayer();
+    }
+    [ClientRpc]
+    private void deletePlayer()
+    {
+        Destroy(gameObject);
+    }
 }
