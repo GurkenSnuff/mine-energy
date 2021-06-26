@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6453046917462205721}
   - component: {fileID: 6453046917462205722}
   - component: {fileID: 8398576638793928507}
-  - component: {fileID: 1562003988315488727}
   m_Layer: 0
   m_Name: test 2
   m_TagString: Untagged
@@ -79,6 +78,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
   - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
   d: {fileID: 6453046917462205720}
+  solarZellen: {fileID: 0}
+  rand: 0
   map: {fileID: 0}
   tileDatas: []
   Hitbox: {fileID: 8277042684312288946, guid: 21c69fc77fe31784e89def0da07e4cf0, type: 3}
@@ -101,24 +102,3 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 
   hasSpawned: 0
---- !u!114 &1562003988315488727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6453046917462205720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 0
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
-  compressRotation: 0
-  interpolateScale: 1
-  syncScale: 1

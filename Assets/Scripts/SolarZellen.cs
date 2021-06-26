@@ -23,7 +23,7 @@ public class SolarZellen : NetworkBehaviour
     public bool  EnoughForSZ = false;
     public Seller seller;
     public bool TileUpdateCheck=false;
-
+    public GameObject Hitbox;
     public DiamondMiner diamondMiner;
     public GoldMiner goldMiner;
     public EisenMiner eisenMiner;
@@ -65,8 +65,10 @@ public class SolarZellen : NetworkBehaviour
                         eisenMiner.Eisen -= 50;
                         goldMiner.Gold -= 40;
                         TileUpdateCheck = true;
-                     
-                     if (isLocalPlayer)
+                        GameObject a = Instantiate(Hitbox) as GameObject;
+                        a.transform.position = Placement;
+                
+                if (isLocalPlayer)
                      {
                         SentTileUpdateToServer(Placement);
                      }

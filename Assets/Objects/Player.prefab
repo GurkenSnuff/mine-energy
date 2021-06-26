@@ -8941,6 +8941,7 @@ MonoBehaviour:
   EnoughForSZ: 0
   seller: {fileID: 7806827579325971090}
   TileUpdateCheck: 0
+  Hitbox: {fileID: 8277042684312288946, guid: 21c69fc77fe31784e89def0da07e4cf0, type: 3}
   diamondMiner: {fileID: 7240694505020103799}
   goldMiner: {fileID: 5289618287046857186}
   eisenMiner: {fileID: 2236231449278957284}

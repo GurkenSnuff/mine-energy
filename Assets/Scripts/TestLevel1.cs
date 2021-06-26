@@ -20,7 +20,7 @@ public class TestLevel1 : NetworkBehaviour
     public GameObject Hitbox,LavaHitbox;
     private float resistanceCheck;
     private int UpdateTile;
-
+    
 
     bool isPlaced=false;
 
@@ -35,26 +35,30 @@ public class TestLevel1 : NetworkBehaviour
     }
     public void Start()
     {
-        if (isServer)
-        {
+
+        
             rand = Random.Range(0, tiles.Length);
-        }
-        map.SetTile(map.WorldToCell(d.transform.position), tiles[rand]);
-        resistanceCheck = mapManager.GetTileResistance(transform.position);
 
-        if (mapManager.GetTileResistance(transform.position)>=1&& mapManager.GetTileResistance(transform.position) <= 5)
-        {
-            GameObject a =Instantiate(Hitbox) as GameObject;
-            a.transform.position = transform.position;
-        }
-        if (mapManager.GetTileResistance(transform.position) == 30)
-        {
-           GameObject b = Instantiate(LavaHitbox) as GameObject;
-            b.transform.position = transform.position;
-            
-        }
+            map.SetTile(map.WorldToCell(d.transform.position), tiles[rand]);
+            resistanceCheck = mapManager.GetTileResistance(transform.position);
 
+
+            if (mapManager.GetTileResistance(transform.position) >= 1 && mapManager.GetTileResistance(transform.position) <= 5)
+            {
+                GameObject a = Instantiate(Hitbox) as GameObject;
+                a.transform.position = transform.position;
+            }
+            if (mapManager.GetTileResistance(transform.position) == 30)
+            {
+                GameObject b = Instantiate(LavaHitbox) as GameObject;
+                b.transform.position = transform.position;
+
+            }
+
+        
     }
+   
+        
     
     [ClientRpc]
     void GetTile(int t)
@@ -65,11 +69,13 @@ public class TestLevel1 : NetworkBehaviour
     void spawn(int old,int neww)
     {
         
+        
         map.SetTile(map.WorldToCell(d.transform.position), tiles[neww]);
     }
-        
+       
         
         
 
 
 }
+

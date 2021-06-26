@@ -242,14 +242,14 @@ public class TileUpdater : NetworkBehaviour
 
         }
         if(isLocalPlayer) Destroy(gameObject);
-        
+        if (isLocalPlayer) deleteTileList(-1);
 
-        
+
     }
     [Command]
     private void deleteTileList(int ToDelete)
     {
-        tileUpdatertiles.RemoveAt(ToDelete);
+        if (ToDelete != -1) tileUpdatertiles.RemoveAt(ToDelete);
         Destroy(gameObject);
         deletePlayer();
     }
