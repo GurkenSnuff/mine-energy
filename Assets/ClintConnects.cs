@@ -9,6 +9,7 @@ public class ClintConnects : NetworkManager
     public bool disconnect=false;
     public mapGenerator mapGenerator;
     
+    
    public override void OnServerDisconnect(NetworkConnection conn)
     {
         connectionDisconnect = conn;

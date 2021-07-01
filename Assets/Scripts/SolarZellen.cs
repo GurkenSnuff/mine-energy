@@ -52,9 +52,9 @@ public class SolarZellen : NetworkBehaviour
             
             Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(Placement);
-            
-                
-                if (t == 0)
+            print(t);
+
+            if (t == 0)
                 {
                     
                     //if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
@@ -65,9 +65,15 @@ public class SolarZellen : NetworkBehaviour
                         eisenMiner.Eisen -= 50;
                         goldMiner.Gold -= 40;
                         TileUpdateCheck = true;
-                        GameObject a = Instantiate(Hitbox) as GameObject;
-                        a.transform.position = Placement;
-                
+                t = mapManager.GetTileResistance(Placement);
+                 if (t >= 1 && t <= 5)
+                 {
+                     print("s");
+                     GameObject a = Instantiate(Hitbox) as GameObject;
+                     a.transform.position = map.WorldToCell(Placement);
+                 }
+
+
                 if (isLocalPlayer)
                      {
                         SentTileUpdateToServer(Placement);

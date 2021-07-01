@@ -27,6 +27,7 @@ public class mapGenerator : NetworkBehaviour
     public List<Vector3> UpdateSavePosition = new List<Vector3>();
     public bool newClientJoined = false;
     bool isPlaced = false;
+    public GameObject k;
 
     private void Awake()
     {
@@ -50,11 +51,10 @@ public class mapGenerator : NetworkBehaviour
                 resistanceCheck = mapManager.GetTileResistance(t);
                 UpdateSaveTile.Add(rand);
                 UpdateSavePosition.Add(t);
-                if (mapManager.GetTileResistance(t) >= 1 && mapManager.GetTileResistance(t) <= 5)
-                {
+                
                     GameObject a = Instantiate(Hitbox) as GameObject;
                     a.transform.position = t;
-                }
+                
                 if (mapManager.GetTileResistance(t) == 30)
                 {
                     GameObject b = Instantiate(LavaHitbox) as GameObject;
@@ -73,11 +73,10 @@ public class mapGenerator : NetworkBehaviour
                 resistanceCheck = mapManager.GetTileResistance(s);
                 UpdateSaveTile.Add(rand);
                 UpdateSavePosition.Add(s);
-                if (mapManager.GetTileResistance(s) >= 1 && mapManager.GetTileResistance(s) <= 5)
-                {
+                
                     GameObject a = Instantiate(Hitbox) as GameObject;
                     a.transform.position = s;
-                }
+                
                 if (mapManager.GetTileResistance(s) == 30)
                 {
                     GameObject b = Instantiate(LavaHitbox) as GameObject;
@@ -116,7 +115,7 @@ public class mapGenerator : NetworkBehaviour
      IEnumerator Waitforplayer(int neww, Vector3 pos)
      {
         yield return new WaitForSeconds(0.1f);
-        print("Hi");
+        
         GetTile(neww, pos);
      }
 
@@ -128,8 +127,14 @@ public class mapGenerator : NetworkBehaviour
            map.SetTile(map.WorldToCell(pos), tiles[neww]);
             
          }
-    
-    
+    [ClientRpc]
+    public void colliderEnabler(Vector3 t)
+    {
+        
+        GameObject a = Instantiate(k) as GameObject;
+        a.transform.position = t;
+    }
+
 }
     
 

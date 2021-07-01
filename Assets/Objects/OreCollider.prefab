@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8277042684312288947}
   - component: {fileID: -5720829500463675550}
+  - component: {fileID: -1012891643048628140}
   m_Layer: 0
   m_Name: OreCollider
   m_TagString: Untagged
@@ -38,7 +39,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8277042684312288946}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -57,3 +58,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.082268, y: 1.183017}
   m_EdgeRadius: 0
+--- !u!114 &-1012891643048628140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8277042684312288946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 571ed8d78acfd9248bf43db88119707e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  h: {fileID: -5720829500463675550}
+  k: {fileID: 8072743400521253021, guid: b913bfad842ce5b4bacbf43d046da167, type: 3}
+  tileDatas: []

@@ -49,6 +49,22 @@ MonoBehaviour:
   syncInterval: 0.1
   block: {fileID: 6453046917462205720, guid: 47b1236efea28af4baef5ee1f0235579, type: 3}
   block1: {fileID: 5177707661225795361, guid: 02b1b13306d3863428897ce4b567da12, type: 3}
+  tiles:
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 728d6b6c1b83a014e8aaf47be9e317ef, type: 2}
+  d: {fileID: 0}
+  solarZellen: {fileID: 0}
+  rand: 0
+  x: 0
+  map: {fileID: 0}
+  tileDatas: []
+  Hitbox: {fileID: 8277042684312288946, guid: 21c69fc77fe31784e89def0da07e4cf0, type: 3}
+  LavaHitbox: {fileID: 1822763018170228248, guid: cb0e066ffcfbcaa4d8b7b05e8af304ec,
+    type: 3}
+  UpdateSaveTile: 
+  UpdateSavePosition: []
+  newClientJoined: 0
+  k: {fileID: 8072743400521253021, guid: b913bfad842ce5b4bacbf43d046da167, type: 3}
 --- !u!114 &3420410930385410912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +89,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7947828210220182261}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad1f66b5e2f4ed147b660f5d3eff7da9, type: 3}
   m_Name: 
