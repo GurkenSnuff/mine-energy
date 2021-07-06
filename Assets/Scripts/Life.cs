@@ -59,6 +59,7 @@ public class Life : NetworkBehaviour
         if (Leben<= 1)
         {
             Destroy(Player.gameObject);
+            
         }
         if (wait == false)
         {

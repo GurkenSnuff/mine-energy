@@ -130,11 +130,10 @@ public class mapGenerator : NetworkBehaviour
     [ClientRpc]
     public void colliderEnabler(Vector3 t)
     {
-        
         GameObject a = Instantiate(k) as GameObject;
         a.transform.position = t;
     }
-
+     
 }
     
 

@@ -16,6 +16,7 @@ public class orecollideractivater : NetworkBehaviour
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
     private bool activater=true;
+    private int newClient=0;
 
     private void Awake()
     {
@@ -29,18 +30,23 @@ public class orecollideractivater : NetworkBehaviour
     }
     void Update()
     {
-
-
+        
+        if (clintConnects.clintConnectCount > newClient) activater = true;
+        newClient = clintConnects.clintConnectCount;
         if (mapManager.GetTileResistance(gameObject.transform.position) >= 1 && mapManager.GetTileResistance(gameObject.transform.position) <= 5)
         {
             if (activater == true)
             {
-                
                 h.enabled = true;
-                mapGenerator.colliderEnabler(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
+                StartCoroutine(WaitUntilPlayerSpawned());
                 activater = false;
             }
         }
     }
-    
- }
+    IEnumerator WaitUntilPlayerSpawned()
+    {
+        yield return new WaitForSeconds(0.1f);
+        mapGenerator.colliderEnabler(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
+
+    }
+}
