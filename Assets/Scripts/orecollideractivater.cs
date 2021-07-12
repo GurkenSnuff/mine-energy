@@ -17,12 +17,13 @@ public class orecollideractivater : NetworkBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     private bool activater=true;
     private int newClient=0;
+    
 
     private void Awake()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
         clintConnects = FindObjectOfType<ClintConnects>();
-
+        
         mapGenerator = FindObjectOfType<mapGenerator>();
         mapManager = FindObjectOfType<MapManager>();
         map = FindObjectOfType<Tilemap>();
@@ -49,4 +50,5 @@ public class orecollideractivater : NetworkBehaviour
         mapGenerator.colliderEnabler(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
 
     }
+    
 }

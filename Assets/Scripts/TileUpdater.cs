@@ -212,38 +212,38 @@ public class TileUpdater : NetworkBehaviour
     }
     public void deleteTilesButton()
     {
-
-        foreach (var variable in tileUpdatertiles)
+        if (isLocalPlayer)
         {
-            x2++;
-            
-            Vector3 z2 = tileUpdatertiles[x2];
-            
-            if (isLocalPlayer)
+            foreach (var variable in tileUpdatertiles)
             {
+                x2++;
+
+                Vector3 z2 = tileUpdatertiles[x2];
+
+
                 updateTileServer(z2, -1);
                 map.SetTile(map.WorldToCell(z2), deleteTiles[0]);
+
+
+
+
             }
-           
-            
-            
-        }
-        foreach(var variable in propertys)
-        {
-            deleteTileList(deleteCount);
-        }
-        foreach (var variable in tileUpdatertilesK)
-        {
+            foreach (var variable in propertys)
+            {
+                deleteTileList(deleteCount);
+            }
+            foreach (var variable in tileUpdatertilesK)
+            {
 
-            T++;
-            k = tileUpdatertilesK[T];
-            updateTileServer(k, -1);
-            updateTile(k, -1);
+                T++;
+                k = tileUpdatertilesK[T];
+                updateTileServer(k, -1);
+                updateTile(k, -1);
 
+            }
+             Destroy(gameObject);
+             deleteTileList(-1);
         }
-        if(isLocalPlayer) Destroy(gameObject);
-        if (isLocalPlayer) deleteTileList(-1);
-
 
     }
     [Command]

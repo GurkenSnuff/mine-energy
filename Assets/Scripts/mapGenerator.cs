@@ -28,6 +28,7 @@ public class mapGenerator : NetworkBehaviour
     public bool newClientJoined = false;
     bool isPlaced = false;
     public GameObject k;
+    private List<Vector3> colliderList = new List<Vector3>();
 
     private void Awake()
     {
@@ -130,8 +131,21 @@ public class mapGenerator : NetworkBehaviour
     [ClientRpc]
     public void colliderEnabler(Vector3 t)
     {
-        GameObject a = Instantiate(k) as GameObject;
-        a.transform.position = t;
+        //double orecollider spawning stopping
+        int i=-1;
+        bool s = false;
+        foreach(var var in colliderList)
+        {
+            i++;
+            if (colliderList[i] == t) s = true;
+        }
+        i = -1;
+        if (s == false)
+        {
+            Instantiate(k, t, transform.rotation);
+            colliderList.Add(t);
+            s = false;
+        }
     }
      
 }

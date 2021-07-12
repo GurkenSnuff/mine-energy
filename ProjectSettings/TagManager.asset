@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Pickage
+  - Collider
   layers:
   - Default
   - TransparentFX

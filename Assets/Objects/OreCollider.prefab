@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -1012891643048628140}
   m_Layer: 0
   m_Name: OreCollider
-  m_TagString: Untagged
+  m_TagString: Collider
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,5 +73,4 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   h: {fileID: -5720829500463675550}
-  k: {fileID: 8072743400521253021, guid: b913bfad842ce5b4bacbf43d046da167, type: 3}
   tileDatas: []

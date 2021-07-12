@@ -230,6 +230,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947828210220182266, guid: c868f4fb38b8c534ba1b641754efd59e,
         type: 3}
+      propertyPath: k
+      value: 
+      objectReference: {fileID: 8072743400521253021, guid: b913bfad842ce5b4bacbf43d046da167,
+        type: 3}
+    - target: {fileID: 7947828210220182266, guid: c868f4fb38b8c534ba1b641754efd59e,
+        type: 3}
       propertyPath: map
       value: 
       objectReference: {fileID: 436764222}
@@ -820,7 +826,7 @@ MonoBehaviour:
   spawnPrefabs: []
   disconnect: 0
   mapGenerator: {fileID: 1234869670}
-  ClientsJoined: 0
+  clintConnectCount: 0
 --- !u!4 &746186783
 Transform:
   m_ObjectHideFlags: 0

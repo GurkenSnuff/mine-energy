@@ -3422,8 +3422,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3649125894539279010}
-        m_MethodName: 
+      - m_Target: {fileID: 5842013701086820783}
+        m_MethodName: deleteTilesButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
