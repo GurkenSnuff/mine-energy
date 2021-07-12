@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 using UnityEngine.UI;
 
-public class ClintConnects : NetworkManager
+public class Clintconnects : NetworkManager
 {
     public NetworkConnection connectionDisconnect;
     public bool disconnect=false;

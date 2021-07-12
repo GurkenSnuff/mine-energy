@@ -6,7 +6,7 @@ using Mirror;
 
 public class orecollideractivater : NetworkBehaviour
 {
-    private ClintConnects clintConnects;
+    private Clintconnects clintConnects;
     public BoxCollider2D h;
     
     private Tilemap map;
@@ -22,7 +22,7 @@ public class orecollideractivater : NetworkBehaviour
     private void Awake()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
-        clintConnects = FindObjectOfType<ClintConnects>();
+        clintConnects = FindObjectOfType<Clintconnects>();
         
         mapGenerator = FindObjectOfType<mapGenerator>();
         mapManager = FindObjectOfType<MapManager>();

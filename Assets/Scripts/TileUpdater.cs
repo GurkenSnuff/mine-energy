@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class TileUpdater : NetworkBehaviour
 {
-    private ClintConnects clintConnects;
+    public Clintconnects clintConnects;
     private SolarZellen solarZellen;
     private KohleGenerator kohleGenerator;
     private SteinSeller steinSeller;
@@ -50,7 +50,7 @@ public class TileUpdater : NetworkBehaviour
     void Awake()
     {
         mapManager = FindObjectOfType<MapManager>();
-        clintConnects = FindObjectOfType<ClintConnects>();
+        clintConnects = FindObjectOfType<Clintconnects>();
         solarZellen = FindObjectOfType<SolarZellen>();
         kohleGenerator = FindObjectOfType<KohleGenerator>();
         steinSeller = FindObjectOfType<SteinSeller>();
@@ -212,8 +212,8 @@ public class TileUpdater : NetworkBehaviour
     }
     public void deleteTilesButton()
     {
-        if (isLocalPlayer)
-        {
+        
+       
             foreach (var variable in tileUpdatertiles)
             {
                 x2++;
@@ -228,10 +228,7 @@ public class TileUpdater : NetworkBehaviour
 
 
             }
-            foreach (var variable in propertys)
-            {
-                deleteTileList(deleteCount);
-            }
+            
             foreach (var variable in tileUpdatertilesK)
             {
 
@@ -241,21 +238,11 @@ public class TileUpdater : NetworkBehaviour
                 updateTile(k, -1);
 
             }
-             Destroy(gameObject);
-             deleteTileList(-1);
-        }
+             
+             
+            NetworkManager.singleton.StopClient();
+        
 
     }
-    [Command]
-    private void deleteTileList(int ToDelete)
-    {
-        if (ToDelete != -1) tileUpdatertiles.RemoveAt(ToDelete);
-        Destroy(gameObject);
-        deletePlayer();
-    }
-    [ClientRpc]
-    private void deletePlayer()
-    {
-        Destroy(gameObject);
-    }
+    
 }

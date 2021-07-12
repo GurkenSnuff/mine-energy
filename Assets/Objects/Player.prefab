@@ -2661,6 +2661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  clintConnects: {fileID: 0}
   deleteTiles:
   - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
   tileUpdatertiles: []
