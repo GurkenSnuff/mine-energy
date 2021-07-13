@@ -52,13 +52,11 @@ public class abbauen : NetworkBehaviour
             Vector3 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float t = mapManager.GetTileResistance(minerÜber);
             Distance_ = Vector3.Distance(transform.position, minerÜber);
-            
             if (hasAuthority)
             {
                 animator.SetBool("Schlag", true);
             }
-
-            if (Distance_ <= 17.2)
+            if (Distance_ <= 18.1)
             {
                 
                 if (Wait == true)
