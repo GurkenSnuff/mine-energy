@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-public class WindGenerator : MonoBehaviour
+public class WindGenerator : NetworkBehaviour
 {
     public Tile[] tiles;
     [SerializeField]
@@ -72,8 +73,11 @@ public class WindGenerator : MonoBehaviour
                         EnergyCount++;
                         eisenMiner.Eisen -= 100;
                         diamondMiner.Diamond -= 20;
-
+                    if (isLocalPlayer)
+                    {
+                        SentTileUpdateToServer(Placement);
                     }
+                }
                 }
             
         }
@@ -83,7 +87,21 @@ public class WindGenerator : MonoBehaviour
         }
         
     }
-    
+    [Command]
+    void SentTileUpdateToServer(Vector3 position)
+    {
+
+        SentTileUpdateToClients(position);
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+    }
+    [ClientRpc]
+    void SentTileUpdateToClients(Vector3 position)
+    {
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+
+    }
     public void WGWillK()
     {
         EnoughForWG = true;

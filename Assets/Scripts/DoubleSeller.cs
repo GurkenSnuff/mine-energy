@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-public class DoubleSeller : MonoBehaviour
+public class DoubleSeller : NetworkBehaviour
 {
     [SerializeField]
     private List<TileData> tileDatas;
@@ -15,7 +16,7 @@ public class DoubleSeller : MonoBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
+    public Vector3 Placement;
     public bool TileUpdateCheck = false;
     private SolarZellen solarZellen;
     public int SellerAnzahl;
@@ -30,9 +31,13 @@ public class DoubleSeller : MonoBehaviour
     private SteinSeller steinSeller;
     private Ressourcen ressourcen;
     private GoldSeller goldSeller;
+    private lookAtMouse LookAtMouse;
+    
 
     void Awake()
     {
+        
+        map = FindObjectOfType<Tilemap>();
         goldSeller = FindObjectOfType<GoldSeller>();
         ressourcen = FindObjectOfType<Ressourcen>();
         steinSeller = FindObjectOfType<SteinSeller>();
@@ -46,29 +51,33 @@ public class DoubleSeller : MonoBehaviour
         solarZellen = FindObjectOfType<SolarZellen>();
         mapManager = FindObjectOfType<MapManager>();
         dataFromTiles = new Dictionary<TileBase, TileData>();
-
+        
     }
-
+    
 
     void Update()
     {
 
         if (Input.GetMouseButtonDown(0) && EnoughForDS == true)
         {
-            if (ressourcen.Money >= 1500)
-            {
-                minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                t = mapManager.GetTileResistance(minerÜber);
+             if (ressourcen.Money >= 1500)
+             {
 
-                if (t == 0)
+               Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+               t = mapManager.GetTileResistance(Placement);
+
+               if (t == 0)
                 {
                     TileUpdateCheck = true;
-                    map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
+                    map.SetTile(map.WorldToCell(Placement), tiles[0]);
                     HowManySeller += 1;
                     ressourcen.Money -= 1500;
-
+                if (isLocalPlayer)
+                {
+                    SentTileUpdateToServer(Placement);
                 }
-            }
+               }
+             }
 
 
         }
@@ -81,7 +90,21 @@ public class DoubleSeller : MonoBehaviour
 
 
     }
+    [Command]
+    void SentTileUpdateToServer(Vector3 position)
+    {
 
+        SentTileUpdateToClients(position);
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+    }
+    [ClientRpc]
+    void SentTileUpdateToClients(Vector3 position)
+    {
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+
+    }
 
 
     public void DSWillK()

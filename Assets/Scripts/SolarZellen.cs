@@ -52,13 +52,14 @@ public class SolarZellen : NetworkBehaviour
             
             Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(Placement);
-            print(t);
+            
 
             if (t == 0)
                 {
-                    
-                    //if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
-                   // {
+
+                //if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
+                // {
+                
                         map.SetTile(map.WorldToCell(Placement), tiles[0]);
                         EnergyCount++;
                         miner.Stein -= 100;

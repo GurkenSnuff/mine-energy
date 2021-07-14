@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-
-public class GoldMiner : MonoBehaviour
+public class GoldMiner : NetworkBehaviour
 {
     [SerializeField]
     private List<TileData> tileDatas;
@@ -73,6 +73,10 @@ public class GoldMiner : MonoBehaviour
                         HowManyMiner += 1;
                         ressourcen.Money -= 1000;
                         TileUpdateCheck = true;
+                        if (isLocalPlayer)
+                        {
+                            SentTileUpdateToServer(minerÜber);
+                        }
                     }
                     else
                     {
@@ -92,6 +96,10 @@ public class GoldMiner : MonoBehaviour
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             ressourcen.Money -= 1000;
+                            if (isLocalPlayer)
+                            {
+                                SentTileUpdateToServer(minerÜber);
+                            }
                         }
                         else
                         {
@@ -110,6 +118,10 @@ public class GoldMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 1000;
                             TileUpdateCheck = true;
+                            if (isLocalPlayer)
+                            {
+                                SentTileUpdateToServer(minerÜber);
+                            }
                         }
                         else
                         {
@@ -128,6 +140,10 @@ public class GoldMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 1000;
                             TileUpdateCheck = true;
+                            if (isLocalPlayer)
+                            {
+                                SentTileUpdateToServer(minerÜber);
+                            }
                         }
                     }
 
@@ -141,6 +157,21 @@ public class GoldMiner : MonoBehaviour
         }
 
 
+
+    }
+    [Command]
+    void SentTileUpdateToServer(Vector3 position)
+    {
+
+        SentTileUpdateToClients(position);
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+    }
+    [ClientRpc]
+    void SentTileUpdateToClients(Vector3 position)
+    {
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
 
     }
     IEnumerator SteinCounter()

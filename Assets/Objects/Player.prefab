@@ -2302,6 +2302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  Camera: {fileID: 0}
+  cameraSpawner: {fileID: 0}
+  cameraReal: {fileID: 0}
 --- !u!61 &3203551943392371613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2340,9 +2343,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdfad0e8dfa23e49969cc1ab3d4d947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   HowManySeller: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 6d7c250c40e75e44ab68109105a40eb7, type: 2}
   map: {fileID: 0}
   SellerAnzahl: 0
   EnoughForGS: 0
@@ -2359,11 +2365,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c969bf50de0be304e8172b50cd525506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   e: 0
   Gold: 0
   HowManyMiner: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 3e8a8d8a41e82a14db5b6778159b2b4a, type: 2}
   map: {fileID: 0}
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
@@ -2381,11 +2390,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7cf9bf852720348bc41c1e6ce45c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   e: 0
   Eisen: 0
   HowManyMiner: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 705ba512b14ae334f970a77fe95a86fe, type: 2}
   map: {fileID: 0}
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
@@ -2407,7 +2419,8 @@ MonoBehaviour:
   e: 0
   Diamond: 0
   HowManyMiner: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: fdd6ca87cbb32b14081d77e1e6e5aae7, type: 2}
   map: {fileID: 0}
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
@@ -2453,7 +2466,8 @@ MonoBehaviour:
   e: 0
   Stein: 0
   HowManyMiner: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: c3d6f2eb20423774a96530fc5b84b6bf, type: 2}
   map: {fileID: 0}
   StoneCount: {fileID: 0}
   MinenAnzahl: 0
@@ -2506,9 +2520,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3055857992ce3a64798340fba7eafd38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   HowManySeller: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 93f3aac5a03c04047b4233e9b704c597, type: 2}
   map: {fileID: 0}
   TileUpdateCheck: 0
   SellerAnzahl: 0
@@ -2525,6 +2542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89dd0093473e87b4f8a2a28d0b0d7962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tiles:
   - {fileID: 11400000, guid: 5a57bcdf42d880449886938ccf15056b, type: 2}
   map: {fileID: 0}
@@ -2573,11 +2592,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1cdf604d402fa94e84418ac6628cf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   Money: 0
   HowManySeller: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: a3fb2eb1fe445f141afd13f4e55db231, type: 2}
   map: {fileID: 0}
+  Placement: {x: 0, y: 0, z: 0}
   TileUpdateCheck: 0
   SellerAnzahl: 0
   EnoughForDS: 0
@@ -2593,9 +2616,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0b79bf926ac7d42872424642fca0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   HowManySeller: 0
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 292238232d25fd842ae2bfbf03cb8572, type: 2}
   map: {fileID: 0}
   TileUpdateCheck: 0
   SellerAnzahl: 0
@@ -2617,8 +2643,8 @@ MonoBehaviour:
   Money: 0
   solarZellen: {fileID: 9035391437015259437}
   Energy: 0
-  Energie: {fileID: 0}
-  money: {fileID: 0}
+  Energie: {fileID: 1753460990600079073}
+  money: {fileID: 7794721840891329225}
   Geld: 0
 --- !u!114 &5842013701086820783
 MonoBehaviour:
@@ -2782,7 +2808,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90809149eaf9d4429e0adf4fb5ea91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   Camera: {fileID: 1499808477656315541, guid: 5fc639d631925c6479ad1f0888dda6a2, type: 3}
+  a: {fileID: 0}
 --- !u!1 &3864342525628000503
 GameObject:
   m_ObjectHideFlags: 0

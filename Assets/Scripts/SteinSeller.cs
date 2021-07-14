@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-public class SteinSeller : MonoBehaviour
+public class SteinSeller : NetworkBehaviour
 {
     [SerializeField]
     private List<TileData> tileDatas;
@@ -67,7 +68,10 @@ public class SteinSeller : MonoBehaviour
                     TileUpdateCheck = true;
                     map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                     HowManySeller += 1;
-
+                    if (isLocalPlayer)
+                    {
+                        SentTileUpdateToServer(minerÜber);
+                    }
 
                 }
 
@@ -84,7 +88,21 @@ public class SteinSeller : MonoBehaviour
 
 
     }
+    [Command]
+    void SentTileUpdateToServer(Vector3 position)
+    {
 
+        SentTileUpdateToClients(position);
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+    }
+    [ClientRpc]
+    void SentTileUpdateToClients(Vector3 position)
+    {
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+
+    }
 
 
     public void SZWillK()

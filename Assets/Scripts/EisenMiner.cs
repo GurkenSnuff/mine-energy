@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-
-public class EisenMiner : MonoBehaviour
+public class EisenMiner : NetworkBehaviour
 {
     [SerializeField]
     private List<TileData> tileDatas;
@@ -74,7 +74,10 @@ public class EisenMiner : MonoBehaviour
                         HowManyMiner += 1;
                         ressourcen.Money -= 400;
                         TileUpdateCheck = true;
-
+                        if (isLocalPlayer)
+                        {
+                            SentTileUpdateToServer(minerÜber);
+                        }
                     }
                     else
                     {
@@ -94,6 +97,10 @@ public class EisenMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 400;
                             TileUpdateCheck = true;
+                            if (isLocalPlayer)
+                            {
+                                SentTileUpdateToServer(minerÜber);
+                            }
                         }
                         else
                         {
@@ -112,6 +119,10 @@ public class EisenMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 400;
                             TileUpdateCheck = true;
+                            if (isLocalPlayer)
+                            {
+                                SentTileUpdateToServer(minerÜber);
+                            }
                         }
                         else
                         {
@@ -130,6 +141,10 @@ public class EisenMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 400;
                             TileUpdateCheck = true;
+                            if (isLocalPlayer)
+                            {
+                                SentTileUpdateToServer(minerÜber);
+                            }
                         }
                     }
 
@@ -143,6 +158,21 @@ public class EisenMiner : MonoBehaviour
         }
 
 
+
+    }
+    [Command]
+    void SentTileUpdateToServer(Vector3 position)
+    {
+
+        SentTileUpdateToClients(position);
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+    }
+    [ClientRpc]
+    void SentTileUpdateToClients(Vector3 position)
+    {
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
 
     }
     IEnumerator SteinCounter()

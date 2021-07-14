@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-public class Seller : MonoBehaviour
+public class Seller : NetworkBehaviour
 {
     [SerializeField]
     private List<TileData> tileDatas;
@@ -43,6 +44,7 @@ public class Seller : MonoBehaviour
         miner = FindObjectOfType<Miner>();
         solarZellen = FindObjectOfType<SolarZellen>();
         mapManager = FindObjectOfType<MapManager>();
+        map = FindObjectOfType<Tilemap>();
         dataFromTiles = new Dictionary<TileBase, TileData>();
         
     }
@@ -50,11 +52,11 @@ public class Seller : MonoBehaviour
 
     void Update()
     {
-        
-            if (Input.GetMouseButtonDown(0) && EnoughForS == true)
-            {
-            if (miner.Stein >= 50 && eisenMiner.Eisen >= 100)
-            {
+
+        if (Input.GetMouseButtonDown(0) && EnoughForS == true)
+        {
+           // if (miner.Stein >= 50 && eisenMiner.Eisen >= 100)
+           // {
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
 
@@ -65,21 +67,39 @@ public class Seller : MonoBehaviour
                     map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                     HowManySeller += 1;
                     TileUpdateCheck = true;
-
+                    if (isLocalPlayer)
+                    {
+                        SentTileUpdateToServer(minerÜber);
+                    }
                 }
-            }
-
-
-            }
-        
+           // }
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             EnoughForS = false;
         }
-
-
-
     }
+            
+        [Command]
+        void SentTileUpdateToServer(Vector3 position)
+        {
+
+            SentTileUpdateToClients(position);
+
+            map.SetTile(map.WorldToCell(position), tiles[0]);
+        }
+        [ClientRpc]
+        void SentTileUpdateToClients(Vector3 position)
+        {
+
+            map.SetTile(map.WorldToCell(position), tiles[0]);
+
+        }
+        
+
+
+
+    
 
     
     

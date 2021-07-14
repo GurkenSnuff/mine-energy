@@ -33,8 +33,8 @@ public class Ressourcen : NetworkBehaviour
             solarZellen = FindObjectOfType<SolarZellen>();
             windGenerator = FindObjectOfType<WindGenerator>();
             kohleGenerator = FindObjectOfType<KohleGenerator>();
-            money = GameObject.Find("Canvas/Money").GetComponent<Text>();
-            Energie = GameObject.Find("Canvas/Energy").GetComponent<Text>();
+           // money = GameObject.Find("Canvas/Money").GetComponent<Text>();
+            //Energie = GameObject.Find("Canvas/Energy").GetComponent<Text>();
         
             StartCoroutine(EnergyCounting());
             StartCoroutine(MoneyCounter());
@@ -60,9 +60,8 @@ public class Ressourcen : NetworkBehaviour
         while (Energy >= 0 && SellerAnzahl >= 1)
         {
             solarZellen.EnergyStand--;
-            windGenerator.EnergyStand--;
-            kohleGenerator.EnergyStand--;
-            Energy -= 8;
+            
+            
            Money += 1;
            SellerAnzahl--;
           
@@ -71,7 +70,7 @@ public class Ressourcen : NetworkBehaviour
         while (Energy >= 8 && SellerAnzahlDS >= 1)
         {
             solarZellen.EnergyStand-=8;
-            Energy -= 8;
+            
             
             Money += 10;
             SellerAnzahlDS--;
@@ -81,7 +80,7 @@ public class Ressourcen : NetworkBehaviour
         while (Energy >= 8 && SellerAnzahlDS >= 1)
         {
             solarZellen.EnergyStand -= 8;
-            Energy -= 8;
+            
             miner.Stein -= 2;
             Money += 15;
             SellerAnzahlSS--;
@@ -91,7 +90,7 @@ public class Ressourcen : NetworkBehaviour
         while (Energy >= 15 && SellerAnzahlGS >= 1)
         {
             solarZellen.EnergyStand -= 8;
-            Energy -= 15;
+            
             goldMiner.Gold -= 3;
             Money += 30;
             SellerAnzahlGS--;
