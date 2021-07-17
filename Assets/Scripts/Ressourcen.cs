@@ -105,7 +105,7 @@ public class Ressourcen : NetworkBehaviour
             money.text = "Money: " + Money;
             Energie.text = "Energy: " + Energy;
         }
-        print(Energie.text);
+        
         
         
         StartCoroutine(MoneyCounter());

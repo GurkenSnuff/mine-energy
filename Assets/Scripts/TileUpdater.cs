@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class TileUpdater : NetworkBehaviour
 {
+    public GameObject h;
     public Clintconnects clintConnects;
     private SolarZellen solarZellen;
     private KohleGenerator kohleGenerator;
@@ -238,11 +239,28 @@ public class TileUpdater : NetworkBehaviour
                 updateTile(k, -1);
 
             }
-             
-             
-            NetworkManager.singleton.StopClient();
-        
+
+
+            
+        deletePlayer();
 
     }
-    
+
+    [Command]
+    private void deletePlayer()
+    {
+        Destroy(h);
+        deletePlayerServer();
+    }
+
+    [ClientRpc]
+    private void deletePlayerServer()
+    {
+        Destroy(h);
+
+    }
+
+
+
+
 }

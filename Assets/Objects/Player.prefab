@@ -2660,6 +2660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  h: {fileID: 3649125894539279010}
   clintConnects: {fileID: 0}
   deleteTiles:
   - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
@@ -2701,6 +2702,7 @@ MonoBehaviour:
   MinenInventory: {fileID: 8512118508750446087}
   SellerInventory: {fileID: 5109379993628456637}
   PickageInventory: {fileID: 7066665063491421404}
+  canvas: {fileID: 8976364200093793663}
   IsActive: 0
 --- !u!114 &1382753306027343432
 MonoBehaviour:
@@ -8864,7 +8866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &405257245361796041
 RectTransform:
   m_ObjectHideFlags: 0

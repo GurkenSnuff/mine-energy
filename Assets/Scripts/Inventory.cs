@@ -10,12 +10,14 @@ public class Inventory : NetworkBehaviour
     public GameObject MinenInventory;
     public GameObject SellerInventory;
     public GameObject PickageInventory;
+    public GameObject canvas;
     public bool IsActive= false;
     
     void Update()
     {
         if (isLocalPlayer)
         {
+            canvas.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
 

@@ -147,7 +147,7 @@ public class mapGenerator : NetworkBehaviour
             s = false;
         }
     }
-     
+    
 }
     
 

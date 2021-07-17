@@ -69,7 +69,7 @@ public class SolarZellen : NetworkBehaviour
                 t = mapManager.GetTileResistance(Placement);
                  if (t >= 1 && t <= 5)
                  {
-                     print("s");
+                     
                      GameObject a = Instantiate(Hitbox) as GameObject;
                      a.transform.position = map.WorldToCell(Placement);
                  }
