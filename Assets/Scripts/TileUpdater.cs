@@ -241,8 +241,8 @@ public class TileUpdater : NetworkBehaviour
             }
 
 
-            
-        deletePlayer();
+        
+            deletePlayer();
 
     }
 

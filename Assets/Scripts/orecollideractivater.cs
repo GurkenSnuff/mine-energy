@@ -21,41 +21,45 @@ public class orecollideractivater : NetworkBehaviour
 
     private void Awake()
     {
-        dataFromTiles = new Dictionary<TileBase, TileData>();
-        clintConnects = FindObjectOfType<Clintconnects>();
         
-        mapGenerator = FindObjectOfType<mapGenerator>();
-        mapManager = FindObjectOfType<MapManager>();
-        map = FindObjectOfType<Tilemap>();
+            dataFromTiles = new Dictionary<TileBase, TileData>();
+            clintConnects = FindObjectOfType<Clintconnects>();
 
+            mapGenerator = FindObjectOfType<mapGenerator>();
+            mapManager = FindObjectOfType<MapManager>();
+            map = FindObjectOfType<Tilemap>();
+        
     }
     void Update()
     {
+        
 
-        if (clintConnects.clintConnectCount > newClient) activater = true;
-        newClient = clintConnects.clintConnectCount;
 
-        if (clintConnects.clintDisConnectCount > lessClient) activater2 = true;
-        lessClient = clintConnects.clintDisConnectCount;
+            if (clintConnects.clintConnectCount > newClient) activater = true;
+            newClient = clintConnects.clintConnectCount;
 
-        if (mapManager.GetTileResistance(gameObject.transform.position) >= 1 && mapManager.GetTileResistance(gameObject.transform.position) <= 5)
-        {
-            if (activater == true)
+
+            if (mapManager.GetTileResistance(gameObject.transform.position) >= 1 && mapManager.GetTileResistance(gameObject.transform.position) <= 5)
             {
-                h.enabled = true;
-                StartCoroutine(WaitUntilPlayerSpawned());
-                activater = false;
+                if (activater == true)
+                {
+                    h.enabled = true;
+                    StartCoroutine(WaitUntilPlayerSpawned());
+                    activater = false;
+                    activater2 = true;
+                }
             }
-        }
-        if (mapManager.GetTileResistance(gameObject.transform.position) == 0)
-        {
-            if (activater2 == true)
+            if (mapManager.GetTileResistance(gameObject.transform.position) == 0)
             {
-                h.enabled = false;
-                if(newClient>lessClient)colliderDisabler();
-                activater2 = false;
+                if (activater2 == true)
+                {
+                    h.enabled = false;
+                    colliderDisabler();
+                    activater2 = false;
+                }
+
             }
-        }
+        
     }
     IEnumerator WaitUntilPlayerSpawned()
     {
@@ -67,6 +71,7 @@ public class orecollideractivater : NetworkBehaviour
     [ClientRpc]
     public void colliderDisabler()
     {
-        Destroy(h);
+        h.enabled = false;
+        print("d");
     }
 }
