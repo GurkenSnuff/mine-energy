@@ -140,6 +140,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7947828210220182261, guid: c868f4fb38b8c534ba1b641754efd59e,
         type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 7947828210220182261, guid: c868f4fb38b8c534ba1b641754efd59e,
+        type: 3}
       propertyPath: m_Name
       value: test 2 1 (1)
       objectReference: {fileID: 0}
@@ -202,7 +208,7 @@ PrefabInstance:
         type: 3}
       propertyPath: k
       value: 
-      objectReference: {fileID: 8072743400521253021, guid: b913bfad842ce5b4bacbf43d046da167,
+      objectReference: {fileID: 8277042684312288946, guid: 21c69fc77fe31784e89def0da07e4cf0,
         type: 3}
     - target: {fileID: 7947828210220182266, guid: c868f4fb38b8c534ba1b641754efd59e,
         type: 3}

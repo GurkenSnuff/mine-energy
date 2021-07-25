@@ -54,6 +54,7 @@ public class orecollideractivater : NetworkBehaviour
                 if (activater2 == true)
                 {
                     h.enabled = false;
+
                     colliderDisabler();
                     activater2 = false;
                 }
@@ -72,6 +73,5 @@ public class orecollideractivater : NetworkBehaviour
     public void colliderDisabler()
     {
         h.enabled = false;
-        print("d");
     }
 }

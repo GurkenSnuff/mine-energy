@@ -47,6 +47,7 @@ public class TileUpdater : NetworkBehaviour
     private NetworkConnection networkConnection;
     private MapManager mapManager;
     public List<int> propertys = new List<int>();
+    public bool Alive = false;
 
     void Awake()
     {
@@ -63,6 +64,7 @@ public class TileUpdater : NetworkBehaviour
         doubleSeller = FindObjectOfType<DoubleSeller>();
         diamondMiner = FindObjectOfType<DiamondMiner>();
         map = FindObjectOfType<Tilemap>();
+        Alive = true;
     }
     void Update()
     {
@@ -241,8 +243,8 @@ public class TileUpdater : NetworkBehaviour
             }
 
 
-        
-            deletePlayer();
+        Alive = false;
+        NetworkManager.singleton.StopClient();
 
     }
 
