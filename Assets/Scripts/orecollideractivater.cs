@@ -41,23 +41,23 @@ public class orecollideractivater : NetworkBehaviour
 
             if (mapManager.GetTileResistance(gameObject.transform.position) >= 1 && mapManager.GetTileResistance(gameObject.transform.position) <= 5)
             {
-                if (activater == true)
+            h.enabled = true;
+            if (activater == true)
                 {
-                    h.enabled = true;
+                    
                     StartCoroutine(WaitUntilPlayerSpawned());
                     activater = false;
-                    activater2 = true;
+                    
                 }
             }
             if (mapManager.GetTileResistance(gameObject.transform.position) == 0)
             {
-                if (activater2 == true)
-                {
+                
                     h.enabled = false;
 
-                    colliderDisabler();
-                    activater2 = false;
-                }
+                    //colliderDisabler();
+                    
+                
 
             }
         
@@ -66,7 +66,7 @@ public class orecollideractivater : NetworkBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         mapGenerator.colliderEnabler(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
-
+        
     }
 
     [ClientRpc]
@@ -74,4 +74,5 @@ public class orecollideractivater : NetworkBehaviour
     {
         h.enabled = false;
     }
+
 }
