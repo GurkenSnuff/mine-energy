@@ -145,9 +145,9 @@ public class Miner : MonoBehaviour
             {
                 EnoughForM = false;
             }
+        StoneCount.text = "Stein: " + Stein;
 
 
-        
     }
     IEnumerator SteinCounter()
     {
@@ -159,7 +159,7 @@ public class Miner : MonoBehaviour
             ressourcen.Energy -= 1;
             Stein += 1;
             MinenAnzahl--;
-            StoneCount.text = "Stein: " + Stein;
+            
         }
 
         StartCoroutine(SteinCounter());

@@ -41,7 +41,13 @@ public class abbauen : NetworkBehaviour
         
         Hit();
         SkinUpdate();
-        
+        if (isLocalPlayer)
+        {
+            DiaCount.text = "Diamond: " + diamondMiner.Diamond;
+            GoldCount.text = "Gold: " + goldMiner.Gold;
+            EisenCount.text = "Eisen: " + eisenMiner.Eisen;
+            StoneCount.text = "Stein: " + miner.Stein;
+        }
     }
 
     private void Hit()
@@ -150,7 +156,7 @@ public class abbauen : NetworkBehaviour
         }
         miner.Stein += 1;
         Wait = true;
-        StoneCount.text = "Stein: " + miner.Stein;
+        
     }
     IEnumerator EisenMining()
     {
@@ -166,7 +172,7 @@ public class abbauen : NetworkBehaviour
         
         eisenMiner.Eisen += 1;
         Wait = true;
-        EisenCount.text = "Eisen: " + eisenMiner.Eisen;
+        
     }
     IEnumerator GoldMiner()
     {
@@ -181,14 +187,14 @@ public class abbauen : NetworkBehaviour
         }
         goldMiner.Gold += 1;
         Wait = true;
-        GoldCount.text = "Gold: " + goldMiner.Gold;
+        
     }
     IEnumerator DiamondMining()
     {
         yield return new WaitForSeconds(1);
         diamondMiner.Diamond += 1;
         Wait = true;
-        DiaCount.text = "Diamond: " + diamondMiner.Diamond;
+        
     }
     public void EisenPickage()
     {

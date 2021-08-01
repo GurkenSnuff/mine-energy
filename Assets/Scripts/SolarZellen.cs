@@ -57,8 +57,8 @@ public class SolarZellen : NetworkBehaviour
             if (t == 0)
                 {
 
-                //if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
-                // {
+                if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)
+                 {
                 
                         map.SetTile(map.WorldToCell(Placement), tiles[0]);
                         EnergyCount++;
@@ -80,7 +80,7 @@ public class SolarZellen : NetworkBehaviour
                         SentTileUpdateToServer(Placement);
                      }
 
-                    // }
+                     }
                 }
             
                 

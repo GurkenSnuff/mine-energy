@@ -2683,6 +2683,7 @@ MonoBehaviour:
   T: -1
   j: -1
   propertys: 
+  Alive: 0
 --- !u!114 &8217401795562135588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4063,8 +4064,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1902857571808136083}
   m_HandleRect: {fileID: 2151417885713980603}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.59972686
+  m_Value: 1
+  m_Size: 0.5997268
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6574,7 +6575,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2664669881654865234}
+      - m_Target: {fileID: 522726405780159562}
         m_MethodName: WGWillK
         m_Mode: 1
         m_Arguments:
@@ -8513,7 +8514,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 522726405780159562}
+      - m_Target: {fileID: 2664669881654865234}
         m_MethodName: WGWillK
         m_Mode: 1
         m_Arguments:

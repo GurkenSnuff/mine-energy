@@ -54,8 +54,11 @@ public class KohleGenerator :NetworkBehaviour
     IEnumerator EnergyCounting()
     {
         yield return new WaitForSeconds(1);
-        
-        EnergyStand = EnergyStand + EnergyCount;
+        if (miner.Stein >2&&EnergyCount>0)
+        {
+            miner.Stein -= 3;
+            EnergyStand = EnergyStand + EnergyCount;
+        }
         StartCoroutine(EnergyCounting());
     }
         void Update()

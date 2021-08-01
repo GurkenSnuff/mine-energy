@@ -6,10 +6,11 @@ using Mirror;
 
 public class Ressourcen : NetworkBehaviour
 {
+    
     public int Money = 0;
     public SolarZellen solarZellen;
     private WindGenerator windGenerator;
-    public int Energy;
+    public int Energy=0;
     public Text Energie,money;
     private KohleGenerator kohleGenerator;
     private Seller seller;
@@ -49,7 +50,7 @@ public class Ressourcen : NetworkBehaviour
         KGE = kohleGenerator.EnergyStand + kohleGenerator.EnergyCount;
         Energy = SZE + WGE + KGE;
         
-       
+
         StartCoroutine(EnergyCounting());
     }
     IEnumerator MoneyCounter()
@@ -95,22 +96,14 @@ public class Ressourcen : NetworkBehaviour
             Money += 30;
             SellerAnzahlGS--;
         }
-        if (isLocalPlayer&&!isServer)
-        {
-            money.text = "Money: " + Money;
-            Energie.text = "Energy: " + Energy;
-        }
-        if (!isLocalPlayer&&isServer)
-        {
-            money.text = "Money: " + Money;
-            Energie.text = "Energy: " + Energy;
-        }
-        
-        
-        
+
         StartCoroutine(MoneyCounter());
     }
-    
-    
+
+    void Update()
+    {
+        money.text = "Money: " + Money;
+        Energie.text = "Energy: " + Energy;
+    }
     
 }
