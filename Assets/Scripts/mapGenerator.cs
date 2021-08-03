@@ -7,7 +7,7 @@ using Mirror;
 public class mapGenerator : NetworkBehaviour
 {
     public GameObject block, block1;
-    private float b = 0, c = 0;
+    private float b = 0, c = 0,e=0;
     public Tile[] tiles;
     public GameObject d;
     public SolarZellen solarZellen;
@@ -62,8 +62,21 @@ public class mapGenerator : NetworkBehaviour
                     b.transform.position = t;
 
                 }
+                while (e <= 5)
+                {
+                    e += 1.085f;
+                    rand = Random.Range(0, tiles.Length);
+                    s = new Vector3(transform.position.x + e, transform.position.y+b, transform.position.z);
+                    map.SetTile(map.WorldToCell(s), tiles[rand]);
+                    resistanceCheck = mapManager.GetTileResistance(s);
+                    UpdateSaveTile.Add(rand);
+                    UpdateSavePosition.Add(s);
 
-                b -= 1.183f;
+                    GameObject d = Instantiate(Hitbox) as GameObject;
+                    d.transform.position = s;
+                }
+                e = 0;
+                    b -= 1.183f;
             }
             while (c <= 5)
             {

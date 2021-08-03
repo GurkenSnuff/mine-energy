@@ -54,8 +54,8 @@ public class GoldMiner : NetworkBehaviour
 
     void Update()
     {
-        if (ressourcen.Money>=1000)
-        {
+        //if (ressourcen.Money>=1000)
+      //  {
             if (Input.GetMouseButtonDown(0) && EnoughForG == true)
             {
 
@@ -150,7 +150,7 @@ public class GoldMiner : NetworkBehaviour
                 }
 
             }
-        }
+        //}
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             EnoughForG = false;

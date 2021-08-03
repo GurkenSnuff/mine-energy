@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
 
 
-
-public class Miner : MonoBehaviour
+public class Miner : NetworkBehaviour
 {
     [SerializeField]
     private List<TileData> tileDatas;
@@ -18,7 +18,7 @@ public class Miner : MonoBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
+    private Vector3 minerÜber,Placement;
     public Text StoneCount;
     private SolarZellen solarZellen;
     public int MinenAnzahl;
@@ -49,6 +49,7 @@ public class Miner : MonoBehaviour
         goldMiner= FindObjectOfType<GoldMiner>();
         solarZellen = FindObjectOfType<SolarZellen>();
         mapManager = FindObjectOfType<MapManager>();
+        map = FindObjectOfType<Tilemap>();
         dataFromTiles = new Dictionary<TileBase, TileData>();
         StartCoroutine(SteinCounter());
     }
@@ -56,11 +57,12 @@ public class Miner : MonoBehaviour
 
      void Update()
      {
-        if (Stein >= 100 && eisenMiner.Eisen>=50)
-        {
+       
+        //if (Stein >= 100 && eisenMiner.Eisen>=50)
+        //{
             if (Input.GetMouseButtonDown(0) && EnoughForM == true)
             {
-
+                Placement= Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
                 if (t <= 1)
@@ -76,7 +78,11 @@ public class Miner : MonoBehaviour
                         HowManyMiner += 1;
                         Stein -= 100;
                         eisenMiner.Eisen -= 50;
+                    if (isLocalPlayer)
+                    {
+                        SentTileUpdateToServer(Placement);
                     }
+                }
                     else
                     {
                         e = 1;
@@ -85,37 +91,47 @@ public class Miner : MonoBehaviour
 
 
 
-                    minerÜber.x -= 2;
-                    t = mapManager.GetTileResistance(minerÜber);
+                   
                     if (e == 1)
                     {
-                        if (t == 2)
+                    minerÜber.x -= 2;
+                    t = mapManager.GetTileResistance(minerÜber);
+                    if (t == 2)
                         {
                             TileUpdateCheck = true;
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             Stein -= 100;
                             eisenMiner.Eisen -= 50;
+                        if (isLocalPlayer)
+                        {
+                            SentTileUpdateToServer(Placement);
                         }
+                    }
                         else
                         {
                             e = 2;
                         }
                     }
 
+                    
+                    if (e == 2)
+                    {
                     minerÜber.x += 1;
                     minerÜber.y += 1;
                     t = mapManager.GetTileResistance(minerÜber);
-                    if (e == 2)
-                    {
-                        if (t == 2)
+                    if (t == 2)
                         {
                             TileUpdateCheck = true;
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             Stein -= 100;
                             eisenMiner.Eisen -= 50;
+                        if (isLocalPlayer)
+                        {
+                            SentTileUpdateToServer(Placement);
                         }
+                    }
                         else
                         {
                             e = 3;
@@ -123,24 +139,29 @@ public class Miner : MonoBehaviour
                     }
 
 
-                    minerÜber.y -= 2;
-                    t = mapManager.GetTileResistance(minerÜber);
+                    
                     if (e == 3)
                     {
-                        if (t == 2)
+                    minerÜber.y -= 2;
+                    t = mapManager.GetTileResistance(minerÜber);
+                    if (t == 2)
                         {
                             TileUpdateCheck = true;
                             map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                             HowManyMiner += 1;
                             Stein -= 100;
                             eisenMiner.Eisen -= 50;
+                        if (isLocalPlayer)
+                        {
+                            SentTileUpdateToServer(Placement);
                         }
+                    }
                     }
 
                 }
 
             }
-        }
+        //}
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 EnoughForM = false;
@@ -177,5 +198,20 @@ public class Miner : MonoBehaviour
         doubleSeller.EnoughForDS = false;
         steinSeller.EnoughForSS = false;
         goldSeller.EnoughForGS = false;
+    }
+    [ClientRpc]
+    void SentTileUpdateToClients(Vector3 position)
+    {
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+
+    }
+    [Command]
+    void SentTileUpdateToServer(Vector3 position)
+    {
+
+        SentTileUpdateToClients(position);
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
     }
 }

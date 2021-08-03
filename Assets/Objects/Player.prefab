@@ -2469,7 +2469,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: c3d6f2eb20423774a96530fc5b84b6bf, type: 2}
   map: {fileID: 0}
-  StoneCount: {fileID: 0}
+  StoneCount: {fileID: 7809986049416956246}
   MinenAnzahl: 0
   EnoughForM: 0
   TileUpdateCheck: 0
@@ -4833,7 +4833,7 @@ RectTransform:
   m_Father: {fileID: 3569392611858329603}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.40027314}
+  m_AnchorMin: {x: 0, y: 0.4002732}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -7167,8 +7167,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2751997922252432032}
-        m_MethodName: SZWillK
+      - m_Target: {fileID: 3556356893732528745}
+        m_MethodName: MinerWillK
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8557,8 +8557,8 @@ RectTransform:
   m_Father: {fileID: 8010219369069272085}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.42061147}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMin: {x: 0, y: 0.4206115}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8867,7 +8867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &405257245361796041
 RectTransform:
   m_ObjectHideFlags: 0
