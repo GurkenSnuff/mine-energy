@@ -39,18 +39,25 @@ public class TileUpdater : NetworkBehaviour
     public List<Vector3> tileUpdatertilesDS = new List<Vector3>();
     [SyncVar]
     public List<Vector3> tileUpdatertilesDM = new List<Vector3>();
+    [SyncVar]
+    public List<Vector3> tileUpdatertilesWG = new List<Vector3>();
     public List<TileBase> updateTiles = new List<TileBase>();
-    bool t = false,s=false,K=false;
+    bool t = false,s=false,K=false,w=false,S=false,DS=false,SS=false,GS=false;
     private Tilemap map;
-    public int deleteCount=-1,x = -1,x2 = -1,T= -1,j=0;
-    private Vector3 z,k;
+    public int deleteCount=-1;
+    private Vector3 z,k,z3,i,d,u,y;
     private NetworkConnection networkConnection;
     private MapManager mapManager;
     public List<int> propertys = new List<int>();
     public bool Alive = false;
+    private WindGenerator windGenerator;
+    private int deleteCount2 = -1, x3 = -1, x4 = -1,U=-1, x = -1, x2 = -1, T = -1, j = 0, I = -1, D = -1,Y=-1;
+    
+    private Vector3 z2;
 
     void Awake()
     {
+        windGenerator = FindObjectOfType<WindGenerator>();
         mapManager = FindObjectOfType<MapManager>();
         clintConnects = FindObjectOfType<Clintconnects>();
         solarZellen = FindObjectOfType<SolarZellen>();
@@ -68,10 +75,13 @@ public class TileUpdater : NetworkBehaviour
     }
     void Update()
     {
-        
+        WindGenerator();
         SolarZellen();
             KohleGenerator();
-        
+        Seller();
+        DoubleSeller();
+        SteinSeller();
+        GoldSeller();
     }
     
         
@@ -80,8 +90,8 @@ public class TileUpdater : NetworkBehaviour
     [ClientRpc]
     private void updateTile(Vector3 number,int tile)
     {
-        
 
+        
         if (tile == -1)
         {
             map.SetTile(map.WorldToCell(number), deleteTiles[0]);
@@ -108,17 +118,41 @@ public class TileUpdater : NetworkBehaviour
             
                 if (tile == 1)
                 {
-                    tileUpdatertilesK.Add(number);
+                    
                     K = true;
                 }
                 if (tile == 0)
                 {
 
-                    tileUpdatertiles.Add(number);
-                    t = true;
+                t = true;
                 }
-                map.SetTile(map.WorldToCell(number), updateTiles[tile]);
+                if (tile == 2)
+                {
+
+                     
+                     w= true;
+                }
+            if (tile == 3)
+            {
+                
+                S = true;
+            }
+            if (tile == 4)
+            {
+                DS = true;
+            }
+            if (tile == 5)
+            {
+                SS = true;
+            }
+            if (tile == 6)
+            {
+                GS = true;
+            }
+
+            map.SetTile(map.WorldToCell(number), updateTiles[tile]);
         }
+        
         updateTile(number, tile);
         
     }
@@ -148,6 +182,7 @@ public class TileUpdater : NetworkBehaviour
             x = -1;
         }
 
+
         if (t == true )
         {
             
@@ -169,6 +204,52 @@ public class TileUpdater : NetworkBehaviour
             x = -1;
         }
     }
+    private void WindGenerator()
+    {
+        
+        if (windGenerator.TileUpdateCheck == true)
+        {
+
+
+            windGenerator.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesWG.Add(windGenerator.Placement);
+                
+
+                foreach (var variable in tileUpdatertilesWG)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesWG[x3];
+                    updateTileServer(z2, 2);
+                    
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (w == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesWG)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesWG[x3];
+
+                    updateTile(z2, 2);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
+
     private void KohleGenerator()
     {
         if (kohleGenerator.TileUpdateCheck == true )
@@ -185,7 +266,7 @@ public class TileUpdater : NetworkBehaviour
                     T++;
                     k = tileUpdatertilesK[T];
                     updateTileServer(k, 1);
-
+                    
 
                 }
             }
@@ -213,6 +294,190 @@ public class TileUpdater : NetworkBehaviour
             T = -1;
         }
     }
+    private void Seller()
+    {
+        int x3 = -1;
+        Vector3 z2;
+        if (seller.TileUpdateCheck == true)
+        {
+
+
+            seller.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesS.Add(seller.minerÜber);
+
+
+                foreach (var variable in tileUpdatertilesS)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesS[x3];
+                    updateTileServer(z2, 3);
+
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (S == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesS)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesS[x3];
+
+                    updateTile(z2, 3);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
+    private void DoubleSeller()
+    {
+        int x6 = -1;
+        Vector3 z5;
+        if (doubleSeller.TileUpdateCheck == true)
+        {
+
+
+            doubleSeller.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesDS.Add(doubleSeller.Placement);
+
+
+                foreach (var variable in tileUpdatertilesDS)
+                {
+
+                    x6++;
+                    z5 = tileUpdatertilesDS[x6];
+                    updateTileServer(z5, 4);
+
+
+                }
+            }
+            x6 = -1;
+        }
+
+
+        if (DS == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesDS)
+                {
+
+                    x6++;
+                    z5 = tileUpdatertilesDS[x6];
+
+                    updateTile(z5, 4);
+
+                }
+            }
+            x6 = -1;
+        }
+    }
+    private void SteinSeller()
+    {
+        int x3 = -1;
+        Vector3 z2;
+        if (steinSeller.TileUpdateCheck == true)
+        {
+
+
+            steinSeller.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesSS.Add(steinSeller.minerÜber);
+
+
+                foreach (var variable in tileUpdatertilesSS)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesSS[x3];
+                    updateTileServer(z2, 5);
+
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (SS == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesSS)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesSS[x3];
+
+                    updateTile(z2, 5);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
+    private void GoldSeller()
+    {
+        int x3 = -1;
+        Vector3 z2;
+        if (goldSeller.TileUpdateCheck == true)
+        {
+
+
+            goldSeller.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesGS.Add(goldSeller.minerÜber);
+
+
+                foreach (var variable in tileUpdatertilesGS)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesGS[x3];
+                    updateTileServer(z2, 6);
+
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (GS == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesGS)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesGS[x3];
+
+                    updateTile(z2, 6);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
     public void deleteTilesButton()
     {
         
@@ -231,17 +496,49 @@ public class TileUpdater : NetworkBehaviour
 
 
             }
-            
-            foreach (var variable in tileUpdatertilesK)
-            {
+
+        foreach (var variable in tileUpdatertilesWG)
+        {
+            x4++;
+             z3 = tileUpdatertilesWG[x4];
+            updateTileServer(z3, -1);
+        }
+
+        foreach (var variable in tileUpdatertilesK)
+        {
 
                 T++;
                 k = tileUpdatertilesK[T];
                 updateTileServer(k, -1);
-                updateTile(k, -1);
+        }
+        foreach (var variable in tileUpdatertilesS)
+        {
 
-            }
+            D++;
+             d= tileUpdatertilesS[D];
+            updateTileServer(d, -1);
+        }
+        foreach (var variable in tileUpdatertilesDS)
+        {
 
+            I++;
+             i= tileUpdatertilesDS[I];
+            updateTileServer(i, -1);
+        }
+        foreach (var variable in tileUpdatertilesSS)
+        {
+
+            U++;
+            u = tileUpdatertilesSS[U];
+            updateTileServer(u, -1);
+        }
+        foreach (var variable in tileUpdatertilesGS)
+        {
+
+            Y++;
+            y = tileUpdatertilesGS[Y];
+            updateTileServer(y, -1);
+        }
 
         Alive = false;
         NetworkManager.singleton.StopClient();

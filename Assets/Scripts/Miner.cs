@@ -174,7 +174,7 @@ public class Miner : NetworkBehaviour
     {
         yield return new WaitForSeconds(1);
         MinenAnzahl = HowManyMiner;
-        while (solarZellen.EnergyStand >= 0 && MinenAnzahl >= 1)
+        while (ressourcen.Energy >= 0 && MinenAnzahl >= 1)
         {
             solarZellen.EnergyStand -= 1;
             ressourcen.Energy -= 1;

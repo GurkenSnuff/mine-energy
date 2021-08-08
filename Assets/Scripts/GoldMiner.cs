@@ -16,7 +16,7 @@ public class GoldMiner : NetworkBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
+    private Vector3 minerÜber,Placement;
     public Text StoneCount;
     private SolarZellen solarZellen;
     public int MinenAnzahl;
@@ -35,6 +35,7 @@ public class GoldMiner : NetworkBehaviour
 
     void Awake()
     {
+        map = FindObjectOfType<Tilemap>();
         goldSeller = FindObjectOfType<GoldSeller>();
         steinSeller = FindObjectOfType<SteinSeller>();
         ressourcen = FindObjectOfType<Ressourcen>();
@@ -60,6 +61,7 @@ public class GoldMiner : NetworkBehaviour
             {
 
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Placement = minerÜber;
                 t = mapManager.GetTileResistance(minerÜber);
                 if (t <= 1)
                 {
@@ -75,7 +77,7 @@ public class GoldMiner : NetworkBehaviour
                         TileUpdateCheck = true;
                         if (isLocalPlayer)
                         {
-                            SentTileUpdateToServer(minerÜber);
+                            SentTileUpdateToServer(Placement);
                         }
                     }
                     else
@@ -98,7 +100,7 @@ public class GoldMiner : NetworkBehaviour
                             ressourcen.Money -= 1000;
                             if (isLocalPlayer)
                             {
-                                SentTileUpdateToServer(minerÜber);
+                                SentTileUpdateToServer(Placement);
                             }
                         }
                         else
@@ -120,7 +122,7 @@ public class GoldMiner : NetworkBehaviour
                             TileUpdateCheck = true;
                             if (isLocalPlayer)
                             {
-                                SentTileUpdateToServer(minerÜber);
+                                SentTileUpdateToServer(Placement);
                             }
                         }
                         else
@@ -142,7 +144,7 @@ public class GoldMiner : NetworkBehaviour
                             TileUpdateCheck = true;
                             if (isLocalPlayer)
                             {
-                                SentTileUpdateToServer(minerÜber);
+                                SentTileUpdateToServer(Placement);
                             }
                         }
                     }
@@ -178,7 +180,7 @@ public class GoldMiner : NetworkBehaviour
     {
         yield return new WaitForSeconds(1);
         MinenAnzahl = HowManyMiner;
-        while (solarZellen.EnergyStand >= 0 && MinenAnzahl >= 1)
+        while (ressourcen.Energy >= 0 && MinenAnzahl >= 1)
         {
             solarZellen.EnergyStand -= 1;
             ressourcen.Energy -= 1;

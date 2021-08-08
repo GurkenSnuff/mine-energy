@@ -16,7 +16,7 @@ public class SteinSeller : NetworkBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
+    public Vector3 minerÜber;
     public bool TileUpdateCheck = false;
     private SolarZellen solarZellen;
     public int SellerAnzahl;
@@ -34,6 +34,7 @@ public class SteinSeller : NetworkBehaviour
 
     void Awake()
     {
+        map = FindObjectOfType<Tilemap>();
         goldSeller = FindObjectOfType<GoldSeller>();
         ressourcen = FindObjectOfType<Ressourcen>();
         seller = FindObjectOfType<Seller>();
@@ -53,8 +54,8 @@ public class SteinSeller : NetworkBehaviour
 
     void Update()
     {
-        if (miner.Stein >= 100 && ressourcen.Money >= 3000)
-        {
+        //if (miner.Stein >= 100 && ressourcen.Money >= 3000)
+        //{
             if (Input.GetMouseButtonDown(0) && EnoughForSS == true)
             {
 
@@ -77,7 +78,7 @@ public class SteinSeller : NetworkBehaviour
 
 
 
-            }
+           // }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

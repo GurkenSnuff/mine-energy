@@ -16,7 +16,7 @@ public class Seller : NetworkBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
+    public Vector3 minerÜber;
     public bool TileUpdateCheck = false;
     private SolarZellen solarZellen;
     public int SellerAnzahl;
@@ -30,6 +30,7 @@ public class Seller : NetworkBehaviour
     private DoubleSeller doubleSeller;
     private SteinSeller steinSeller;
     private GoldSeller goldSeller;
+
 
     void Awake()
     {

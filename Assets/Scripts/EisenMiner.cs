@@ -7,6 +7,7 @@ using Mirror;
 
 public class EisenMiner : NetworkBehaviour
 {
+
     [SerializeField]
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
@@ -16,7 +17,7 @@ public class EisenMiner : NetworkBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
+    private Vector3 minerÜber,Placement;
     public Text StoneCount;
     private SolarZellen solarZellen;
     public int MinenAnzahl;
@@ -35,6 +36,7 @@ public class EisenMiner : NetworkBehaviour
 
     void Awake()
     {
+        map = FindObjectOfType<Tilemap>();
         goldSeller = FindObjectOfType<GoldSeller>();
         steinSeller = FindObjectOfType<SteinSeller>();
         ressourcen = FindObjectOfType<Ressourcen>();
@@ -54,12 +56,13 @@ public class EisenMiner : NetworkBehaviour
 
     void Update()
     {
-        if (ressourcen.Money>=400)
-        {
+       // if (ressourcen.Money>=400)
+        //{
             if (Input.GetMouseButtonDown(0) && EnoughForE == true)
             {
 
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Placement = minerÜber;
                 t = mapManager.GetTileResistance(minerÜber);
                 if (t <= 1)
                 {
@@ -76,7 +79,7 @@ public class EisenMiner : NetworkBehaviour
                         TileUpdateCheck = true;
                         if (isLocalPlayer)
                         {
-                            SentTileUpdateToServer(minerÜber);
+                            SentTileUpdateToServer(Placement);
                         }
                     }
                     else
@@ -99,7 +102,7 @@ public class EisenMiner : NetworkBehaviour
                             TileUpdateCheck = true;
                             if (isLocalPlayer)
                             {
-                                SentTileUpdateToServer(minerÜber);
+                                SentTileUpdateToServer(Placement);
                             }
                         }
                         else
@@ -121,7 +124,7 @@ public class EisenMiner : NetworkBehaviour
                             TileUpdateCheck = true;
                             if (isLocalPlayer)
                             {
-                                SentTileUpdateToServer(minerÜber);
+                                SentTileUpdateToServer(Placement);
                             }
                         }
                         else
@@ -143,7 +146,7 @@ public class EisenMiner : NetworkBehaviour
                             TileUpdateCheck = true;
                             if (isLocalPlayer)
                             {
-                                SentTileUpdateToServer(minerÜber);
+                                SentTileUpdateToServer(Placement);
                             }
                         }
                     }
@@ -151,7 +154,7 @@ public class EisenMiner : NetworkBehaviour
                 }
 
             }
-        }
+        //}
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             EnoughForE = false;
@@ -179,7 +182,7 @@ public class EisenMiner : NetworkBehaviour
     {
         yield return new WaitForSeconds(1);
         MinenAnzahl = HowManyMiner;
-        while (solarZellen.EnergyStand >= 0 && MinenAnzahl >= 1)
+        while (ressourcen.Energy >= 0 && MinenAnzahl >= 1)
         {
             solarZellen.EnergyStand -= 1;
             ressourcen.Energy -= 1;

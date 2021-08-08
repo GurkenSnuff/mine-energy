@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using Mirror;
 
-
-public class DiamondMiner : MonoBehaviour
+public class DiamondMiner : NetworkBehaviour
 {
     [SerializeField]
     private List<TileData> tileDatas;
@@ -16,7 +16,7 @@ public class DiamondMiner : MonoBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
+    private Vector3 minerÜber,Placement;
     public Text StoneCount;
     private SolarZellen solarZellen;
     public int MinenAnzahl;
@@ -35,6 +35,7 @@ public class DiamondMiner : MonoBehaviour
 
     void Awake()
     {
+        map = FindObjectOfType<Tilemap>();
         goldSeller = FindObjectOfType<GoldSeller>();
         steinSeller = FindObjectOfType<SteinSeller>();
         ressourcen = FindObjectOfType<Ressourcen>();
@@ -54,12 +55,13 @@ public class DiamondMiner : MonoBehaviour
 
     void Update()
     {
-        if (ressourcen.Money>=2000)
-        {
+        //if (ressourcen.Money>=2000)
+       // {
             if (Input.GetMouseButtonDown(0) && EnoughForD == true)
             {
 
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Placement = minerÜber;
                 t = mapManager.GetTileResistance(minerÜber);
                 if (t <= 1)
                 {
@@ -73,7 +75,8 @@ public class DiamondMiner : MonoBehaviour
                         HowManyMiner += 1;
                         ressourcen.Money -= 2000;
                         TileUpdateCheck = true;
-                    }
+                    SentTileUpdateToServer(Placement);
+                }
                     else
                     {
                         e = 1;
@@ -92,7 +95,8 @@ public class DiamondMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 2000;
                             TileUpdateCheck = true;
-                        }
+                        SentTileUpdateToServer(Placement);
+                    }
                         else
                         {
                             e = 2;
@@ -110,7 +114,8 @@ public class DiamondMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 2000;
                             TileUpdateCheck = true;
-                        }
+                        SentTileUpdateToServer(Placement);
+                    }
                         else
                         {
                             e = 3;
@@ -128,12 +133,13 @@ public class DiamondMiner : MonoBehaviour
                             HowManyMiner += 1;
                             ressourcen.Money -= 2000;
                             TileUpdateCheck = true;
-                        }
+                        SentTileUpdateToServer(Placement);
+                    }
                     }
 
                 }
 
-            }
+           // }
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -147,7 +153,7 @@ public class DiamondMiner : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         MinenAnzahl = HowManyMiner;
-        while (solarZellen.EnergyStand >= 0 && MinenAnzahl >= 1)
+        while (ressourcen.Energy >= 0 && MinenAnzahl >= 1)
         {
             solarZellen.EnergyStand -= 1;
             ressourcen.Energy -= 1;
@@ -170,5 +176,20 @@ public class DiamondMiner : MonoBehaviour
         doubleSeller.EnoughForDS = false;
         steinSeller.EnoughForSS = false;
         goldSeller.EnoughForGS = false;
+    }
+    [Command]
+    void SentTileUpdateToServer(Vector3 position)
+    {
+
+        SentTileUpdateToClients(position);
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+    }
+    [ClientRpc]
+    void SentTileUpdateToClients(Vector3 position)
+    {
+
+        map.SetTile(map.WorldToCell(position), tiles[0]);
+
     }
 }

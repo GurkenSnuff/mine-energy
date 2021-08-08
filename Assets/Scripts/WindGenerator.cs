@@ -15,9 +15,9 @@ public class WindGenerator : NetworkBehaviour
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
     private float t;
-    private Vector3 Placement;
+    public Vector3 Placement;
     public int EnergyCount = 0, EnergySafe, EnergyStand;
-    
+    public bool TileUpdateCheck = false;
     private Miner miner;
     public bool EnoughForWG = false;
     private Seller seller;
@@ -67,18 +67,19 @@ public class WindGenerator : NetworkBehaviour
             
                 if (t == 0)
                 {
-                    if (eisenMiner.Eisen >= 100&& diamondMiner.Diamond>=20)
-                    {
+                    //if (eisenMiner.Eisen >= 100&& diamondMiner.Diamond>=20)
+                    //{
                         map.SetTile(map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)), tiles[0]);
                         EnergyCount++;
                         eisenMiner.Eisen -= 100;
                         diamondMiner.Diamond -= 20;
-                    if (isLocalPlayer)
+                        TileUpdateCheck = true;
+                if (isLocalPlayer)
                     {
                         SentTileUpdateToServer(Placement);
                     }
                 }
-                }
+                //}
             
         }
         if (Input.GetKeyDown(KeyCode.Escape))

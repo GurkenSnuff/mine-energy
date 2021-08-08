@@ -16,8 +16,8 @@ public class GoldSeller : NetworkBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber;
-
+    public Vector3 minerÜber;
+    
     private SolarZellen solarZellen;
     public int SellerAnzahl;
     public bool EnoughForGS = false;
@@ -58,8 +58,8 @@ public class GoldSeller : NetworkBehaviour
 
         if (Input.GetMouseButtonDown(0) && EnoughForGS == true)
         {
-            if (goldMiner.Gold >= 200 &&  ressourcen.Money>= 10000)
-            {
+            //if (goldMiner.Gold >= 200 &&  ressourcen.Money>= 10000)
+            //{
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
 
@@ -75,7 +75,7 @@ public class GoldSeller : NetworkBehaviour
                         SentTileUpdateToServer(minerÜber);
                     }
                 }
-            }
+            //}
 
 
         }

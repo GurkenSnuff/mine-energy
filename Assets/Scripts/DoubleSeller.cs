@@ -60,8 +60,8 @@ public class DoubleSeller : NetworkBehaviour
 
         if (Input.GetMouseButtonDown(0) && EnoughForDS == true)
         {
-             if (ressourcen.Money >= 1500)
-             {
+             //if (ressourcen.Money >= 1500)
+             //{
 
                Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                t = mapManager.GetTileResistance(Placement);
@@ -77,7 +77,7 @@ public class DoubleSeller : NetworkBehaviour
                     SentTileUpdateToServer(Placement);
                 }
                }
-             }
+            // }
 
 
         }

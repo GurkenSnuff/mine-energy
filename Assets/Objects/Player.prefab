@@ -2350,6 +2350,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 6d7c250c40e75e44ab68109105a40eb7, type: 2}
   map: {fileID: 0}
+  "miner\xDCber": {x: 0, y: 0, z: 0}
   SellerAnzahl: 0
   EnoughForGS: 0
   TileUpdateCheck: 0
@@ -2374,7 +2375,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 3e8a8d8a41e82a14db5b6778159b2b4a, type: 2}
   map: {fileID: 0}
-  StoneCount: {fileID: 0}
+  StoneCount: {fileID: 7304105382134781635}
   MinenAnzahl: 0
   EnoughForG: 0
   TileUpdateCheck: 0
@@ -2399,7 +2400,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 705ba512b14ae334f970a77fe95a86fe, type: 2}
   map: {fileID: 0}
-  StoneCount: {fileID: 0}
+  StoneCount: {fileID: 557776817573731282}
   MinenAnzahl: 0
   EnoughForE: 0
   TileUpdateCheck: 0
@@ -2415,6 +2416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039693b7a7db1f74db8321c9ac5442b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   e: 0
   Diamond: 0
@@ -2422,7 +2425,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: fdd6ca87cbb32b14081d77e1e6e5aae7, type: 2}
   map: {fileID: 0}
-  StoneCount: {fileID: 0}
+  StoneCount: {fileID: 5893039797030573283}
   MinenAnzahl: 0
   EnoughForD: 0
   TileUpdateCheck: 0
@@ -2462,6 +2465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7aae38838f82d4d9be9841acb953ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   tileDatas: []
   e: 0
   Stein: 0
@@ -2527,6 +2532,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 93f3aac5a03c04047b4233e9b704c597, type: 2}
   map: {fileID: 0}
+  "miner\xDCber": {x: 0, y: 0, z: 0}
   TileUpdateCheck: 0
   SellerAnzahl: 0
   EnoughForSS: 0
@@ -2548,9 +2554,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a57bcdf42d880449886938ccf15056b, type: 2}
   map: {fileID: 0}
   tileDatas: []
+  Placement: {x: 0, y: 0, z: 0}
   EnergyCount: 0
   EnergySafe: 0
   EnergyStand: 0
+  TileUpdateCheck: 0
   EnoughForWG: 0
 --- !u!114 &3268495677304881415
 MonoBehaviour:
@@ -2623,6 +2631,7 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 292238232d25fd842ae2bfbf03cb8572, type: 2}
   map: {fileID: 0}
+  "miner\xDCber": {x: 0, y: 0, z: 0}
   TileUpdateCheck: 0
   SellerAnzahl: 0
   EnoughForS: 0
@@ -2674,14 +2683,16 @@ MonoBehaviour:
   tileUpdatertilesEM: []
   tileUpdatertilesDS: []
   tileUpdatertilesDM: []
+  tileUpdatertilesWG: []
   updateTiles:
   - {fileID: 11400000, guid: d648943234656b647b056fb33ef978a8, type: 2}
   - {fileID: 11400000, guid: 2626facf6eb82aa47861439569fbaa05, type: 2}
+  - {fileID: 11400000, guid: 5a57bcdf42d880449886938ccf15056b, type: 2}
+  - {fileID: 11400000, guid: 292238232d25fd842ae2bfbf03cb8572, type: 2}
+  - {fileID: 11400000, guid: a3fb2eb1fe445f141afd13f4e55db231, type: 2}
+  - {fileID: 11400000, guid: 93f3aac5a03c04047b4233e9b704c597, type: 2}
+  - {fileID: 11400000, guid: 6d7c250c40e75e44ab68109105a40eb7, type: 2}
   deleteCount: -1
-  x: -1
-  x2: -1
-  T: -1
-  j: -1
   propertys: 
   Alive: 0
 --- !u!114 &8217401795562135588
@@ -9876,7 +9887,7 @@ PrefabInstance:
     - target: {fileID: 2963862064210759926, guid: 7aaed8d50bd9d914ea69234e55e44d38,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6680621867104687323, guid: 7aaed8d50bd9d914ea69234e55e44d38,
         type: 3}
@@ -9896,7 +9907,7 @@ PrefabInstance:
     - target: {fileID: 6680621867104687323, guid: 7aaed8d50bd9d914ea69234e55e44d38,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 53.922
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 6680621867104687323, guid: 7aaed8d50bd9d914ea69234e55e44d38,
         type: 3}
