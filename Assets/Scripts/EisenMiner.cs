@@ -17,7 +17,7 @@ public class EisenMiner : NetworkBehaviour
     public Tile[] tiles;
     [SerializeField]
     private Tilemap map;
-    private Vector3 minerÜber,Placement;
+    public Vector3 minerÜber,Placement;
     public Text StoneCount;
     private SolarZellen solarZellen;
     public int MinenAnzahl;

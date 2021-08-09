@@ -42,7 +42,7 @@ public class TileUpdater : NetworkBehaviour
     [SyncVar]
     public List<Vector3> tileUpdatertilesWG = new List<Vector3>();
     public List<TileBase> updateTiles = new List<TileBase>();
-    bool t = false,s=false,K=false,w=false,S=false,DS=false,SS=false,GS=false;
+    bool t = false,s=false,K=false,w=false,S=false,DS=false,SS=false,GS=false,M=false,EM=false,GM=false,DM=false;
     private Tilemap map;
     public int deleteCount=-1;
     private Vector3 z,k,z3,i,d,u,y;
@@ -82,6 +82,10 @@ public class TileUpdater : NetworkBehaviour
         DoubleSeller();
         SteinSeller();
         GoldSeller();
+        Miner();
+        Eisenminer();
+        Goldminer();
+        Diamondminer();
     }
     
         
@@ -148,6 +152,22 @@ public class TileUpdater : NetworkBehaviour
             if (tile == 6)
             {
                 GS = true;
+            }
+            if (tile == 7)
+            {
+                M = true;
+            }
+            if (tile == 8)
+            {
+                EM = true;
+            }
+            if (tile == 9)
+            {
+                GM = true;
+            }
+            if (tile == 10)
+            {
+                DM = true;
             }
 
             map.SetTile(map.WorldToCell(number), updateTiles[tile]);
@@ -478,6 +498,190 @@ public class TileUpdater : NetworkBehaviour
             x3 = -1;
         }
     }
+    private void Miner()
+    {
+        int x3 = -1;
+        Vector3 z2;
+        if (miner.TileUpdateCheck == true)
+        {
+
+
+            miner.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesM.Add(miner.Placement);
+
+
+                foreach (var variable in tileUpdatertilesM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesM[x3];
+                    updateTileServer(z2, 7);
+
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (M == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesM[x3];
+
+                    updateTile(z2, 7);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
+    private void Eisenminer()
+    {
+        int x3 = -1;
+        Vector3 z2;
+        if (eisenMiner.TileUpdateCheck == true)
+        {
+
+
+            eisenMiner.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesEM.Add(eisenMiner.Placement);
+
+
+                foreach (var variable in tileUpdatertilesEM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesEM[x3];
+                    updateTileServer(z2, 8);
+
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (EM == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesEM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesEM[x3];
+
+                    updateTile(z2, 8);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
+    private void Goldminer()
+    {
+        int x3 = -1;
+        Vector3 z2;
+        if (goldMiner.TileUpdateCheck == true)
+        {
+
+
+            goldMiner.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesGM.Add(goldMiner.Placement);
+
+
+                foreach (var variable in tileUpdatertilesGM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesGM[x3];
+                    updateTileServer(z2, 9);
+
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (GM == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesGM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesGM[x3];
+
+                    updateTile(z2, 9);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
+    private void Diamondminer()
+    {
+        int x3 = -1;
+        Vector3 z2;
+        if (diamondMiner.TileUpdateCheck == true)
+        {
+
+
+           diamondMiner.TileUpdateCheck = false;
+            if (isLocalPlayer)
+            {
+                tileUpdatertilesDM.Add(diamondMiner.Placement);
+
+
+                foreach (var variable in tileUpdatertilesDM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesDM[x3];
+                    updateTileServer(z2, 10);
+
+
+                }
+            }
+            x3 = -1;
+        }
+
+
+        if (DM == true)
+        {
+            if (isServer)
+            {
+
+                foreach (var variable in tileUpdatertilesDM)
+                {
+
+                    x3++;
+                    z2 = tileUpdatertilesDM[x3];
+
+                    updateTile(z2, 10);
+
+                }
+            }
+            x3 = -1;
+        }
+    }
     public void deleteTilesButton()
     {
         
@@ -537,6 +741,38 @@ public class TileUpdater : NetworkBehaviour
 
             Y++;
             y = tileUpdatertilesGS[Y];
+            updateTileServer(y, -1);
+        }
+        foreach (var variable in tileUpdatertilesM)
+        {
+            int Y = -1;
+            Vector3 y;
+            Y++;
+            y = tileUpdatertilesM[Y];
+            updateTileServer(y, -1);
+        }
+        foreach (var variable in tileUpdatertilesEM)
+        {
+            int Y = -1;
+            Vector3 y;
+            Y++;
+            y = tileUpdatertilesEM[Y];
+            updateTileServer(y, -1);
+        }
+        foreach (var variable in tileUpdatertilesGM)
+        {
+            int Y = -1;
+            Vector3 y;
+            Y++;
+            y = tileUpdatertilesGM[Y];
+            updateTileServer(y, -1);
+        }
+        foreach (var variable in tileUpdatertilesDM)
+        {
+            int Y = -1;
+            Vector3 y;
+            Y++;
+            y = tileUpdatertilesDM[Y];
             updateTileServer(y, -1);
         }
 

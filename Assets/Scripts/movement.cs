@@ -52,7 +52,8 @@ public class movement : NetworkBehaviour
         }
         else
         {
-            rigidbody.constraints = RigidbodyConstraints2D.None;
+            
+            rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
 
 

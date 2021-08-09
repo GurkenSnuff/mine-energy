@@ -15,7 +15,7 @@ public class lookAtMouse : NetworkBehaviour
         StartCoroutine(wait());  
     }
    
-    void LateUpdate()
+    void FixedUpdate()
     {
         Vector3 position = new Vector3(transform.position.x, transform.position.y, 0F);
         Vector3 targetMouse = cameraReal.ScreenToWorldPoint(Input.mousePosition) - position;
