@@ -34,7 +34,7 @@ public class WindGenerator : NetworkBehaviour
     void Awake()
     {
         map = FindObjectOfType<Tilemap>();
-        StartCoroutine(EnergyCounting());
+        
         goldSeller = FindObjectOfType<GoldSeller>();
         steinSeller = FindObjectOfType<SteinSeller>();
         doubleSeller = FindObjectOfType<DoubleSeller>();
@@ -49,13 +49,17 @@ public class WindGenerator : NetworkBehaviour
         dataFromTiles = new Dictionary<TileBase, TileData>();
         
     }
-
-    IEnumerator EnergyCounting()
+    public void CounterStart()
+    {
+        StartCoroutine(EnergyCounting());
+    }
+    public IEnumerator EnergyCounting()
     {
         yield return new WaitForSeconds(1);
         
         EnergyStand = EnergyStand + EnergyCount;
         
+
         StartCoroutine(EnergyCounting());
     }
     void Update()

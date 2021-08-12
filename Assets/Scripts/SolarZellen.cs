@@ -40,7 +40,7 @@ public class SolarZellen : NetworkBehaviour
         mapManager = FindObjectOfType<MapManager>();
         dataFromTiles = new Dictionary<TileBase, TileData>();
         
-        StartCoroutine(EnergyCounting());
+        
     }
 
 
@@ -97,15 +97,18 @@ public class SolarZellen : NetworkBehaviour
         }
 
     }
-            
-        
-    
-    IEnumerator EnergyCounting()
+    public void CounterStart()
+    {
+        StartCoroutine(EnergyCounting());
+    }
+
+
+    public IEnumerator EnergyCounting()
     {
         yield return new WaitForSeconds(1);
         EnergyStand = EnergyStand + EnergyCount;
-        StartCoroutine(EnergyCounting());
         
+        StartCoroutine(EnergyCounting());
     }
     public void SZWillK()
     {

@@ -36,7 +36,7 @@ public class KohleGenerator :NetworkBehaviour
     {
         map = FindObjectOfType<Tilemap>();
         goldSeller = FindObjectOfType<GoldSeller>();
-        StartCoroutine(EnergyCounting());
+        
         steinSeller = FindObjectOfType<SteinSeller>();
         doubleSeller = FindObjectOfType<DoubleSeller>();
         ressourcen = FindObjectOfType<Ressourcen>();
@@ -51,9 +51,14 @@ public class KohleGenerator :NetworkBehaviour
         dataFromTiles = new Dictionary<TileBase, TileData>();
 
     }
-    IEnumerator EnergyCounting()
+    public void CounterStart()
+    {
+        StartCoroutine(EnergyCounting());
+    }
+    public IEnumerator EnergyCounting()
     {
         yield return new WaitForSeconds(1);
+        
         if (miner.Stein >2&&EnergyCount>0)
         {
             miner.Stein -= 3;

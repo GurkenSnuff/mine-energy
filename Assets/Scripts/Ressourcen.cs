@@ -37,12 +37,16 @@ public class Ressourcen : NetworkBehaviour
            // money = GameObject.Find("Canvas/Money").GetComponent<Text>();
             //Energie = GameObject.Find("Canvas/Energy").GetComponent<Text>();
         
-            StartCoroutine(EnergyCounting());
-            StartCoroutine(MoneyCounter());
+            
         
         
     }
-    IEnumerator EnergyCounting()
+    public void CounterStart()
+    {
+        StartCoroutine(EnergyCounting());
+        StartCoroutine(MoneyCounter());
+    }
+    public IEnumerator EnergyCounting()
     {
         yield return new WaitForSeconds(1);
         SZE = solarZellen.EnergyStand + solarZellen.EnergyCount;
@@ -51,9 +55,10 @@ public class Ressourcen : NetworkBehaviour
         Energy = SZE + WGE + KGE;
         
 
+
         StartCoroutine(EnergyCounting());
     }
-    IEnumerator MoneyCounter()
+    public IEnumerator MoneyCounter()
     {
         
         yield return new WaitForSeconds(1);
