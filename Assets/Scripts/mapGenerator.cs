@@ -51,7 +51,7 @@ public class mapGenerator : NetworkBehaviour
     {
         if (isServer)
         {
-            while (b >= -5)
+            while (b >= -10)
             {
 
                 rand = Random.Range(0, tiles.Length);
@@ -70,7 +70,7 @@ public class mapGenerator : NetworkBehaviour
                     b.transform.position = t;
 
                 }
-                while (e <= 5)
+                while (e <= 10)
                 {
                     e += 1.085f;
                     rand = Random.Range(0, tiles.Length);
@@ -86,7 +86,7 @@ public class mapGenerator : NetworkBehaviour
                 e = 0;
                 b -= 1.183f;
             }
-            while (c <= 5)
+            while (c <= 10)
             {
                 c += 1.085f;
                 rand = Random.Range(0, tiles.Length);

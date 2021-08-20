@@ -19,6 +19,7 @@ public class orecollideractivater : NetworkBehaviour
     private int newClient=0,lessClient=0;
     public TileUpdater tileUpdater;
     private List<TileUpdater> tileupdater = new List<TileUpdater>();
+    public bool t=false;
     
 
     private void Awake()
@@ -34,14 +35,17 @@ public class orecollideractivater : NetworkBehaviour
     }
     void Update()
     {
-        
-        
+        int x = 0;
+        if (t == true)
+        {
+            print(mapGenerator.Player[x].transform.position-gameObject.transform.position);
+        }
 
-            if (clintConnects.clintConnectCount > newClient) activater = true;
+        if (clintConnects.clintConnectCount > newClient) activater = true;
             newClient = clintConnects.clintConnectCount;
         
 
-            if (mapManager.GetTileResistance(gameObject.transform.position) >= 1 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
+            if (mapManager.GetTileResistance(gameObject.transform.position) >= 2 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
             {
             h.enabled = true;
             if (activater == true)
@@ -52,7 +56,7 @@ public class orecollideractivater : NetworkBehaviour
                     
                 }
             }
-            if (mapManager.GetTileResistance(gameObject.transform.position) == 0)
+            if (mapManager.GetTileResistance(gameObject.transform.position) == 1)
             {
                 
                     h.enabled = false;
@@ -65,24 +69,60 @@ public class orecollideractivater : NetworkBehaviour
 
         foreach (var variable in mapGenerator.Player)
         {
-            int x = 0;
+            
             int tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
 
-            
-                if (gameObject.transform.position.x - mapGenerator.Player[x].transform.position.x < 100 || gameObject.transform.position.x - mapGenerator.Player[x].transform.position.x > -100 || gameObject.transform.position.y - mapGenerator.Player[x].transform.position.y < 100 || gameObject.transform.position.y - mapGenerator.Player[x].transform.position.y > -100)
+            if (mapGenerator.Player[x] != null)
+            {
+                
+
+                if (mapGenerator.Player.Count <= x)
                 {
-                   
+                    return;
+                }
+                Vector3 position = mapGenerator.Player[x].transform.position;
+                Vector3 distance = position - gameObject.transform.position;
+
+                if (distance.x < 7f&& distance.y < 7f)
+                {
+
                     mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
                 }
-            
+                else
+                {
+                    if (distance.x < -7f && distance.y < 7f)
+                    {
 
-            
-            
-            
+                        mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
+                    }
+
+                    else
+                    {
+                        if (distance.y < -7f&&distance.x < -7f)
+                        {
+
+                            mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
+                        }
+
+                        else
+                        {
+                            if (distance.y < 7f&& distance.x < 7f)
+                            {
+
+                                mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
+                            }
+                        }
+                    }
+                }
+            }
+            x++;
+
+
+
             
         }
         
-            //es muss noch gemacht werden das es von jedem Player den TileUpdater bekommt und in einer Liste speichert
+            
     }
     IEnumerator WaitUntilPlayerSpawned()
     {
