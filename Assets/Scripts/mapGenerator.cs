@@ -7,11 +7,13 @@ using Mirror;
 public class mapGenerator : NetworkBehaviour
 {
     public GameObject block, block1;
-    private float b = 0, c = 0,e=0;
+    private float b = 0, c = 0, e = 0;
     public Tile[] tiles;
     public GameObject d;
     public SolarZellen solarZellen;
-
+    public List<NetworkConnection> Clients = new List<NetworkConnection>();
+    public List<GameObject> Player = new List<GameObject>();
+    public GameObject newPlayer;
     public int rand, x = 0;
     [SerializeField]
     private Tilemap map;
@@ -26,14 +28,20 @@ public class mapGenerator : NetworkBehaviour
     public List<int> UpdateSaveTile = new List<int>();
     public List<Vector3> UpdateSavePosition = new List<Vector3>();
     public bool newClientJoined = false;
-    bool isPlaced = false;
+    public bool isPlaced = false,check=false;
     public GameObject k;
     private List<Vector3> colliderList = new List<Vector3>();
+    private TileUpdater tileUpdater;
+    public List<TileUpdater> tileupdater = new List<TileUpdater>();
+    [SerializeField]
+    private List<TileBase> junkTiles = new List<TileBase>();
+    private List<Vector3> positions = new List<Vector3>();
+    private bool transmit=false;
 
     private void Awake()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
-
+        tileUpdater = FindObjectOfType<TileUpdater>();
 
 
         mapManager = FindObjectOfType<MapManager>();
@@ -52,11 +60,11 @@ public class mapGenerator : NetworkBehaviour
                 resistanceCheck = mapManager.GetTileResistance(t);
                 UpdateSaveTile.Add(rand);
                 UpdateSavePosition.Add(t);
-                
-                    GameObject a = Instantiate(Hitbox) as GameObject;
-                    a.transform.position = t;
-                
-                if (mapManager.GetTileResistance(t) == 30)
+
+                GameObject a = Instantiate(Hitbox) as GameObject;
+                a.transform.position = t;
+
+                if (mapManager.GetTileResistance(t) == 18)
                 {
                     GameObject b = Instantiate(LavaHitbox) as GameObject;
                     b.transform.position = t;
@@ -66,7 +74,7 @@ public class mapGenerator : NetworkBehaviour
                 {
                     e += 1.085f;
                     rand = Random.Range(0, tiles.Length);
-                    s = new Vector3(transform.position.x + e, transform.position.y+b, transform.position.z);
+                    s = new Vector3(transform.position.x + e, transform.position.y + b, transform.position.z);
                     map.SetTile(map.WorldToCell(s), tiles[rand]);
                     resistanceCheck = mapManager.GetTileResistance(s);
                     UpdateSaveTile.Add(rand);
@@ -76,7 +84,7 @@ public class mapGenerator : NetworkBehaviour
                     d.transform.position = s;
                 }
                 e = 0;
-                    b -= 1.183f;
+                b -= 1.183f;
             }
             while (c <= 5)
             {
@@ -87,11 +95,11 @@ public class mapGenerator : NetworkBehaviour
                 resistanceCheck = mapManager.GetTileResistance(s);
                 UpdateSaveTile.Add(rand);
                 UpdateSavePosition.Add(s);
-                
-                    GameObject a = Instantiate(Hitbox) as GameObject;
-                    a.transform.position = s;
-                
-                if (mapManager.GetTileResistance(s) == 30)
+
+                GameObject a = Instantiate(Hitbox) as GameObject;
+                a.transform.position = s;
+
+                if (mapManager.GetTileResistance(s) == 18)
                 {
                     GameObject b = Instantiate(LavaHitbox) as GameObject;
                     b.transform.position = s;
@@ -102,31 +110,17 @@ public class mapGenerator : NetworkBehaviour
 
 
         }
-
+        
+        
     }
 
 
 
-    void Update()
-    {
-        if (isServer) 
-        {
-            if (newClientJoined == true)
-            {
-               
-                foreach (var variable in UpdateSaveTile)
-                {
-                    
-                    StartCoroutine(Waitforplayer(UpdateSaveTile[x], UpdateSavePosition[x]));
-                    x++;
-                }
-                x = 0;
-                newClientJoined = false;
-            }
-        }
-    }
+    
 
-     IEnumerator Waitforplayer(int neww, Vector3 pos)
+    
+
+     IEnumerator WaitforplayerTile(int neww, Vector3 pos)
      {
         yield return new WaitForSeconds(0.1f);
         
@@ -134,8 +128,12 @@ public class mapGenerator : NetworkBehaviour
      }
 
 
+
+
+
     
-        [ClientRpc]
+
+    [ClientRpc]
          void GetTile(int neww , Vector3 pos)
          {
            map.SetTile(map.WorldToCell(pos), tiles[neww]);

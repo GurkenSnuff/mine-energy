@@ -9,7 +9,7 @@ public class TileData : ScriptableObject
 {
     
     public TileBase[] tiles;
-    public float Resistance;
-    public int number;
+    public int Resistance;
+   
 
 }

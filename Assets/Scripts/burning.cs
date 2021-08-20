@@ -22,14 +22,14 @@ public class burning : MonoBehaviour
     }
     void Update()
     {
-        if (mapManager.GetTileResistance(transform.position) == 30)
+        if (mapManager.GetTileResistance(transform.position) == 18)
         {
             
             StartCoroutine(burnDamage());
             
             
         }
-        if (mapManager.GetTileResistance(transform.position) == 31)
+        if (mapManager.GetTileResistance(transform.position) == 17)
         {
             StopAllCoroutines();
         }

@@ -8,7 +8,7 @@ public class orecollideractivater : NetworkBehaviour
 {
     private Clintconnects clintConnects;
     public BoxCollider2D h;
-    
+    private bool updateList = false;
     private Tilemap map;
     private MapManager mapManager;
     private mapGenerator mapGenerator;
@@ -17,6 +17,8 @@ public class orecollideractivater : NetworkBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     private bool activater=true, activater2 = false;
     private int newClient=0,lessClient=0;
+    public TileUpdater tileUpdater;
+    private List<TileUpdater> tileupdater = new List<TileUpdater>();
     
 
     private void Awake()
@@ -24,8 +26,8 @@ public class orecollideractivater : NetworkBehaviour
         
             dataFromTiles = new Dictionary<TileBase, TileData>();
             clintConnects = FindObjectOfType<Clintconnects>();
-
-            mapGenerator = FindObjectOfType<mapGenerator>();
+        
+        mapGenerator = FindObjectOfType<mapGenerator>();
             mapManager = FindObjectOfType<MapManager>();
             map = FindObjectOfType<Tilemap>();
         
@@ -33,13 +35,13 @@ public class orecollideractivater : NetworkBehaviour
     void Update()
     {
         
-
+        
 
             if (clintConnects.clintConnectCount > newClient) activater = true;
             newClient = clintConnects.clintConnectCount;
+        
 
-
-            if (mapManager.GetTileResistance(gameObject.transform.position) >= 1 && mapManager.GetTileResistance(gameObject.transform.position) <= 5)
+            if (mapManager.GetTileResistance(gameObject.transform.position) >= 1 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
             {
             h.enabled = true;
             if (activater == true)
@@ -60,7 +62,27 @@ public class orecollideractivater : NetworkBehaviour
                 
 
             }
+
+        foreach (var variable in mapGenerator.Player)
+        {
+            int x = 0;
+            int tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
+
+            
+                if (gameObject.transform.position.x - mapGenerator.Player[x].transform.position.x < 100 || gameObject.transform.position.x - mapGenerator.Player[x].transform.position.x > -100 || gameObject.transform.position.y - mapGenerator.Player[x].transform.position.y < 100 || gameObject.transform.position.y - mapGenerator.Player[x].transform.position.y > -100)
+                {
+                   
+                    mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
+                }
+            
+
+            
+            
+            
+            
+        }
         
+            //es muss noch gemacht werden das es von jedem Player den TileUpdater bekommt und in einer Liste speichert
     }
     IEnumerator WaitUntilPlayerSpawned()
     {
@@ -74,5 +96,6 @@ public class orecollideractivater : NetworkBehaviour
     {
         h.enabled = false;
     }
-
+    
+    
 }

@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class TileUpdater : NetworkBehaviour
 {
+    public mapGenerator mapGenerator;
     public GameObject h;
     public Clintconnects clintConnects;
     private SolarZellen solarZellen;
@@ -52,11 +53,17 @@ public class TileUpdater : NetworkBehaviour
     public bool Alive = false;
     private WindGenerator windGenerator;
     private int deleteCount2 = -1, x3 = -1, x4 = -1,U=-1, x = -1, x2 = -1, T = -1, j = 0, I = -1, D = -1,Y=-1;
-    
+    public GameObject newPlayer;
+    [SerializeField]
+    private List<TileBase> junkTiles = new List<TileBase>();
+    private List<Vector3> positions = new List<Vector3>();
+    private bool transmit = false;
     private Vector3 z2;
+    public Tile[] tiles;
 
     void Awake()
     {
+        mapGenerator = FindObjectOfType<mapGenerator>();
         windGenerator = FindObjectOfType<WindGenerator>();
         mapManager = FindObjectOfType<MapManager>();
         clintConnects = FindObjectOfType<Clintconnects>();
@@ -72,6 +79,10 @@ public class TileUpdater : NetworkBehaviour
         diamondMiner = FindObjectOfType<DiamondMiner>();
         map = FindObjectOfType<Tilemap>();
         Alive = true;
+        if (isLocalPlayer) test();
+        StartCoroutine(Waitforplayer());
+        
+
     }
     void Update()
     {
@@ -86,13 +97,48 @@ public class TileUpdater : NetworkBehaviour
         Eisenminer();
         Goldminer();
         Diamondminer();
+        
     }
     
-        
-        
+    IEnumerator Waitforplayer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        test();
+    }
     
+
+    [Command]
+        private void test()
+        {
+        
+            mapGenerator.Player.Add(GameObject.FindWithTag("player"));
+            mapGenerator.Clients.Add(connectionToClient);
+            mapGenerator.tileupdater.Add(gameObject.GetComponent<TileUpdater>());
+        }
+
+    public void terrainSpawnerStarter(NetworkConnection conn, Vector3 position, int TileType)
+    {
+        
+        terrainSpawner(conn, position, TileType);
+    }
+    [TargetRpc]
+    void terrainSpawner(NetworkConnection conn, Vector3 position, int TileType)
+    {
+        
+        
+        
+            map.SetTile(map.WorldToCell(position), tiles[TileType]);
+            
+        
+    }
+
+
+
+
+
+
     [ClientRpc]
-    private void updateTile(Vector3 number,int tile)
+    public void updateTile(Vector3 number,int tile)
     {
 
         

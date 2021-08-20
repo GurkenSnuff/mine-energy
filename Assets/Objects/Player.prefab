@@ -2209,7 +2209,7 @@ GameObject:
   - component: {fileID: 7609560783929349748}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: player
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2678,6 +2678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  mapGenerator: {fileID: 0}
   h: {fileID: 3649125894539279010}
   clintConnects: {fileID: 0}
   deleteTiles:
@@ -2708,6 +2709,45 @@ MonoBehaviour:
   deleteCount: -1
   propertys: 
   Alive: 0
+  newPlayer: {fileID: 0}
+  junkTiles:
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 728d6b6c1b83a014e8aaf47be9e317ef, type: 2}
+  - {fileID: 11400000, guid: 0827200ec6353964c80bf9ea3d39ee04, type: 2}
+  - {fileID: 11400000, guid: 2b1f0a3ad820bd349bad52f44e3f53a6, type: 2}
+  - {fileID: 11400000, guid: 757bd3be356cce84d8c22b5bc0803ca1, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 15be033ffb94149449b727a0323b31bf, type: 2}
+  - {fileID: 11400000, guid: c06f78d0b46ca5043b9474784faae239, type: 2}
+  tiles:
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 728d6b6c1b83a014e8aaf47be9e317ef, type: 2}
+  - {fileID: 11400000, guid: 0827200ec6353964c80bf9ea3d39ee04, type: 2}
+  - {fileID: 11400000, guid: 2b1f0a3ad820bd349bad52f44e3f53a6, type: 2}
+  - {fileID: 11400000, guid: 757bd3be356cce84d8c22b5bc0803ca1, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: 15be033ffb94149449b727a0323b31bf, type: 2}
+  - {fileID: 11400000, guid: c06f78d0b46ca5043b9474784faae239, type: 2}
 --- !u!114 &8217401795562135588
 MonoBehaviour:
   m_ObjectHideFlags: 0

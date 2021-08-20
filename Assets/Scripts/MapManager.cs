@@ -27,12 +27,12 @@ public class MapManager : MonoBehaviour
     }
     
     
-    public float GetTileResistance(Vector2 worldPosition)
+    public int GetTileResistance(Vector2 worldPosition)
     {
 
         Vector3Int gridposition = map.WorldToCell(worldPosition);
         TileBase tile = map.GetTile(gridposition);
-        float Resistance = dataFromTiles[tile].Resistance;
+        int Resistance = dataFromTiles[tile].Resistance;
         return Resistance;
     }
     

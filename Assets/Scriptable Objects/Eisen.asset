@@ -15,4 +15,3 @@ MonoBehaviour:
   tiles:
   - {fileID: 11400000, guid: 0827200ec6353964c80bf9ea3d39ee04, type: 2}
   Resistance: 3
-  number: 0
