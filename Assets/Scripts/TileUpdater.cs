@@ -60,6 +60,10 @@ public class TileUpdater : NetworkBehaviour
     private bool transmit = false;
     private Vector3 z2;
     public Tile[] tiles;
+    private List<Vector3> positionColliders = new List<Vector3>();
+    [SerializeField]
+    private GameObject collider;
+    public bool oneTimeSpawner = true;
 
     void Awake()
     {
@@ -111,7 +115,7 @@ public class TileUpdater : NetworkBehaviour
         private void test()
         {
         
-            mapGenerator.Player.Add(GameObject.FindWithTag("player"));
+            mapGenerator.Player.Add(gameObject);
             mapGenerator.Clients.Add(connectionToClient);
             mapGenerator.tileupdater.Add(gameObject.GetComponent<TileUpdater>());
         }
@@ -122,18 +126,51 @@ public class TileUpdater : NetworkBehaviour
         terrainSpawner(conn, position, TileType);
     }
     [TargetRpc]
-    void terrainSpawner(NetworkConnection conn, Vector3 position, int TileType)
+    public void terrainSpawner(NetworkConnection conn, Vector3 position, int TileType)
     {
         
-        
-        
             map.SetTile(map.WorldToCell(position), tiles[TileType]);
-            
+
+    }
+    public void terrainSpawnerAfterDespawnedStart(NetworkConnection conn, Vector3 position,int TileType)
+    {
+        
+        terrainSpawnerAfterDespawned(conn, position,TileType);
+    }
+    [TargetRpc]
+    public void terrainSpawnerAfterDespawned(NetworkConnection conn, Vector3 position,int TileType)
+    {
+        GameObject a = Instantiate(collider) as GameObject;
+        a.transform.position = position;
         
     }
 
-
-
+    public void terrainDespawnerStarter(NetworkConnection conn, Vector3 position)
+    {
+        terrainDespawner(conn, position);
+    }
+    [TargetRpc]
+    void terrainDespawner(NetworkConnection conn, Vector3 position)
+    {
+        int x = 0;
+        bool alreadyThere = true;
+        
+        foreach(var Variable in positionColliders)
+        {
+            
+            if (positionColliders[x] != position)
+            {
+                alreadyThere = false;
+            }
+            x++;
+        }
+        if (alreadyThere == false)
+        {
+            positionColliders.Add(position);
+        }
+        map.SetTile(map.WorldToCell(position), null);
+    }
+    
 
 
 

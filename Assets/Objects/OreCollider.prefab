@@ -75,7 +75,6 @@ MonoBehaviour:
   syncInterval: 0.1
   h: {fileID: -5720829500463675550}
   tileDatas: []
-  t: {fileID: 8277042684312288946}
 --- !u!114 &-669851200871097434
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -62,11 +62,13 @@ public class mapGenerator : NetworkBehaviour
                 UpdateSavePosition.Add(t);
 
                 GameObject a = Instantiate(Hitbox) as GameObject;
+                a.tag = "Server";
                 a.transform.position = t;
 
                 if (mapManager.GetTileResistance(t) == 18)
                 {
                     GameObject b = Instantiate(LavaHitbox) as GameObject;
+                    b.tag = "Server";
                     b.transform.position = t;
 
                 }
@@ -81,6 +83,7 @@ public class mapGenerator : NetworkBehaviour
                     UpdateSavePosition.Add(s);
 
                     GameObject d = Instantiate(Hitbox) as GameObject;
+                    d.tag = "Server";
                     d.transform.position = s;
                 }
                 e = 0;
@@ -97,17 +100,19 @@ public class mapGenerator : NetworkBehaviour
                 UpdateSavePosition.Add(s);
 
                 GameObject a = Instantiate(Hitbox) as GameObject;
+                a.tag = "Server";
                 a.transform.position = s;
 
                 if (mapManager.GetTileResistance(s) == 18)
                 {
                     GameObject b = Instantiate(LavaHitbox) as GameObject;
+                    b.tag = "Server";
                     b.transform.position = s;
 
                 }
 
             }
-
+            
 
         }
         
@@ -143,7 +148,7 @@ public class mapGenerator : NetworkBehaviour
     public void colliderEnabler(Vector3 t)
     {
         //double orecollider spawning stopping
-        int i=-1;
+       /* int i=-1;
         bool s = false;
         foreach(var var in colliderList)
         {
@@ -156,7 +161,7 @@ public class mapGenerator : NetworkBehaviour
             Instantiate(k, t, transform.rotation);
             colliderList.Add(t);
             s = false;
-        }
+        }*/
     }
     
 }

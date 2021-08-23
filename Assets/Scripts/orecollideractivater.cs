@@ -17,17 +17,20 @@ public class orecollideractivater : NetworkBehaviour
     private Dictionary<TileBase, TileData> dataFromTiles;
     private bool activater=true, activater2 = false;
     private int newClient=0,lessClient=0;
-    public TileUpdater tileUpdater;
+    private TileUpdater tileUpdater;
     private List<TileUpdater> tileupdater = new List<TileUpdater>();
-    public bool t=false;
+    private bool spawned = false;
+    private List<bool> isSpawned = new List<bool>();
+    private Vector3 distance;
     
+
 
     private void Awake()
     {
         
             dataFromTiles = new Dictionary<TileBase, TileData>();
             clintConnects = FindObjectOfType<Clintconnects>();
-        
+       // tileUpdater = FindObjectOfType<TileUpdater>();
         mapGenerator = FindObjectOfType<mapGenerator>();
             mapManager = FindObjectOfType<MapManager>();
             map = FindObjectOfType<Tilemap>();
@@ -36,100 +39,80 @@ public class orecollideractivater : NetworkBehaviour
     void Update()
     {
         int x = 0;
-        if (t == true)
-        {
-            print(mapGenerator.Player[x].transform.position-gameObject.transform.position);
-        }
 
-        if (clintConnects.clintConnectCount > newClient) activater = true;
-            newClient = clintConnects.clintConnectCount;
+        if (gameObject.tag != "Server")
+        {  
+                StartCoroutine(Wait()); 
+        }
         
+            if (clintConnects.clintConnectCount > newClient) activater = true;
+            newClient = clintConnects.clintConnectCount;
+
 
             if (mapManager.GetTileResistance(gameObject.transform.position) >= 2 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
             {
-            h.enabled = true;
-            if (activater == true)
-                {
-                    
-                    StartCoroutine(WaitUntilPlayerSpawned());
-                    activater = false;
-                    
-                }
+                h.enabled = true;
             }
             if (mapManager.GetTileResistance(gameObject.transform.position) == 1)
             {
-                
-                    h.enabled = false;
-
-                    //colliderDisabler();
-                    
-                
-
+                h.enabled = false;
             }
 
-        foreach (var variable in mapGenerator.Player)
-        {
-            
-            int tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
+            foreach (var variable in mapGenerator.Player)
+            {
+
+                int tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
+                
+
 
             if (mapGenerator.Player[x] != null)
             {
-                
+                if (isSpawned.Count < mapGenerator.Player.Count) isSpawned.Add(spawned);
 
                 if (mapGenerator.Player.Count <= x)
                 {
                     return;
                 }
                 Vector3 position = mapGenerator.Player[x].transform.position;
-                Vector3 distance = position - gameObject.transform.position;
-
-                if (distance.x < 7f&& distance.y < 7f)
-                {
-
-                    mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
-                }
-                else
-                {
-                    if (distance.x < -7f && distance.y < 7f)
+                distance = position - gameObject.transform.position;
+                
+                    if (distance.y > -11f && distance.x > -11f && distance.x < 11f && distance.y < 11f)
                     {
-
-                        mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
+                    if (mapManager.GetTileResistance(gameObject.transform.position) >= 2 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
+                    {
+                        if (isSpawned[x] == false) mapGenerator.tileupdater[x].terrainSpawnerAfterDespawnedStart(mapGenerator.Clients[x], gameObject.transform.position, tile);
                     }
+                    isSpawned[x] = true;
+                    mapGenerator.tileupdater[x].terrainSpawner(mapGenerator.Clients[x], gameObject.transform.position, tile);
 
+                }
                     else
                     {
-                        if (distance.y < -7f&&distance.x < -7f)
+                        if (isSpawned[x] == true)
                         {
+                            isSpawned[x] = false;
+                            mapGenerator.tileupdater[x].terrainDespawnerStarter(mapGenerator.Clients[x], gameObject.transform.position);
 
-                            mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
-                        }
-
-                        else
-                        {
-                            if (distance.y < 7f&& distance.x < 7f)
-                            {
-
-                                mapGenerator.tileupdater[x].terrainSpawnerStarter(mapGenerator.Clients[x], gameObject.transform.position, tile);
-                            }
                         }
                     }
-                }
+                
             }
-            x++;
+                x++;
 
-
-
-            
-        }
+            }
         
-            
     }
-    IEnumerator WaitUntilPlayerSpawned()
+
+    IEnumerator Wait()
     {
-        yield return new WaitForSeconds(0.1f);
-        mapGenerator.colliderEnabler(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z));
-        
+        yield return new WaitForSeconds(0.5f);
+        if (mapManager.GetTileResistance(gameObject.transform.position) == 19)
+        {
+            Destroy(gameObject);
+        }
     }
+
+    
 
     [ClientRpc]
     public void colliderDisabler()

@@ -525,6 +525,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 875d5d06f04d0934b9df7b2758d4af10, type: 2}
   - {fileID: 11400000, guid: ad9f86fdd27ce2a419a032572ca11638, type: 2}
   - {fileID: 11400000, guid: 9b0c9e81c703d4f4aafdecff53dc2d24, type: 2}
+  tileData: {fileID: 11400000, guid: e72d5f457c31bcd4cb47fddaab70326f, type: 2}
 --- !u!1 &415612620
 GameObject:
   m_ObjectHideFlags: 0

@@ -2748,6 +2748,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
   - {fileID: 11400000, guid: 15be033ffb94149449b727a0323b31bf, type: 2}
   - {fileID: 11400000, guid: c06f78d0b46ca5043b9474784faae239, type: 2}
+  collider: {fileID: 8277042684312288946, guid: 21c69fc77fe31784e89def0da07e4cf0,
+    type: 3}
 --- !u!114 &8217401795562135588
 MonoBehaviour:
   m_ObjectHideFlags: 0

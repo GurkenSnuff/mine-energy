@@ -11,6 +11,7 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     private List<TileData> tileDatas;
     private Dictionary<TileBase, TileData> dataFromTiles;
+    public TileData tileData;
     
 
     private void Awake()
@@ -29,11 +30,13 @@ public class MapManager : MonoBehaviour
     
     public int GetTileResistance(Vector2 worldPosition)
     {
-
+        int Resistance;
         Vector3Int gridposition = map.WorldToCell(worldPosition);
         TileBase tile = map.GetTile(gridposition);
-        int Resistance = dataFromTiles[tile].Resistance;
+        if (tile != null) Resistance = dataFromTiles[tile].Resistance;
+        else Resistance = 19;
         return Resistance;
+
     }
     
 }
