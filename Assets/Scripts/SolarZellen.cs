@@ -60,7 +60,7 @@ public class SolarZellen : NetworkBehaviour
                 t = mapManager.GetTileResistance(Placement);
             
 
-            if (t == 0)
+            if (t == 1)
                 {
 
                 //if (miner.Stein>=100&&eisenMiner.Eisen>=50&&goldMiner.Gold>=40)

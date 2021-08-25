@@ -12,17 +12,16 @@ public class lookAtMouse : NetworkBehaviour
     void Start()
     {
         //wird benötigt für die multiplayer kamera 
-        StartCoroutine(wait());  
+        if(isLocalPlayer) StartCoroutine(wait());
     }
    
     void FixedUpdate()
     {
-        Vector3 position = new Vector3(transform.position.x, transform.position.y, 0F);
-        Vector3 targetMouse = cameraReal.ScreenToWorldPoint(Input.mousePosition) - position;
-        float angle = (Mathf.Atan2(targetMouse.y, targetMouse.x) * Mathf.Rad2Deg) + 90F;
-
         if (isLocalPlayer)
         {
+            Vector3 position = new Vector3(transform.position.x, transform.position.y, 0F);
+        Vector3 targetMouse = cameraReal.ScreenToWorldPoint(Input.mousePosition) - position;
+        float angle = (Mathf.Atan2(targetMouse.y, targetMouse.x) * Mathf.Rad2Deg) + 90F;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
         

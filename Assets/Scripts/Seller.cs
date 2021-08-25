@@ -61,7 +61,7 @@ public class Seller : NetworkBehaviour
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
 
-                if (t == 0)
+                if (t == 1)
                 {
                     miner.Stein -= 50;
                     eisenMiner.Eisen -= 100;

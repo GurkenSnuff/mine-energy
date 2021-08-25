@@ -21,8 +21,8 @@ public class orecollideractivater : NetworkBehaviour
     private List<TileUpdater> tileupdater = new List<TileUpdater>();
     private bool spawned = false;
     private List<bool> isSpawned = new List<bool>();
-    private Vector3 distance;
-    
+    private Vector3 distance, position;
+    private int tile;
 
 
     private void Awake()
@@ -45,8 +45,7 @@ public class orecollideractivater : NetworkBehaviour
                 StartCoroutine(Wait()); 
         }
         
-            if (clintConnects.clintConnectCount > newClient) activater = true;
-            newClient = clintConnects.clintConnectCount;
+            
 
 
             if (mapManager.GetTileResistance(gameObject.transform.position) >= 2 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
@@ -61,19 +60,20 @@ public class orecollideractivater : NetworkBehaviour
             foreach (var variable in mapGenerator.Player)
             {
 
-                int tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
-                
-
-
             if (mapGenerator.Player[x] != null)
             {
+                if (isSpawned.Count != 0&&gameObject.tag=="Server")
+                {
+                    if (tile != mapManager.GetTileResistance(gameObject.transform.position) - 1) isSpawned[x] = false;
+                }
+                tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
                 if (isSpawned.Count < mapGenerator.Player.Count) isSpawned.Add(spawned);
 
                 if (mapGenerator.Player.Count <= x)
                 {
                     return;
                 }
-                Vector3 position = mapGenerator.Player[x].transform.position;
+                 position = mapGenerator.Player[x].transform.position;
                 distance = position - gameObject.transform.position;
                 
                     if (distance.y > -11f && distance.x > -11f && distance.x < 11f && distance.y < 11f)

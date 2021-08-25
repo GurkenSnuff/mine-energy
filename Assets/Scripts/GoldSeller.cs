@@ -63,7 +63,7 @@ public class GoldSeller : NetworkBehaviour
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
 
-                if (t == 0)
+                if (t == 1)
                 {
                     goldMiner.Gold -= 200;
                    ressourcen.Money -= 10000;

@@ -2735,21 +2735,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0827200ec6353964c80bf9ea3d39ee04, type: 2}
   - {fileID: 11400000, guid: 2b1f0a3ad820bd349bad52f44e3f53a6, type: 2}
   - {fileID: 11400000, guid: 757bd3be356cce84d8c22b5bc0803ca1, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
-  - {fileID: 11400000, guid: 3e447375f7ae5b54d8235812b381bc50, type: 2}
+  - {fileID: 11400000, guid: d648943234656b647b056fb33ef978a8, type: 2}
+  - {fileID: 11400000, guid: 5a57bcdf42d880449886938ccf15056b, type: 2}
+  - {fileID: 11400000, guid: 2626facf6eb82aa47861439569fbaa05, type: 2}
+  - {fileID: 11400000, guid: c3d6f2eb20423774a96530fc5b84b6bf, type: 2}
+  - {fileID: 11400000, guid: 705ba512b14ae334f970a77fe95a86fe, type: 2}
+  - {fileID: 11400000, guid: 3e8a8d8a41e82a14db5b6778159b2b4a, type: 2}
+  - {fileID: 11400000, guid: fdd6ca87cbb32b14081d77e1e6e5aae7, type: 2}
+  - {fileID: 11400000, guid: 292238232d25fd842ae2bfbf03cb8572, type: 2}
+  - {fileID: 11400000, guid: a3fb2eb1fe445f141afd13f4e55db231, type: 2}
+  - {fileID: 11400000, guid: 93f3aac5a03c04047b4233e9b704c597, type: 2}
+  - {fileID: 11400000, guid: 6d7c250c40e75e44ab68109105a40eb7, type: 2}
   - {fileID: 11400000, guid: 15be033ffb94149449b727a0323b31bf, type: 2}
   - {fileID: 11400000, guid: c06f78d0b46ca5043b9474784faae239, type: 2}
   collider: {fileID: 8277042684312288946, guid: 21c69fc77fe31784e89def0da07e4cf0,
     type: 3}
+  oneTimeSpawner: 1
 --- !u!114 &8217401795562135588
 MonoBehaviour:
   m_ObjectHideFlags: 0

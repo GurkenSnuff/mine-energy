@@ -73,7 +73,7 @@ public class KohleGenerator :NetworkBehaviour
             Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             t = mapManager.GetTileResistance(Placement);
             
-                if (t == 0)
+                if (t == 1)
                 {
                    // if (ressourcen.Geld>=500)
                    // {

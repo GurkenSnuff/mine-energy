@@ -58,11 +58,10 @@ public class SteinSeller : NetworkBehaviour
         //{
             if (Input.GetMouseButtonDown(0) && EnoughForSS == true)
             {
-
                 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 t = mapManager.GetTileResistance(minerÜber);
-
-                if (t == 0)
+            
+                if (t == 1)
                 {
                     miner.Stein -= 100;
                     ressourcen.Money -= 3000;

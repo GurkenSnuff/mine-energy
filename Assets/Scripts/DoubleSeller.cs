@@ -66,7 +66,7 @@ public class DoubleSeller : NetworkBehaviour
                Placement = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                t = mapManager.GetTileResistance(Placement);
 
-               if (t == 0)
+               if (t == 1)
                 {
                     TileUpdateCheck = true;
                     map.SetTile(map.WorldToCell(Placement), tiles[0]);
