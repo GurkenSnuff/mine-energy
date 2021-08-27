@@ -19,7 +19,7 @@ public class Clintconnects : NetworkManager
     }
     public void Update()
     {
-       
+
         
             canvas.SetActive(true);
           
