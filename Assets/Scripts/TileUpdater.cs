@@ -63,7 +63,10 @@ public class TileUpdater : NetworkBehaviour
     private List<Vector3> positionColliders = new List<Vector3>();
     [SerializeField]
     private GameObject collider;
-    public bool oneTimeSpawner = true;
+    public bool oneTimeSpawner = true,c=false;
+    [SerializeField]
+    private NetworkTransform networkTransform;
+    
 
     void Awake()
     {
@@ -88,6 +91,25 @@ public class TileUpdater : NetworkBehaviour
         
 
     }
+
+
+    void Start()
+    {
+        GetLifeList();
+    }
+
+    [Command]
+    void GetLifeList()
+    {
+        int x = 0;
+        foreach (var variable in mapGenerator.TilePosition)
+        {
+            mapGenerator.newlyJoined(connectionToClient,mapGenerator.TileLife[x],mapGenerator.TilePosition[x]);
+            x++;
+        }
+        
+    }
+
     void Update()
     {
         WindGenerator();
@@ -101,9 +123,42 @@ public class TileUpdater : NetworkBehaviour
         Eisenminer();
         Goldminer();
         Diamondminer();
-        
+        // first try of spawning only players who are near you
+        //if(isServer)PlayerSpawner();
     }
+
+    private void PlayerSpawner()
+    {
+        int x = 0,z=0;
+        foreach(var h in mapGenerator.Player)
+        {
+           
+            if (mapGenerator.Player[x] != gameObject)
+            {
+                float Distance = Vector3.Distance(mapGenerator.Player[x].transform.position, gameObject.transform.position);
+                
+                if (Distance <= 10)
+                {
+                    if (c == false)
+                    {
+                        networkTransform.enabled = true;
+                        c = true;
+                    }
+                }
+                else
+                {
+                    networkTransform.enabled = false;
+                    c = false;
+                }
+            }
+            x++;
+        }
+    }
+
     
+
+    
+
     IEnumerator Waitforplayer()
     {
         yield return new WaitForSeconds(0.1f);
@@ -129,20 +184,24 @@ public class TileUpdater : NetworkBehaviour
     public void terrainSpawner(NetworkConnection conn, Vector3 position, int TileType)
     {
         
-            map.SetTile(map.WorldToCell(position), tiles[TileType]);
+        map.SetTile(map.WorldToCell(position), tiles[TileType]);
+        
 
     }
-    public void terrainSpawnerAfterDespawnedStart(NetworkConnection conn, Vector3 position,int TileType)
+    public void terrainSpawnerAfterDespawnedStart(NetworkConnection conn, Vector3 position,int TileType,double Life)
     {
         
-        terrainSpawnerAfterDespawned(conn, position,TileType);
+        terrainSpawnerAfterDespawned(conn, position,TileType,Life);
     }
     [TargetRpc]
-    public void terrainSpawnerAfterDespawned(NetworkConnection conn, Vector3 position,int TileType)
+    public void terrainSpawnerAfterDespawned(NetworkConnection conn, Vector3 position,int TileType,double Life)
     {
         GameObject a = Instantiate(collider) as GameObject;
         a.transform.position = position;
+        //Versuch die Leben zu behalten auch nach despawnen
+        //Eine Liste für die Leben und eine für die positionen dann schauen ob eine position zu dem collider passt und dann passendes leben nehmen
         
+
     }
 
     public void terrainDespawnerStarter(NetworkConnection conn, Vector3 position)

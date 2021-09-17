@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 231251366940580202}
   - component: {fileID: 231251366940580203}
-  - component: {fileID: 231251366940580200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PickageHitbox
-  m_TagString: Untagged
+  m_TagString: Pickage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,21 +57,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.078335, y: 7.443145}
   m_EdgeRadius: 0
---- !u!114 &231251366940580200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231251366940580205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658c74cc2d5f19f4cb0570291dd0574a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHitbox: {fileID: 0}
-  LifeBar: {fileID: 0}
-  leben: {fileID: 0}
 --- !u!1 &231251367365907912
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +66,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 231251367365907913}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +97,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 231251368075613554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,10 +129,9 @@ GameObject:
   - component: {fileID: 231251368609984233}
   - component: {fileID: 231251368609984232}
   - component: {fileID: 231251368609984228}
-  - component: {fileID: 231251368609984231}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: playerSprite
-  m_TagString: Untagged
+  m_TagString: Pickage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231251368609984230}
-  m_LocalRotation: {x: 0.9969314, y: -0.07828104, z: -0, w: 0}
+  m_LocalRotation: {x: 0.9969311, y: -0.07828503, z: 0.00000018667883, w: -0.000000014659147}
   m_LocalPosition: {x: -1.815, y: -0.638, z: 26.495651}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
@@ -236,26 +219,7 @@ MonoBehaviour:
   - {fileID: 231251367365907913}
   - {fileID: 231251368075613554}
   m_Bounds:
-    m_Center: {x: 13.367717, y: -5.3133683, z: -0.0000018179417}
-    m_Extent: {x: 8.76574, y: 7.305783, z: 0}
+    m_Center: {x: 13.367685, y: -5.313367, z: -0.0000015497208}
+    m_Extent: {x: 8.765711, y: 7.3057766, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
---- !u!95 &231251368609984231
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 231251368609984230}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cfb660d61ca3f3640ae9106e23d02555, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

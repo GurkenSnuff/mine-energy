@@ -38,6 +38,23 @@ public class MapManager : MonoBehaviour
         return Resistance;
 
     }
-    
+    public double GetTileLife(Vector2 worldPosition)
+    {
+        double Life;
+        Vector3Int gridposition = map.WorldToCell(worldPosition);
+        TileBase tile = map.GetTile(gridposition);
+         Life = dataFromTiles[tile].Life;
+        return Life;
+
+    }
+    public void SetTileLife(Vector2 worldPosition, double Leben)
+    {
+        
+        Vector3Int gridposition = map.WorldToCell(worldPosition);
+        TileBase tile = map.GetTile(gridposition);
+         dataFromTiles[tile].Life=Leben;
+        
+
+    }
 }
 

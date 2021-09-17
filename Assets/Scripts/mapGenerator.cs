@@ -37,6 +37,10 @@ public class mapGenerator : NetworkBehaviour
     private List<TileBase> junkTiles = new List<TileBase>();
     private List<Vector3> positions = new List<Vector3>();
     private bool transmit=false;
+    public List<double> TileLife = new List<double>();
+    public List<Vector3> TilePosition = new List<Vector3>();
+    public int number=0;
+    private bool Add = false;
 
     private void Awake()
     {
@@ -121,10 +125,6 @@ public class mapGenerator : NetworkBehaviour
 
 
 
-    
-
-    
-
      IEnumerator WaitforplayerTile(int neww, Vector3 pos)
      {
         yield return new WaitForSeconds(0.1f);
@@ -133,35 +133,52 @@ public class mapGenerator : NetworkBehaviour
      }
 
 
-
-
-
-    
-
     [ClientRpc]
          void GetTile(int neww , Vector3 pos)
          {
            map.SetTile(map.WorldToCell(pos), tiles[neww]);
             
          }
-    [ClientRpc]
-    public void colliderEnabler(Vector3 t)
+
+    
+    public void AddLife(Vector3 pos, double Life, int place)
     {
-        //double orecollider spawning stopping
-       /* int i=-1;
-        bool s = false;
-        foreach(var var in colliderList)
+        bool Add2 = false;
+        if (Add==false)
         {
-            i++;
-            if (colliderList[i] == t) s = true;
+            TileLife.Add(Life);
+            TilePosition.Add(pos);
+            Add = true;
+            Add2 = true;
         }
-        i = -1;
-        if (s == false)
+        else
         {
-            Instantiate(k, t, transform.rotation);
-            colliderList.Add(t);
-            s = false;
-        }*/
+            TileLife[place] = Life;
+            TilePosition[place] = pos;
+        }
+        CommitLife(pos, Life, place,Add2);
+    }
+
+    [ClientRpc]
+    public void CommitLife(Vector3 pos,double Life,int place,bool Add)
+    {
+        if (Add==true)
+        {
+            TileLife.Add(Life);
+            TilePosition.Add( pos);
+        }
+        else
+        {
+            TileLife[place] = Life;
+            TilePosition[place] = pos;
+        }
+    }
+
+    [TargetRpc]
+    public void newlyJoined(NetworkConnection conn,double Life,Vector3 pos)
+    { 
+            TileLife.Add(Life);
+            TilePosition.Add(pos);
     }
     
 }

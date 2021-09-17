@@ -57,7 +57,7 @@ public class abbauen : NetworkBehaviour
         {
             Vector3 minerÜber = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float t = mapManager.GetTileResistance(minerÜber);
-            Distance_ = Vector3.Distance(transform.position, minerÜber);
+            Distance_ = Vector3.Distance(transform.position, minerÜber)-0.3f;
             if (hasAuthority)
             {
                 animator.SetBool("Schlag", true);

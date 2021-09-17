@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 8745491844055131352}
   - component: {fileID: 894481317293446591}
   - component: {fileID: 1655346365926068851}
-  - component: {fileID: 5933667313978059341}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: player.dia
-  m_TagString: Untagged
+  m_TagString: Pickage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8745491844055131352
 Transform:
   m_ObjectHideFlags: 0
@@ -102,29 +101,10 @@ MonoBehaviour:
   - {fileID: 7778616562602372243}
   - {fileID: 192111647771310043}
   m_Bounds:
-    m_Center: {x: -4.1720076, y: 2.0592031, z: 0}
-    m_Extent: {x: 8.747088, y: 6.1858473, z: 0}
+    m_Center: {x: -4.171977, y: 2.0592031, z: 0}
+    m_Extent: {x: 8.747119, y: 6.185851, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
---- !u!95 &5933667313978059341
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664531219029247484}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cfb660d61ca3f3640ae9106e23d02555, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4758621506336835124
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 192111647771310043}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,11 +144,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8234993028737723892}
-  - component: {fileID: 341289140071290082}
   - component: {fileID: 1283427191619595451}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PickageHitbox
-  m_TagString: Untagged
+  m_TagString: Pickage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -187,22 +166,6 @@ Transform:
   m_Father: {fileID: 8745491844055131352}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &341289140071290082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093856075357873841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658c74cc2d5f19f4cb0570291dd0574a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHitbox: {fileID: 0}
-  LifeBar: {fileID: 0}
-  leben: {fileID: 0}
-  abbauen: {fileID: 0}
 --- !u!61 &1283427191619595451
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -238,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7778616562602372243}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

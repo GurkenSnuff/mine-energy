@@ -10,6 +10,6 @@ public class TileData : ScriptableObject
     
     public TileBase[] tiles;
     public int Resistance;
-   
+    public double Life;
 
 }

@@ -5,7 +5,7 @@ using Mirror;
 
 public class Life : NetworkBehaviour
 {
-    [SyncVar(hook = "test")]
+    
     public float Leben = 101;
     public float SchadensMult = 1F, LifeBarDamage, LifeVergleich = 100;
     public GameObject Player;
@@ -27,26 +27,20 @@ public class Life : NetworkBehaviour
 
     void Update()
     {
-
-        if (abbauen.eisen == true)
-        {
-            SchadensMult = 1.5F;
-        }
-
         if (Leben >= 101)
         {
             spriteRenderer.enabled = false;
             Leben = 101;
         }
 
-        
+
 
 
 
 
         if (Leben <= LifeVergleich)
         {
-           
+
             LifeBarDamage = 0.6F * SchadensMult;
             LifeVergleich -= 10F * SchadensMult;
             lebensbar.transform.localScale = new Vector3(lebensbar.transform.localScale.x - LifeBarDamage, 0.6000006F, 1);
@@ -56,10 +50,10 @@ public class Life : NetworkBehaviour
             spriteRenderer.enabled = true;
         }
 
-        if (Leben<= 1)
+        if (Leben <= 1)
         {
             Destroy(Player.gameObject);
-            
+
         }
         if (wait == false)
         {
@@ -82,40 +76,31 @@ public class Life : NetworkBehaviour
         LifeVergleich += 10;
         lebensbar.transform.localScale = new Vector3(lebensbar.transform.localScale.x + 0.6F, 0.6000006F, 1);
         StartCoroutine(LifeReg());
-        
-    }
-    public void test(float s,float t)
-    {
-       
+
     }
     
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.CompareTag("Pickage"))
         {
-
-            if (abbauen.eisen == true)
-            {
-                DamageMult = 1.5F;
-            }
-            if (abbauen.gold == true)
-            {
-                DamageMult = 2F;
-            }
-            if (abbauen.dia == true)
-            {
-                DamageMult = 2.5F;
-            }
-            LifeDamage = 10 * DamageMult;
-            Leben -= LifeDamage;
-            
-            
-            
-
+                if (collision.name == "PickageHitboxIron")
+                {
+                    DamageMult = 1.5f;
+                }
+                if (collision.name == "PickageHitboxGold")
+                {
+                    DamageMult = 2f;
+                }
+                if (collision.name == "PickageHitboxDia")
+                {
+                    DamageMult = 2.5f;
+                }
+                LifeDamage = 10 * DamageMult;
+                Leben -= LifeDamage;
         }
-
     }
-    
 }
+

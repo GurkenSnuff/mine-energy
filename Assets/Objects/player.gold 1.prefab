@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 168209154525462090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6214182540184797275}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,14 +72,13 @@ GameObject:
   - component: {fileID: 8602859301305716596}
   - component: {fileID: 9062444308891561115}
   - component: {fileID: 515007123543412201}
-  - component: {fileID: 4596723401654265428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: player.gold 1
-  m_TagString: Untagged
+  m_TagString: Pickage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8602859301305716596
 Transform:
   m_ObjectHideFlags: 0
@@ -163,29 +162,10 @@ MonoBehaviour:
   - {fileID: 6214182540184797275}
   - {fileID: 168209154525462090}
   m_Bounds:
-    m_Center: {x: -4.09083, y: 1.8662457, z: 0}
-    m_Extent: {x: 8.665911, y: 6.277274, z: 0}
+    m_Center: {x: -4.0907383, y: 1.8662477, z: 0}
+    m_Extent: {x: 8.66588, y: 6.277272, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
---- !u!95 &4596723401654265428
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178281566959975548}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cfb660d61ca3f3640ae9106e23d02555, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8008865810656564405
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,11 +175,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8008865810656564406}
-  - component: {fileID: 8008865810656564400}
   - component: {fileID: 8008865810656564407}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PickageHitbox
-  m_TagString: Untagged
+  m_TagString: Pickage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,22 +197,6 @@ Transform:
   m_Father: {fileID: 8602859301305716596}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8008865810656564400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8008865810656564405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658c74cc2d5f19f4cb0570291dd0574a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHitbox: {fileID: 0}
-  LifeBar: {fileID: 0}
-  leben: {fileID: 0}
-  abbauen: {fileID: 0}
 --- !u!61 &8008865810656564407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -241,7 +204,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8008865810656564405}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

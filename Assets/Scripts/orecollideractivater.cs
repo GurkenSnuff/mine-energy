@@ -19,23 +19,53 @@ public class orecollideractivater : NetworkBehaviour
     private int newClient=0,lessClient=0;
     private TileUpdater tileUpdater;
     private List<TileUpdater> tileupdater = new List<TileUpdater>();
-    private bool spawned = false;
+    private bool spawned = false,stop=false;
     private List<bool> isSpawned = new List<bool>();
     private Vector3 distance, position;
     private int tile;
+    private double DamageMult=1,LifeDamage;
+    public double Leben = 1000;
+    [SerializeField]
+    private GameObject lebensbar;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+    private float SchadensMult = 1F, LifeBarDamage, LifeVergleich = 999;
+    [SerializeField]
+    private  Tile[] tiles;
+    public int positionForLife=-2;
+    
 
-
-    private void Awake()
-    {
+    void Awake()
+     {
         
             dataFromTiles = new Dictionary<TileBase, TileData>();
             clintConnects = FindObjectOfType<Clintconnects>();
-       // tileUpdater = FindObjectOfType<TileUpdater>();
+        tileUpdater = FindObjectOfType<TileUpdater>();
         mapGenerator = FindObjectOfType<mapGenerator>();
             mapManager = FindObjectOfType<MapManager>();
             map = FindObjectOfType<Tilemap>();
         
     }
+    
+    void Start()
+    {
+        int x = 0;
+        if (gameObject.tag != "Server")
+        {
+            foreach(var variable in mapGenerator.TilePosition)
+            {
+                if (mapGenerator.TilePosition[x] == gameObject.transform.position)
+                {
+                    Leben = mapGenerator.TileLife[x];
+                    return;
+                }
+                x++;
+            }
+            
+        }
+    }
+
+
     void Update()
     {
         int x = 0;
@@ -45,10 +75,40 @@ public class orecollideractivater : NetworkBehaviour
                 StartCoroutine(Wait()); 
         }
         
+        if (Leben <= LifeVergleich)
+        {
+            if (gameObject.tag == "Server")
+            {
+                if (positionForLife >=-1)
+                {
+                    mapGenerator.AddLife(gameObject.transform.position, Leben, positionForLife);
+                }
+                else
+                {
+                    positionForLife = mapGenerator.number;
+                    mapGenerator.AddLife(gameObject.transform.position, Leben, positionForLife);
+                    mapGenerator.number++;
+                    print("Hi");
+                }
+                
+            }
+            LifeBarDamage = 0.06F * SchadensMult;
+            LifeVergleich -= 10F * SchadensMult;
+            lebensbar.transform.localScale = new Vector3(lebensbar.transform.localScale.x - LifeBarDamage, 0.6000006F, 1);
+            spriteRenderer.enabled = true;
+        }
+        if (Leben <= 1|| mapManager.GetTileResistance(gameObject.transform.position) == 1)
+        {
+            map.SetTile(map.WorldToCell(gameObject.transform.position), tiles[0]);
+            spriteRenderer.enabled = false;
+            lebensbar.transform.localScale = new Vector3(6,gameObject.transform.position.y, gameObject.transform.position.z);
+            Leben = 1000;
+            LifeVergleich = 999;
             
+        }
+        
 
-
-            if (mapManager.GetTileResistance(gameObject.transform.position) >= 2 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
+        if (mapManager.GetTileResistance(gameObject.transform.position) >= 2 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
             {
                 h.enabled = true;
             }
@@ -62,11 +122,11 @@ public class orecollideractivater : NetworkBehaviour
 
             if (mapGenerator.Player[x] != null)
             {
+                
                 if (isSpawned.Count != 0&&gameObject.tag=="Server")
                 {
                     if (tile != mapManager.GetTileResistance(gameObject.transform.position) - 1) isSpawned[x] = false;
                 }
-                tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
                 if (isSpawned.Count < mapGenerator.Player.Count) isSpawned.Add(spawned);
 
                 if (mapGenerator.Player.Count <= x)
@@ -78,14 +138,21 @@ public class orecollideractivater : NetworkBehaviour
                 
                     if (distance.y > -11f && distance.x > -11f && distance.x < 11f && distance.y < 11f)
                     {
+                    
                     if (mapManager.GetTileResistance(gameObject.transform.position) >= 2 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
                     {
-                        if (isSpawned[x] == false) mapGenerator.tileupdater[x].terrainSpawnerAfterDespawnedStart(mapGenerator.Clients[x], gameObject.transform.position, tile);
-                    }
-                    isSpawned[x] = true;
-                    mapGenerator.tileupdater[x].terrainSpawner(mapGenerator.Clients[x], gameObject.transform.position, tile);
 
-                }
+                        if (isSpawned[x] == false)
+                        {
+                            mapGenerator.tileupdater[x].terrainSpawnerAfterDespawnedStart(mapGenerator.Clients[x], gameObject.transform.position, tile,Leben);
+                            //mapGenerator.CommitLife(gameObject.transform.position, Leben, positionForLife);
+                            isSpawned[x] = true;
+                        }
+                    }
+                    
+                    mapGenerator.tileupdater[x].terrainSpawner(mapGenerator.Clients[x], gameObject.transform.position, tile);
+                    
+                    }
                     else
                     {
                         if (isSpawned[x] == true)
@@ -100,16 +167,46 @@ public class orecollideractivater : NetworkBehaviour
                 x++;
 
             }
+        tile = mapManager.GetTileResistance(gameObject.transform.position) - 1;
         
+    }
+
+    
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (mapManager.GetTileResistance(gameObject.transform.position) >= 6 && mapManager.GetTileResistance(gameObject.transform.position) <= 16)
+        {
+            
+            if (collision.CompareTag("Pickage"))
+            {
+               
+                if (collision.name == "PickageHitboxIron")
+                {
+                    DamageMult = 1.5;
+                }
+                if (collision.name == "PickageHitboxGold")
+                {
+                    DamageMult = 2;
+                }
+                if (collision.name == "PickageHitboxDia")
+                {
+                    DamageMult = 2.5;
+                }
+                LifeDamage = 10 * DamageMult;
+                Leben -= LifeDamage;
+            }
+        }
     }
 
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(0.5f);
-        if (mapManager.GetTileResistance(gameObject.transform.position) == 19)
+        if (mapManager.GetTileResistance(gameObject.transform.position) == 19|| mapManager.GetTileResistance(gameObject.transform.position)==1)
         {
             Destroy(gameObject);
         }
+        
     }
 
     
